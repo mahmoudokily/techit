@@ -42,7 +42,6 @@ const CallUs = () => {
                 variant="default"
                 type="text"
                 placeholder="Mariorosso@gmail.com"
-                prefix="Email"
                 mb={2}
               />
 

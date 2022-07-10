@@ -50,7 +50,9 @@ export const NavLogo = styled(Link)`
 
 export const NavIcon = styled.img`
   margin-right: 0.4rem;
-  width: 3rem;
+  margin-top: 0.5rem;
+
+  width: 5rem;
 `;
 
 export const MobileIcon = styled.div`

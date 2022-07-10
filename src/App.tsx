@@ -15,11 +15,11 @@ import Svg from "./_shared/styledComponents/Svg";
 function App() {
   return (
     <BrowserRouter>
-      <ThemeProvider theme={themes.data.dark}>
+      <ThemeProvider theme={themes.data.light}>
         <AssetProvider assets={assets as any}>
           <GlobalStyles />
           <Header />
-          <Column
+          {/* <Column
             background="red"
             width="50px"
             justifyContent="center"
@@ -37,7 +37,7 @@ function App() {
 
             <Svg color="white" name="Work" />
             <Svg color="white" name="Dashboard" />
-          </Column>
+          </Column> */}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/auth" element={<Auth />} />
