@@ -93,8 +93,6 @@ export const Dialog = forwardRef<DialogActionTypes, DialogProps>(
     const content = useCallback(
       () => (
         <Box
-          border="1px solid red"
-          zIndex={3333}
           style={{ ...styles.overlay }}
           {...(overlayStyle as React.ComponentProps<typeof Box>)}
         >
