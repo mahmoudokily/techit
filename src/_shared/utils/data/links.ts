@@ -16,8 +16,8 @@ const links: Link[] = [
     text: "Pricing",
   },
   {
-    to: "/signup",
-    text: "Contact",
+    to: "/auth",
+    text: "Sign in ",
   },
 ];
 
