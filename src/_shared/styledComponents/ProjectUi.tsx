@@ -397,18 +397,20 @@ export const ImageWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  border-radius: 4px;
-  outline: none;
-  height: 470px;
+  border-radius: 0px 0px 4px 4px;
 
+  outline: none;
+  box-shadow: 0px 1px 5px -2px rgb(0 0 0 / 20%),
+    0px 4px 8px 3px rgb(0 0 0 / 14%), 0px 9px 6px 2px rgb(0 0 0 / 12%);
   @media screen and (min-width: 440px) {
-    border: 1px solid;
   }
 `;
 
 export const ReviewSlider = styled(Slider)`
   width: 100%;
   position: relative;
+
+  height: 470px;
   .slick-track {
     display: flex;
     padding: 40px;
@@ -430,20 +432,17 @@ export const CardButton = styled.button`
   width: 100%;
   flex-shrink: 0;
   height: 60px;
-  background-color: ${({ theme }) => theme.colors.background.paper};
-  cursor: pointer;
+  background-color: ${({ theme }) => theme.colors.primary.main};
+  color: ${({ theme }) => theme.colors.white}!important;
   border-radius: 0px 0px 4px 4px;
-
+  cursor: pointer;
   font-weight: 600;
+  font-size: 1.2em;
   opacity: 0.9;
-
   border: none;
-
-  border-radius: 0 0 3px 3px;
 
   &:hover {
     opacity: 1;
-
     transition: background-color 0.2s ease-in;
   }
 `;
