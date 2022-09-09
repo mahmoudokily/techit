@@ -22,7 +22,6 @@ function App() {
 
   useEffect(() => {
     window?.addEventListener("scroll", () => {
-      console.log(window.scrollY);
       if (window.scrollY > 800) setShowButton(true);
       else setShowButton(false);
     });
@@ -33,7 +32,6 @@ function App() {
 
   const scrollTo = (id: string) => () => {
     const element = document.getElementById(id);
-
     element?.scrollIntoView({
       behavior: "smooth",
     });

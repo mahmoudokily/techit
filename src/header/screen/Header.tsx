@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import packageJson from "../../../package.json";
 import {
@@ -17,6 +17,7 @@ import links from "../../_shared/utils/data/links";
 
 const Header = () => {
   const [show, setShow] = useState(false);
+  const [showBackground, setShowBackground] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -43,12 +44,26 @@ const Header = () => {
     setShow(false);
   };
 
+  useEffect(() => {
+    window?.addEventListener("scroll", () => {
+      if (window.scrollY > 80) setShowBackground(true);
+      else setShowBackground(false);
+    });
+    return () => {
+      window.removeEventListener("scroll", () => {
+        if (window.scrollY > 80) setShowBackground(true);
+        else setShowBackground(false);
+      });
+    };
+  }, []);
+
   return (
-    <Nav id="nav">
+    <Nav id="navbar" show={showBackground}>
       <Version> V {packageJson.version}</Version>
       <NavbarContainer>
         <NavLogo to="/">
           <NavIcon src="./assets/logo.svg" alt="logo" />
+          <span>TechIt</span>
         </NavLogo>
         <MobileIcon onClick={handleClick}>
           {show ? (

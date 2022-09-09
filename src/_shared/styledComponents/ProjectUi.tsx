@@ -27,30 +27,37 @@ export const Version = styled.span`
 
 export const FixedButton = styled.button`
   position: fixed;
-  margin: 20;
-  border-radius: 4;
-  bottom: 0;
+  margin: 20px;
+  border-radius: 4px;
+  bottom: 0px;
   padding: 8px 5px;
   right: 0;
   z-index: 22200;
   outline: none;
   border: none;
   background-color: rgb(0, 0, 22, 0.3);
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+  }
 `;
 //header
-export const Nav = styled.nav`
-  background: transparent;
+export const Nav = styled.nav<{ show: boolean }>`
   margin-bottom: -80px;
   height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
+  align-items: center;
   font-size: 1.2rem;
-  position: absolute;
+  position: sticky;
   top: 0;
   z-index: 50;
   width: 100%;
-  transition: background-color 0.3s ease-in;
+  background-color: ${({ show, theme }) =>
+    show ? theme.colors.primary.main : "transparent"};
+
+  transition: background-color 0.1s ease-in;
 `;
 
 export const NavbarContainer = styled(Container)`
