@@ -1,10 +1,11 @@
 import { useCallback } from "react";
-import { Button, Container } from "../../_shared/styledComponents";
 import {
+  Button,
+  Container,
   HeroSection,
-  HeroVideo,
-  HeroTitle,
   HeroSubTitle,
+  HeroTitle,
+  HeroVideo,
 } from "../../_shared/styledComponents";
 
 import { useNavigate } from "react-router-dom";
@@ -41,7 +42,7 @@ export const Hero: React.FC<HeroProps> = ({
   );
 
   return (
-    <HeroSection>
+    <HeroSection id="hero">
       <HeroVideo src={videoSrc} autoPlay muted />
       <Container
         justifyContent="center"

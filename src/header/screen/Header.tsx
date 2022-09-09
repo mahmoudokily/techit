@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import packageJson from "../../../package.json";
 import {
   MobileIcon,
   Nav,
@@ -9,6 +10,7 @@ import {
   NavLinks,
   NavLogo,
   NavMenu,
+  Version,
 } from "../../_shared/styledComponents";
 import Svg from "../../_shared/styledComponents/Svg";
 import links from "../../_shared/utils/data/links";
@@ -42,11 +44,11 @@ const Header = () => {
   };
 
   return (
-    <Nav>
+    <Nav id="nav">
+      <Version> V {packageJson.version}</Version>
       <NavbarContainer>
         <NavLogo to="/">
           <NavIcon src="./assets/logo.svg" alt="logo" />
-          TechIt
         </NavLogo>
         <MobileIcon onClick={handleClick}>
           {show ? (

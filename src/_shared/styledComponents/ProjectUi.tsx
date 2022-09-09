@@ -12,6 +12,31 @@ type Props = {
   fontBig?: boolean;
 } & SpaceProps;
 
+export const Version = styled.span`
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  font-size: 10px;
+  padding: 10px;
+  display: none;
+  @media screen and (min-width: 960px) {
+    display: block;
+  }
+`;
+
+export const FixedButton = styled.button`
+  position: fixed;
+  margin: 20;
+  border-radius: 4;
+  bottom: 0;
+  padding: 8px 5px;
+  right: 0;
+  z-index: 22200;
+  outline: none;
+  border: none;
+  background-color: rgb(0, 0, 22, 0.3);
+`;
 //header
 export const Nav = styled.nav`
   background: transparent;
@@ -398,6 +423,7 @@ export const ImageWrapper = styled.div`
   flex-direction: column;
   align-items: center;
   border-radius: 0px 0px 4px 4px;
+  height: 470px;
 
   outline: none;
   box-shadow: 0px 1px 5px -2px rgb(0 0 0 / 20%),
@@ -410,7 +436,6 @@ export const ReviewSlider = styled(Slider)`
   width: 100%;
   position: relative;
 
-  height: 470px;
   .slick-track {
     display: flex;
     padding: 40px;
