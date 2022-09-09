@@ -39,7 +39,7 @@ const CallUs = () => {
               <TextInput
                 labelColor="#fff"
                 label="Email"
-                variant="default"
+                shape="default"
                 type="text"
                 placeholder="Mariorosso@gmail.com"
                 mb={2}

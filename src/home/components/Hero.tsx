@@ -1,10 +1,11 @@
 import { useCallback } from "react";
-import { Button, Container } from "../../_shared/styledComponents";
 import {
+  Button,
+  Container,
   HeroSection,
-  HeroVideo,
-  HeroTitle,
   HeroSubTitle,
+  HeroTitle,
+  HeroVideo,
 } from "../../_shared/styledComponents";
 
 import { useNavigate } from "react-router-dom";
@@ -51,6 +52,7 @@ export const Hero: React.FC<HeroProps> = ({
       >
         {title && <HeroTitle>{title}</HeroTitle>}
         {subTitle && <HeroSubTitle inverse={true}>{subTitle}</HeroSubTitle>}
+
         {button && (
           <Button onClick={handleClick(button)} inverse>
             {button.label}

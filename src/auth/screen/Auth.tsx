@@ -35,48 +35,49 @@ const Auth = () => {
     }
   };
   return (
-    <Section
-      height="100vh"
-      width="100vw"
-      display="flex"
-      justifyContent="center"
-      style={{ alignItems: "center" }}
-    >
-      <Column
-        background="#fff"
-        height="300px"
-        width="500px"
-        justifyContent="center"
-        alignItems="center"
-      >
-        {message && <p style={styles.p}>{message}</p>}
+    // <Section
+    //   height="100vh"
+    //   width="100vw"
+    //   display="flex"
+    //   justifyContent="center"
+    //   style={{ alignItems: "center" }}
+    // >
+    //   <Column
+    //     background="#fff"
+    //     height="300px"
+    //     width="500px"
+    //     justifyContent="center"
+    //     alignItems="center"
+    //   >
+    //     {message && <p style={styles.p}>{message}</p>}
 
-        <form style={styles.form} onSubmit={handleSubmit}>
-          <input
-            onChange={(e: any) => setEmail(e.target.value)}
-            style={styles.input}
-            placeholder="Email"
-            type="email"
-            width="100%"
-          />
-          <input
-            onChange={(e: any) => setPassword(e.target.value)}
-            style={styles.input}
-            placeholder="name"
-            type="password"
-          />
-          <input
-            onChange={(e: any) => setName(e.target.value)}
-            style={styles.input}
-            placeholder="password"
-            type="password"
-          />
-          <button type="submit" style={styles.button}>
-            Sign in
-          </button>
-        </form>
-      </Column>
-    </Section>
+    //     <form style={styles.form} onSubmit={handleSubmit}>
+    //       <input
+    //         onChange={(e: any) => setEmail(e.target.value)}
+    //         style={styles.input}
+    //         placeholder="Email"
+    //         type="email"
+    //         width="100%"
+    //       />
+    //       <input
+    //         onChange={(e: any) => setPassword(e.target.value)}
+    //         style={styles.input}
+    //         placeholder="name"
+    //         type="password"
+    //       />
+    //       <input
+    //         onChange={(e: any) => setName(e.target.value)}
+    //         style={styles.input}
+    //         placeholder="password"
+    //         type="password"
+    //       />
+    //       <button type="submit" style={styles.button}>
+    //         Sign in
+    //       </button>
+    //     </form>
+    //   </Column>
+    // </Section>
+    <div></div>
   );
 };
 
