@@ -14,7 +14,11 @@ import {
   FooterLink,
 } from "../../_shared/styledComponents";
 import { Row } from "../../_shared/styledComponents";
-import { footerData, footerSocialData } from "../../_shared/utils/data/footer";
+import {
+  footerData,
+  footerSocialData,
+  paymentImages,
+} from "../../_shared/utils/data/footer";
 const Footer = () => {
   return (
     <Section padding="4rem 0 2rem 0">
@@ -53,7 +57,29 @@ const Footer = () => {
             </FooterLinkItems>
           ))}
         </FooterGrid>
-        <FooterRights inverse>Mahmoud Okily © 2022</FooterRights>
+        <FooterRights inverse>
+          Mahmoud Okily © 2022{" "}
+          <div
+            style={{
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            {paymentImages.map((method, index) => {
+              return (
+                <img
+                  key={index + method.name}
+                  style={{ margin: "5px 5px 0px 0px" }}
+                  src={method.src}
+                  alt={method.name}
+                  width="30px"
+                />
+              );
+            })}
+          </div>
+        </FooterRights>
       </Container>
     </Section>
   );

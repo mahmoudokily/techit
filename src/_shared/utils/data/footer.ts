@@ -46,3 +46,59 @@ export const footerSocialData = [
     icon: FaLinkedin,
   },
 ];
+export const paymentImages = [
+  {
+    src: "./assets/payment-images/agos.png",
+    name: "agos",
+  },
+  {
+    src: "./assets/payment-images/amex-safekey.jpg",
+    name: "amex-safekey",
+  },
+  {
+    src: "./assets/payment-images/amex.png",
+    name: "amex",
+  },
+  {
+    src: "./assets/payment-images/apple.png",
+    name: "apple",
+  },
+
+  {
+    src: "./assets/payment-images/klarna.png",
+    name: "klarna",
+  },
+  {
+    src: "./assets/payment-images/mastercard-securcode.png",
+    name: "mastercard-securcode",
+  },
+  {
+    src: "./assets/payment-images/mastercard.png",
+    name: "mastercard",
+  },
+  {
+    src: "./assets/payment-images/paypal-ico.png",
+    name: "paypal-ico",
+  },
+  {
+    src: "./assets/payment-images/postepay.png",
+    name: "postepay",
+  },
+
+  {
+    src: "./assets/payment-images/visa-verificato.png",
+    name: "visa-verificato",
+  },
+  {
+    src: "./assets/payment-images/visa.png",
+    name: "visa",
+  },
+  {
+    src: "./assets/payment-images/thawte_NOT_removeokkkk.jpg",
+    name: "thawte_NOT_removeokkkk",
+  },
+  {
+    src: "./assets/payment-images/biscotto_medium_embossok.png",
+    name: "biscotto_medium_embossok",
+  },
+];
