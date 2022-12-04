@@ -33,7 +33,14 @@ export class InfrastructureStack extends cdk.Stack {
       pipelineName: "Techit",
       synth: new ShellStep("Synth", {
         input: CodePipelineSource.gitHub("mahmoudokily/techit", "v1"),
-        commands: ["npm ci", "npm run build", "npx cdk synth"],
+        installCommands: [
+          "npm ci",
+          "npm run build",
+          "cd infrastructure",
+          "npm ci",
+        ],
+        commands: ["npx infrastructure synth"],
+        primaryOutputDirectory: "infrastructure/cdk.out",
       }),
     });
 
