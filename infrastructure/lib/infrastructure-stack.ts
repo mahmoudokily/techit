@@ -39,7 +39,7 @@ export class InfrastructureStack extends cdk.Stack {
           "cd infrastructure",
           "npm ci",
         ],
-        commands: ["npx infrastructure synth"],
+        commands: ["npx cdk synth"],
         primaryOutputDirectory: "infrastructure/cdk.out",
       }),
     });
