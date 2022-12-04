@@ -30,12 +30,9 @@ export class InfrastructureStack extends cdk.Stack {
     bucket.addToResourcePolicy(bucketPolicy);
 
     const Pipeline = new CodePipeline(this, "Pipeline", {
-      pipelineName: "TestTechit",
+      pipelineName: "Techit",
       synth: new ShellStep("Synth", {
-        input: CodePipelineSource.gitHub(
-          "mahmoudokily/pipeline-info-demo",
-          "main"
-        ),
+        input: CodePipelineSource.gitHub("mahmoudokily/techit", "v1"),
         commands: ["npm ci", "npm run build", "npx cdk synth"],
       }),
     });
