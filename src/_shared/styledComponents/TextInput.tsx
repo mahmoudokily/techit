@@ -53,7 +53,7 @@ export const InputContainer = styled.div<InputContainerProps>`
     },
   })};
 
-  border: 1px solid ${(props) => props.theme.colors.primary.main};
+  border: 1px solid ${(props) => props.theme.colors.primary};
   background-color: #fff;
   box-sizing: border-box;
   display: flex;

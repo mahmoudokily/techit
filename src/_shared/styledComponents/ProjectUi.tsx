@@ -55,7 +55,7 @@ export const Nav = styled.nav<{ show: boolean }>`
   z-index: 50;
   width: 100%;
   background-color: ${({ show, theme }) =>
-    show ? theme.colors.primary.main : "transparent"};
+    show ? theme.colors.primary : "transparent"};
 
   transition: background-color 0.1s ease-in;
 `;
@@ -348,7 +348,7 @@ export const FeatureColumn = styled(motion.div)`
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  background: ${({ theme }) => theme.colors.background.paper};
+  background: ${({ theme }) => theme.colors.white};
   padding: 10px;
   box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2),
     0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
@@ -464,7 +464,7 @@ export const CardButton = styled.button`
   width: 100%;
   flex-shrink: 0;
   height: 60px;
-  background-color: ${({ theme }) => theme.colors.primary.main};
+  background-color: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.white}!important;
   border-radius: 0px 0px 4px 4px;
   cursor: pointer;
