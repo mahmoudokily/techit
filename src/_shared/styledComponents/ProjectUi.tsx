@@ -538,7 +538,6 @@ export const FooterRights = styled(Typography)`
   width: 100%;
   font-size: 0.8rem;
   border-top: 0.4px solid #ffff;
-
   text-align: center;
   padding: 1rem 0;
   margin: 1rem 0 0;
