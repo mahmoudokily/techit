@@ -42,7 +42,7 @@ export const Hero: React.FC<HeroProps> = ({
   );
 
   return (
-    <HeroSection>
+    <HeroSection id="hero">
       <HeroVideo src={videoSrc} autoPlay muted />
       <Container
         justifyContent="center"

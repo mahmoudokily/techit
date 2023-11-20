@@ -12,20 +12,52 @@ type Props = {
   fontBig?: boolean;
 } & SpaceProps;
 
+export const Version = styled.span`
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  font-size: 10px;
+  padding: 10px;
+  display: none;
+  @media screen and (min-width: 960px) {
+    display: block;
+  }
+`;
+
+export const FixedButton = styled.button`
+  position: fixed;
+  margin: 20px;
+  border-radius: 4px;
+  bottom: 0px;
+  padding: 8px 5px;
+  right: 0;
+  z-index: 22200;
+  outline: none;
+  border: none;
+  background-color: rgb(0, 0, 22, 0.3);
+  opacity: 0.7;
+  &:hover {
+    opacity: 1;
+  }
+`;
 //header
-export const Nav = styled.nav`
-  background: transparent;
+export const Nav = styled.nav<{ show: boolean }>`
   margin-bottom: -80px;
   height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
+  align-items: center;
   font-size: 1.2rem;
-  position: absolute;
+  position: sticky;
   top: 0;
   z-index: 50;
   width: 100%;
-  transition: background-color 0.3s ease-in;
+  background-color: ${({ show, theme }) =>
+    show ? theme.colors.primary : "transparent"};
+
+  transition: background-color 0.1s ease-in;
 `;
 
 export const NavbarContainer = styled(Container)`
@@ -33,6 +65,7 @@ export const NavbarContainer = styled(Container)`
   align-items: center;
   justify-content: start;
   height: 80px;
+  flex-shrink: 0;
 
   ${Container}
 `;
@@ -115,6 +148,7 @@ export const NavLinks = styled.a`
   text-decoration: none;
   padding: 0.5rem 1rem;
   height: 100%;
+  color: white;
 
   &:hover {
     transition: all 0.3s ease;
@@ -316,7 +350,7 @@ export const FeatureColumn = styled(motion.div)`
   flex-flow: column;
   justify-content: center;
   align-items: center;
-  background: ${({ theme }) => theme.colors.background.paper};
+  background: ${({ theme }) => theme.colors.white};
   padding: 10px;
   box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2),
     0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
@@ -397,18 +431,20 @@ export const ImageWrapper = styled.div`
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  border-radius: 4px;
-  outline: none;
+  border-radius: 0px 0px 4px 4px;
   height: 470px;
 
+  outline: none;
+  box-shadow: 0px 1px 5px -2px rgb(0 0 0 / 20%),
+    0px 4px 8px 3px rgb(0 0 0 / 14%), 0px 9px 6px 2px rgb(0 0 0 / 12%);
   @media screen and (min-width: 440px) {
-    border: 1px solid;
   }
 `;
 
 export const ReviewSlider = styled(Slider)`
   width: 100%;
   position: relative;
+
   .slick-track {
     display: flex;
     padding: 40px;
@@ -430,20 +466,17 @@ export const CardButton = styled.button`
   width: 100%;
   flex-shrink: 0;
   height: 60px;
-  background-color: ${({ theme }) => theme.colors.background.paper};
-  cursor: pointer;
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.white}!important;
   border-radius: 0px 0px 4px 4px;
-
+  cursor: pointer;
   font-weight: 600;
+  font-size: 1.2em;
   opacity: 0.9;
-
   border: none;
-
-  border-radius: 0 0 3px 3px;
 
   &:hover {
     opacity: 1;
-
     transition: background-color 0.2s ease-in;
   }
 `;
@@ -497,9 +530,14 @@ export const SocialIcon = styled.img`
 `;
 
 export const FooterRights = styled(Typography)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
   margin-bottom: 16px;
   width: 100%;
   font-size: 0.8rem;
+  border-top: 0.4px solid #ffff;
   text-align: center;
   padding: 1rem 0;
   margin: 1rem 0 0;

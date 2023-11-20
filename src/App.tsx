@@ -1,63 +1,50 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Outlet } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
-import Auth from "./auth/screen/Auth";
-import Footer from "./footer/screen/Footer";
-import Header from "./header/screen/Header";
-import Home from "./home/screen/Home";
+import theme from "./_shared/UI/theme";
 import assets from "./_shared/assets";
 import { AssetProvider } from "./_shared/hooks/assets";
 import { useAppDispatch } from "./_shared/redux/app/hooks";
-import GlobalStyles from "./_shared/styledComponents/GlobalStyles";
-import { theme } from "./_shared/styledComponents/themes";
-import { MoButton, MoInput } from "./_shared/styledComponents/ui-components";
+import Svg from "./_shared/styledComponents/Svg";
+import Footer from "./footer/screen/Footer";
+import Header from "./header/screen/Header";
+import { FixedButton } from "./_shared/styledComponents";
+import { Flex } from "./_shared/UI";
+
 function App() {
+  // const theme = useAppSelector((state) => state.theme.currentTheme);
   const dispatch = useAppDispatch();
 
-  return (
-    <BrowserRouter>
-      <AssetProvider assets={assets as any}>
-        <ThemeProvider theme={theme}>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/auth" element={<Auth />} />{" "}
-          </Routes>
-          <Footer />
-          <GlobalStyles />
-          {/* <div
-            style={{
-              width: "100%",
-              justifyContent: "center",
-              display: "flex",
-              flexDirection: "column",
-              margin: "20px auto",
-              padding: "20px",
-            }}
-          >
-            <h2>Button</h2>
+  const [showButton, setShowButton] = useState(false);
+  // test
+  useEffect(() => {
+    window?.addEventListener("scroll", () => {
+      if (window.scrollY > 800) setShowButton(true);
+      else setShowButton(false);
+    });
+    return () => {
+      window.removeEventListener("scroll", () => console.log(window.scrollY));
+    };
+  }, []);
 
-            {[
-              "primary",
-              "secondary",
-              "danger",
-              "light",
-              "dark",
-              "warning",
-              "info",
-            ].map((i) => {
-              return (
-                <div>
-                  <MoButton buttonSize="small" m={10} variant={i as any}>
-                    {i}
-                  </MoButton>
-                  <MoInput placeholder={i as any} variant={i as any} />
-                </div>
-              );
-            })}
-          </div> */}
-        </ThemeProvider>
-      </AssetProvider>
-    </BrowserRouter>
+  const scrollTo = (id: string) => () => {
+    const element = document.getElementById(id);
+    element?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <Flex fullSize height={"100vh"}>
+      {showButton && (
+        <FixedButton onClick={scrollTo("hero")}>
+          <Svg name="ChevronUp" />
+        </FixedButton>
+      )}
+      <Header />
+      <Outlet />
+      <Footer />
+    </Flex>
   );
 }
 

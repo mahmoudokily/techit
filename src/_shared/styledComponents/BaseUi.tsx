@@ -88,25 +88,24 @@ export const Container = styled(Box)<AllProps>`
 `;
 
 export const Section = styled(Box)<SectionProps>`
+  max-width: 100%;
+  overflow: hidden;
   padding: ${({ padding }) => (padding ? padding : "140px 0px")};
   background: ${({ inverse, theme }) =>
-    inverse === true
-      ? theme.colors.background.default
-      : theme.colors.primary.main};
-  color: ${({ inverse, theme }) =>
-    inverse === true ? theme.colors.Typography.primary : theme.colors.white};
+    inverse === true ? "#ffffff" : theme.colors.primary};
+  color: ${({ inverse, theme }) => (inverse === true ? "#0c0c0d" : "white")};
   a,
   span,
   button,
   p {
     color: ${({ inverse, theme }) =>
-      inverse === true ? theme.colors.Typography.primary : theme.colors.white};
+      inverse === true ? "#0c0c0d" : theme.colors.white};
   }
   svg {
     fill: ${({ inverse, theme }) =>
-      inverse === true ? theme.colors.Typography.primary : theme.colors.white};
+      inverse === true ? "#0c0c0d" : theme.colors.white};
     color: ${({ inverse, theme }) =>
-      inverse === true ? theme.colors.Typography.primary : theme.colors.white};
+      inverse === true ? theme.colors.primary : theme.colors.white};
   }
   @media screen and (max-width: 768px) {
     padding: ${({ smPadding }) => (smPadding ? smPadding : "70px 0")};

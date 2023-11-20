@@ -18,7 +18,7 @@
       "./src/_shared/ui/modules/global.d.ts"
     ],
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "preserve"
   },
   "include": ["src"]
 }
