@@ -37,19 +37,11 @@ const Header: React.FC<HeaderProps> = ({ autoHide = true }) => {
     });
   };
 
-  const closeMobileMenu = (to?: string, id?: string, action?: string) => {
+  const closeMobileMenu = (to: string, id?: string, action?: string) => {
     if (id && location.pathname === "/") {
-      scrollTo(id);
+      return scrollTo(id);
     }
-    if (to) {
-      if (id) {
-        scrollTo(id);
-      } else {
-        navigate(to);
-      }
-    }
-
-    setShow(false);
+    navigate(to);
   };
 
   useEffect(() => {
@@ -93,7 +85,7 @@ const Header: React.FC<HeaderProps> = ({ autoHide = true }) => {
         <NavMenu show={show}>
           {links.map((el, index) => (
             <NavItem key={index}>
-              <NavLinks onClick={() => closeMobileMenu(el?.to, el.id)}>
+              <NavLinks onClick={() => closeMobileMenu(el.to, el.id)}>
                 {el.text}
               </NavLinks>
             </NavItem>

@@ -20,14 +20,14 @@ export interface Colors {
 }
 
 export const colors: Colors = {
-  primary: "#0d47a1",
+  primary: "#003eaa",
   primaryDark: "#122967",
   accent: "#FFC700",
   secondary: "#E8EFF3",
   rosaLight: "#F4EEEE",
   darkWhite: "#FAFAFA",
-  borderBlueLight: "#3D729C",
-  borderBlueDark: "#3D729C",
+  borderBlueLight: "#003eaa",
+  borderBlueDark: "#003eaa",
   borderBlueRegular: "#008FDD",
   borderOrangeDark: "#E84120",
   borderYellowDark: "#FFC700",

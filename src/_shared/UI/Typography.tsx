@@ -27,7 +27,6 @@ const TypographyElement = styled.span<TypographyProps>`
   // text-overflow: ellipsis;
   ${({ variant = "body10", theme }) =>
     css`
-      color: ${theme?.colors?.primary};
       font-size: ${theme?.typography[variant as TypographyType]?.fontSize}px;
       font-weight: ${theme?.typography[variant as TypographyType]?.fontWeight};
     `};

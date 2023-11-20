@@ -9,7 +9,12 @@ import { SuspensedView } from "./SuspensedView";
 const App = lazy(() => import("../../App"));
 const Team = lazy(() => import("../../pages/team/screens/Team"));
 const Clients = lazy(() => import("../../pages/clients/screens/Clients"));
-
+const WorkWithUs = lazy(
+  () => import("../../pages/availableJobs/screens/WorkWithUs")
+);
+const JobDetails = lazy(
+  () => import("../../pages/availableJobs/screens/JobDetails")
+);
 export const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -21,7 +26,23 @@ export const AppRoutes = () => {
             <Route index element={<Home />} />
             <Route path="/error/404" element={<ErrorsRoutes />} />
             <Route path="*" element={<Navigate to="/error/404" />} />
-            <Route path="/available-roles" element={<>available work</>} />
+            <Route
+              path="work-with-us"
+              element={
+                <SuspensedView>
+                  <WorkWithUs />
+                </SuspensedView>
+              }
+            />
+            <Route
+              path="work-with-us/:id"
+              element={
+                <SuspensedView>
+                  <JobDetails />
+                </SuspensedView>
+              }
+            />
+
             <Route path="error/*" element={<ErrorsRoutes />} />
             <Route
               path="/team"

@@ -1,5 +1,5 @@
 export type Link = {
-  to?: string;
+  to: string;
   text: string;
   id?: string;
   action?: string;
@@ -21,7 +21,7 @@ const links: Link[] = [
     id: "contact",
   },
   {
-    to: "/available-roles",
+    to: "/work-with-us",
     text: "work with us",
   },
 ];

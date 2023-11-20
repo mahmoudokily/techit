@@ -16,6 +16,7 @@
     "@types/react-tooltip": "^4.2.4",
     "@types/uuid": "^9.0.7",
     "color": "^4.2.3",
+    "date-fns": "^2.30.0",
     "framer-motion": "^6.4.2",
     "i18next": "^23.7.6",
     "lodash": "^4.17.21",

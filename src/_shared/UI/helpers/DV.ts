@@ -2,7 +2,7 @@ const DV: {
   [key: string]: any;
 } = {
   // color
-  BLUE: "#3D729C",
+  BLUE: "#0060df",
   INDIGO: "#675aa9",
   PURPLE: "#6658dd",
   PINK: "#f672a7",
@@ -61,7 +61,7 @@ const DV: {
   FORM_DISABLED_BG_COLOR: "#f2f2f2",
   FORM_INPUT_PLACEHOLDER_COLOR: "#b1bbc4",
   FORM_INPUT_PLACEHOLDER_FILL_FADE_LEVEL: 0.3,
-  FORM_INPUT_DISABLED_BACKGROUND: '#f2f2f2',
+  FORM_INPUT_DISABLED_BACKGROUND: "#f2f2f2",
 
   // pagination
   PAGINATION_BG_COLOR: "#fff",
