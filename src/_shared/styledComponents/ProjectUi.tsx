@@ -49,6 +49,7 @@ export const NavbarContainer = styled(Container)`
   justify-content: start;
   height: 80px;
   flex-shrink: 0;
+  min-width: 400px;
 
   ${Container}
 `;

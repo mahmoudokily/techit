@@ -76,8 +76,11 @@ const Header: React.FC<HeaderProps> = ({ autoHide = true }) => {
       <NavbarContainer>
         <NavLogo to="/">
           <NavIcon src="./assets/logo.svg" alt="logo" />
-          <Typography color="white" width={200} variant={"title40"}>
+          <Typography color="white" flexShrink={0} pr={2} variant={"title40"}>
             Momuzio
+          </Typography>
+          <Typography flexShrink={0} color="white" variant={"caption10"}>
+            group
           </Typography>
         </NavLogo>
         <MobileIcon onClick={handleClick}>

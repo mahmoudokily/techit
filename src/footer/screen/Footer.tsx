@@ -27,7 +27,7 @@ const Footer = () => {
           <FooterColumn id="footerLogo">
             <FooterLogo to="/" inverse={true}>
               <SocialIcon src="./assets/logo.svg" />
-              TechIt
+              Momuzio
             </FooterLogo>
             <FooterAddress inverse>
               Via Cesare balbo 10 , Busto Arsizio
