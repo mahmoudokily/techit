@@ -22,13 +22,11 @@ root.render(
     <AssetProvider assets={assets as any}>
       <GlobalStyles />
       <Provider store={store}>
-        <BrowserRouter>
-          <I18nextProvider i18n={i18n}>
-            <React.Suspense fallback="Loading...">
-              <AppRoutes />
-            </React.Suspense>
-          </I18nextProvider>
-        </BrowserRouter>
+        <I18nextProvider i18n={i18n}>
+          <React.Suspense fallback="Loading...">
+            <AppRoutes />
+          </React.Suspense>
+        </I18nextProvider>
       </Provider>
     </AssetProvider>
   </ThemeProvider>

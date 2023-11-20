@@ -42,23 +42,6 @@ export const FixedButton = styled.button`
   }
 `;
 //header
-export const Nav = styled.nav<{ show: boolean }>`
-  margin-bottom: -80px;
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-items: center;
-  font-size: 1.2rem;
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  width: 100%;
-  background-color: ${({ show, theme }) =>
-    show ? theme.colors.primary : "transparent"};
-
-  transition: background-color 0.1s ease-in;
-`;
 
 export const NavbarContainer = styled(Container)`
   display: flex;
@@ -598,3 +581,21 @@ export const FooterLink = styled(Link)<AllProps>`
   }
 `;
 //callus
+
+export const Nav = styled.nav<{ show: boolean }>`
+  margin-bottom: -80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  background-color: ${({ show, theme }) =>
+    show ? theme.colors.primary : "transparent"};
+
+  transition: background-color 0.1s ease-in;
+`;

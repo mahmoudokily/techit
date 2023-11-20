@@ -7,9 +7,12 @@ import { features } from "../../_shared/utils/data/features";
 import Carousel from "../components/Carousel";
 import { carousel } from "../../_shared/utils/data/carousel";
 import CallUs from "../components/CallUs";
+import Header from "../../header/screen/Header";
+import Footer from "../../footer/screen/Footer";
 const Home = () => {
   return (
     <>
+      <Header />
       <Hero {...heroData} />
       <Offers {...features} />
       {contents?.map((content, index: number) => (
@@ -17,6 +20,7 @@ const Home = () => {
       ))}
       <Carousel {...carousel} />
       <CallUs />
+      <Footer />
     </>
   );
 };

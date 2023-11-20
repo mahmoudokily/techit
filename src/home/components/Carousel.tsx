@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import {
   CardButton,
   CarouselImage,
@@ -9,6 +9,7 @@ import {
   SectionTitle,
 } from "../../_shared/styledComponents";
 import { Typography } from "../../_shared/UI";
+import { useNavigate } from "react-router-dom";
 
 const sliderSettings = {
   arrows: false,
@@ -36,12 +37,20 @@ type CarouselProps = {
     title: string;
     description: string;
     image: string;
+    link: string;
   }[];
 };
 
 const Carousel: React.FC<CarouselProps> = ({ data }) => {
   const [, setSliderRef] = useState(null);
+  const navigate = useNavigate();
 
+  const navigateTo = useCallback(
+    (link: string) => () => {
+      navigate(link);
+    },
+    [navigate]
+  );
   return (
     <Section margin="auto" inverse>
       <Container display="flex" flexDirection="column">
@@ -65,7 +74,7 @@ const Carousel: React.FC<CarouselProps> = ({ data }) => {
               >
                 {el.description}
               </Typography>
-              <CardButton>Learn More</CardButton>
+              <CardButton onClick={navigateTo(el.link)}>Learn More</CardButton>
             </ImageWrapper>
           ))}
         </ReviewSlider>

@@ -35,15 +35,15 @@ function App() {
   };
 
   return (
-    <Flex fullSize height={"100vh"}>
+    <Flex fullSize>
       {showButton && (
         <FixedButton onClick={scrollTo("hero")}>
           <Svg name="ChevronUp" />
         </FixedButton>
       )}
-      <Header />
-      <Outlet />
-      <Footer />
+      <Flex flex={1} minHeight="100vh">
+        <Outlet />
+      </Flex>
     </Flex>
   );
 }

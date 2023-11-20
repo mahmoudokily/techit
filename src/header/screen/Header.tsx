@@ -16,7 +16,10 @@ import Svg from "../../_shared/styledComponents/Svg";
 import links from "../../_shared/utils/data/links";
 import { Typography } from "../../_shared/UI";
 
-const Header = () => {
+type HeaderProps = {
+  autoHide?: boolean;
+};
+const Header: React.FC<HeaderProps> = ({ autoHide = true }) => {
   const [show, setShow] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
   const location = useLocation();
@@ -39,24 +42,33 @@ const Header = () => {
       scrollTo(id);
     }
     if (to) {
-      navigate(to);
+      if (id) {
+        scrollTo(id);
+      } else {
+        navigate(to);
+      }
     }
 
     setShow(false);
   };
 
   useEffect(() => {
-    window?.addEventListener("scroll", () => {
-      if (window.scrollY > 80) setShowBackground(true);
-      else setShowBackground(false);
-    });
+    if (autoHide) {
+      window?.addEventListener("scroll", () => {
+        if (window.scrollY > 80) setShowBackground(true);
+        else setShowBackground(false);
+      });
+    } else {
+      setShowBackground(true);
+    }
+
     return () => {
       window.removeEventListener("scroll", () => {
         if (window.scrollY > 80) setShowBackground(true);
         else setShowBackground(false);
       });
     };
-  }, []);
+  }, [autoHide]);
 
   return (
     <Nav id="navbar" show={showBackground}>
@@ -65,7 +77,7 @@ const Header = () => {
         <NavLogo to="/">
           <NavIcon src="./assets/logo.svg" alt="logo" />
           <Typography color="white" width={200} variant={"title40"}>
-            TechIt
+            Momuzio
           </Typography>
         </NavLogo>
         <MobileIcon onClick={handleClick}>

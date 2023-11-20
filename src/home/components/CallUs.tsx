@@ -24,7 +24,7 @@ const CallUs = () => {
     }
   }, [inView, animation]);
   return (
-    <Section ref={ref}>
+    <Section ref={ref} id="contact">
       <Container>
         <FooterGrid>
           <FooterColumn alignItems="start">
