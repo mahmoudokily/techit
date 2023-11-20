@@ -15,7 +15,7 @@ export const InputError = styled(Typography).attrs({ variant: "caption10" })`
   color: ${({ theme }) => theme.type.danger.main};
 `;
 
-export const InputIcon = styled(Box) <InputIconProps>`
+export const InputIcon = styled(Box)<InputIconProps>`
   ${({ theme, type, shape = "default", absolute, size$ = "small" }) => `
     overflow: hidden;
     flex: 0 0 auto;
@@ -23,21 +23,23 @@ export const InputIcon = styled(Box) <InputIconProps>`
     cursor: pointer;
     font-size: ${theme?.form?.inputFontSize?.[size$]};
     
-    ${!absolute
-      ? `
-        ${type == "left"
+    ${
+      !absolute
         ? `
+        ${
+          type === "left"
+            ? `
             border-top-left-radius: ${theme?.form?.inputRadius?.[shape]};
             border-bottom-left-radius: ${theme?.form?.inputRadius?.[shape]};
         `
-        : `
+            : `
             border-top-right-radius: ${theme?.form?.inputRadius?.[shape]};
             border-bottom-right-radius: ${theme?.form?.inputRadius?.[shape]};
         `
-      }
+        }
 
     `
-      : `
+        : `
         position: absolute;
         height:100%;
         width:30px;

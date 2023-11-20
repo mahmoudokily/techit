@@ -41,8 +41,8 @@ interface Props extends Partial<React.InputHTMLAttributes<HTMLInputElement>> {
 export const InputElement = styled.input<Props>`
   ${({
     theme,
-    variant = "primary",
-    $fill = false,
+    variant = "light",
+    $fill = true,
     withBorder = true,
     shape = "default",
     disabled,
@@ -68,18 +68,18 @@ export const InputElement = styled.input<Props>`
     ${
       $fill
         ? `
-        border-color: ${theme.type[variant].main};
-        background: ${theme.type[variant].main};
-        color: ${theme.type[variant].font};
-        fill: ${theme.type[variant].font};
+        border-color: ${theme.type[variant]?.main};
+        background: ${theme.type[variant]?.main};
+        color: ${theme.type[variant]?.font};
+        fill: ${theme.type[variant]?.font};
         &:focus,
         &[data-src-active="true"] {
-            border-color: ${theme.type[variant].darkest};
-            background: ${theme.type[variant].dark};
+            border-color: ${theme.type[variant]?.darkest};
+            background: ${theme.type[variant]?.dark};
         }
     `
         : `
-        border-color ${theme?.type[variant].form?.inputBorder};
+        border-color ${theme?.type[variant]?.form?.inputBorder};
         background: ${theme?.type[variant].form?.inputBackground};
         color: ${"#122967" || theme?.type[variant].form?.inputFont};
         fill: ${theme?.type[variant].form?.inputFont};

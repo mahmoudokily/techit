@@ -6,9 +6,9 @@ import {
   ImageWrapper,
   ReviewSlider,
   Section,
-  Typography,
   SectionTitle,
 } from "../../_shared/styledComponents";
+import { Typography } from "../../_shared/UI";
 
 const sliderSettings = {
   arrows: false,

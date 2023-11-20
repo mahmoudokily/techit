@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
-import { BrowserRouter, Outlet } from "react-router-dom";
-import { useAppDispatch, useAppSelector } from "./_shared/redux/app/hooks";
-import { FixedButton, Flex } from "./_shared/styledComponents";
+import { Outlet } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
+import theme from "./_shared/UI/theme";
+import assets from "./_shared/assets";
+import { AssetProvider } from "./_shared/hooks/assets";
+import { useAppDispatch } from "./_shared/redux/app/hooks";
 import Svg from "./_shared/styledComponents/Svg";
 import Footer from "./footer/screen/Footer";
 import Header from "./header/screen/Header";
-import { ThemeProvider } from "styled-components";
-import { Provider } from "react-redux";
-import { AssetProvider } from "./_shared/hooks/assets";
-import GlobalStyles from "./_shared/styledComponents/GlobalStyles";
-import { AppRoutes } from "./_shared/router/AppRoutes";
-import { store } from "./_shared/redux/app/store";
-import theme from "./_shared/UI/theme";
-import assets from "./_shared/assets";
+import { FixedButton } from "./_shared/styledComponents";
+import { Flex } from "./_shared/UI";
 
 function App() {
   // const theme = useAppSelector((state) => state.theme.currentTheme);
@@ -38,20 +35,16 @@ function App() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <AssetProvider assets={assets as any}>
-        <GlobalStyles />
-        <Flex width={"100%"} height={"100%"} flexDirection={"column"}>
-          {showButton && (
-            <FixedButton onClick={scrollTo("hero")}>
-              <Svg name="ChevronUp" />
-            </FixedButton>
-          )}
-          <Header />
-          <Footer />
-        </Flex>
-      </AssetProvider>
-    </ThemeProvider>
+    <Flex fullSize height={"100vh"}>
+      {showButton && (
+        <FixedButton onClick={scrollTo("hero")}>
+          <Svg name="ChevronUp" />
+        </FixedButton>
+      )}
+      <Header />
+      <Outlet />
+      <Footer />
+    </Flex>
   );
 }
 

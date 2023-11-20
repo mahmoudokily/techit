@@ -14,6 +14,7 @@ import {
 } from "../../_shared/styledComponents";
 import Svg from "../../_shared/styledComponents/Svg";
 import links from "../../_shared/utils/data/links";
+import { Typography } from "../../_shared/UI";
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -63,7 +64,9 @@ const Header = () => {
       <NavbarContainer>
         <NavLogo to="/">
           <NavIcon src="./assets/logo.svg" alt="logo" />
-          <span>TechIt</span>
+          <Typography color="white" width={200} variant={"title40"}>
+            TechIt
+          </Typography>
         </NavLogo>
         <MobileIcon onClick={handleClick}>
           {show ? (

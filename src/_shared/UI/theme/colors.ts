@@ -20,7 +20,7 @@ export interface Colors {
 }
 
 export const colors: Colors = {
-  primary: "#3D729C",
+  primary: "#0d47a1",
   primaryDark: "#122967",
   accent: "#FFC700",
   secondary: "#E8EFF3",
@@ -37,7 +37,7 @@ export const colors: Colors = {
   success: "#78931A",
   error: "#B00020",
   warning: "#FCBD00",
-  chart: '#F7D87B'
+  chart: "#F7D87B",
 };
 
 export type Color = keyof Colors;

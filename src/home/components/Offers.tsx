@@ -38,7 +38,7 @@ export const Offers: React.FC<OffersProps> = ({ label, data }) => {
               key={index}
             >
               <FeatureImageWrapper className={el.imgClass}>
-                <el.icon size="3rem" color="#0f0f0f" />
+                <el.icon size="3rem" color="primary" />
               </FeatureImageWrapper>
               <FeatureName>{el.name}</FeatureName>
               <FeatureText>{el.description}</FeatureText>

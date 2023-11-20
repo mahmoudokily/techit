@@ -65,6 +65,7 @@ export const NavbarContainer = styled(Container)`
   align-items: center;
   justify-content: start;
   height: 80px;
+  flex-shrink: 0;
 
   ${Container}
 `;
@@ -147,6 +148,7 @@ export const NavLinks = styled.a`
   text-decoration: none;
   padding: 0.5rem 1rem;
   height: 100%;
+  color: white;
 
   &:hover {
     transition: all 0.3s ease;
