@@ -1,6 +1,6 @@
 import * as cdk from "aws-cdk-lib";
 import { Construct } from "constructs";
-import { TechitAppStage } from "./stage";
+import { MomuzioGroupStage } from "./stage";
 import { ManualApprovalStep } from "aws-cdk-lib/pipelines";
 import {
   CodePipeline,
@@ -45,7 +45,7 @@ export class InfrastructureStack extends cdk.Stack {
     });
 
     const testingStage = Pipeline.addStage(
-      new TechitAppStage(this, "stage", {
+      new MomuzioGroupStage(this, "stage", {
         env: {
           account: "929633622722",
           region: "us-east-1",
@@ -57,7 +57,7 @@ export class InfrastructureStack extends cdk.Stack {
     );
 
     const prodStage = Pipeline.addStage(
-      new TechitAppStage(this, "prod", {
+      new MomuzioGroupStage(this, "prod", {
         env: {
           account: "929633622722",
           region: "us-east-1",
