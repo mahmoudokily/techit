@@ -16,7 +16,7 @@ export class InfrastructureStack extends cdk.Stack {
 
     // create s3 bucket to store the website files
     const bucket = new s3.Bucket(this, "WebsiteBucket", {
-      bucketName: "techit-website",
+      bucketName: "momuzioGroup-website",
       websiteIndexDocument: "index.html",
       blockPublicAccess: new s3.BlockPublicAccess({
         restrictPublicBuckets: false,
@@ -30,9 +30,9 @@ export class InfrastructureStack extends cdk.Stack {
     bucket.addToResourcePolicy(bucketPolicy);
 
     const Pipeline = new CodePipeline(this, "Pipeline", {
-      pipelineName: "Techit",
+      pipelineName: "MomuzioGroup-frontEnd",
       synth: new ShellStep("Synth", {
-        input: CodePipelineSource.gitHub("mahmoudokily/techit", "v1"),
+        input: CodePipelineSource.gitHub("mahmoudokily/techit", "main"),
         installCommands: [
           "npm ci",
           "npm run build",
