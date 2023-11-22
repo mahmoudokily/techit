@@ -16,7 +16,7 @@ export class InfrastructureStack extends cdk.Stack {
 
     // create s3 bucket to store the website files
     const bucket = new s3.Bucket(this, "WebsiteBucket", {
-      bucketName: "momuzioGroup-website",
+      bucketName: "momuzio-group-frontend",
       websiteIndexDocument: "index.html",
       blockPublicAccess: new s3.BlockPublicAccess({
         restrictPublicBuckets: false,
