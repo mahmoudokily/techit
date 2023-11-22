@@ -10,7 +10,7 @@ import {
 import * as s3 from "aws-cdk-lib/aws-s3";
 import * as iam from "aws-cdk-lib/aws-iam";
 
-export class InfrastructureStack extends cdk.Stack {
+export class MomuzioGroupStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
 

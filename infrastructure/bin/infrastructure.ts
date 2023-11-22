@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import "source-map-support/register";
 import * as cdk from "aws-cdk-lib";
-import { InfrastructureStack } from "../lib/infrastructure-stack";
+import { MomuzioGroupStack } from "../lib/infrastructure-stack";
 
 const app = new cdk.App();
-new InfrastructureStack(app, "InfrastructureStack", {
+new MomuzioGroupStack(app, "MomuzioGroupStack", {
   env: { account: "929633622722", region: "us-east-1" },
 });
