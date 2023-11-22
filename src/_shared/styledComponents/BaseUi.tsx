@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { DefaultTheme } from "styled-components";
 import {
   space,
   layout,
@@ -10,6 +10,7 @@ import {
   compose,
   gridGap,
   typography,
+  color,
 } from "styled-system";
 import { AllProps, LabelProps, SectionProps } from "./types";
 
@@ -41,41 +42,39 @@ export const Absolute = styled(Flex)<AllProps>`
   position: absolute;
 `;
 
+const variantStyles = (theme: any, variant = "primary") => `
+    background: ${theme.type[variant as string].main};
+    color: ${theme.type[variant as string].font};
+    fill: ${theme.type[variant as string].font};         
+`;
+const shapeStyles = (theme: any, shape = "default") => `
+border-radius: ${theme.radius[shape as string]}
+`;
+
 export const Button = styled.button<AllProps>`
- 
   font-weight: 700;
   font-size: 0.8rem;
   letter-spacing: 1.54px;
   text-transform: uppercase;
   cursor: pointer;
-  background: none;
-    letter-spacing: 1.54px;
+  letter-spacing: 1.54px;
   text-transform: uppercase;
   cursor: pointer;
-  padding:10px 40px;
-  height:50px;
-  border:2px solid ;
-  
-&:hover {
 
-hite : theme.colors.primary.main};
-    transition: all 0.6s ease;
-
-    
-}
-
-  border-radius: 4px;
-  white-space: nowrap;
-
-  outline: none;
-
-  
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  
- heme.colors.primary.main};
+  border: none;
+  transition: all 0.6s ease;
+  opacity: 0.9;
+  &:hover {
+    opacity: 1;
+    white-space: nowrap;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
   ${compose(typography, space, position)}
+  ${({ theme, variant }) => variantStyles(theme, variant)}
+  ${({ theme, shape }) => shapeStyles(theme, shape)}
 `;
 export const Container = styled(Box)<AllProps>`
   width: 100%;
@@ -83,7 +82,6 @@ export const Container = styled(Box)<AllProps>`
   margin-right: auto;
   margin-left: auto;
   padding: 0 50px;
-
   @media screen and (max-width: 960px) {
     padding: 0 30px;
   }

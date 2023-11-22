@@ -6,6 +6,7 @@ import {
 import {
   BackgroundProps,
   BordersProps,
+  ColorProps,
   FlexboxProps,
   GridGapProps,
   LayoutProps,
@@ -15,6 +16,21 @@ import {
   TypographyProps,
 } from "styled-system";
 
+export type Variant = {
+  variant?:
+    | "primary"
+    | "secondary"
+    | "success"
+    | "warning"
+    | "danger"
+    | "light"
+    | "dark"
+    | "info"
+    | "gray";
+  shape?: "rounded" | "square" | "default" | "circle";
+  inputSize?: "small" | "medium" | "large" | "default";
+  buttonSize?: "small" | "medium" | "large";
+};
 export type AllProps = SpaceProps &
   LayoutProps &
   FlexboxProps &
@@ -26,6 +42,9 @@ export type AllProps = SpaceProps &
   GridGapProps &
   Variant & {
     inverse?: boolean;
+    color?: string;
+    fixedSize?: boolean;
+    buttonSize: ButtonSizeProps;
   };
 
 export type SectionProps = {
@@ -40,11 +59,6 @@ export interface LabelProps
     SpaceProps {
   color?: string;
 }
-
-export type Variant = {
-  variant?: "primary" | "secondary" | "default";
-  borderRadius?: "round" | "none" | "default";
-};
 
 export interface InputContainerProps
   extends InputHTMLAttributes<HTMLInputElement>,
@@ -78,4 +92,120 @@ export interface TextareaContainerProps
   flex?: boolean;
   labelColor?: string;
   iconColor?: string;
+}
+
+export interface TypeOptions {
+  util?: boolean;
+  alert?: boolean;
+  breadcrumb?: boolean;
+  button?: boolean;
+  dropdown?: boolean;
+  form?: boolean;
+  pagination?: boolean;
+  popover?: boolean;
+  progressBar?: boolean;
+  table?: boolean;
+  waveEffect?: boolean;
+}
+
+export interface Type {
+  main: string;
+  font?: string;
+  dark?: string;
+  darker?: string;
+  darkest?: string;
+  light?: string;
+  lighter?: string;
+  lightest?: string;
+  shadow?: string;
+
+  // components
+  alert?: {
+    background?: string;
+    border?: string;
+    font?: string;
+    fontFill?: string;
+    linkFont?: string;
+    hr?: string;
+  };
+  breadcrumb?: {
+    background?: string;
+    font?: string;
+    fontFill?: string;
+  };
+  button?: {
+    background?: string;
+    placeholder?: string;
+    placeholderFill?: string;
+  };
+  dropdown?: {
+    background?: string;
+    font?: string;
+  };
+  form?: {
+    radioColor?: string;
+    radioBorder?: string;
+    inputBackground?: string;
+    inputBorder?: string;
+    inputFont?: string;
+    inputPlaceholder?: string;
+    inputPlaceholderFill?: string;
+  };
+  pagination?: {
+    background?: string;
+    border?: string;
+    font?: string;
+  };
+  popover?: {
+    background?: string;
+    border?: string;
+    headerBackground?: string;
+    headerBorder?: string;
+  };
+  progressBar?: {
+    background?: string;
+    backgroundFill?: string;
+    backgroundAlt?: string;
+  };
+  table?: {
+    background?: string;
+    border?: string;
+    font?: string;
+    stripedBackground?: string;
+    stripedFont?: string;
+    hoverBackground?: string;
+    hoverFont?: string;
+  };
+  waveEffect?: {
+    color?: string;
+  };
+}
+export interface ColorObject {
+  color: number[];
+  valpha: number;
+  isDark: () => boolean;
+  isLight: () => boolean;
+  hex: () => ColorObject;
+  rgb: () => ColorObject;
+  hsl: () => ColorObject;
+  darken: (value: number) => ColorObject;
+  alpha: (value: number) => ColorObject;
+}
+export interface SizeStrictProps {
+  size: string;
+  sizeSm: string;
+  sizeMd: string;
+  sizeLg: string;
+  sizeXl: string;
+}
+export interface JSXElementProps {
+  [key: string]: any;
+}
+export type Value = string | number;
+export interface ButtonSizeProps {
+  buttonSize?: string;
+  buttonSizeSm?: string;
+  buttonSizeMd?: string;
+  buttonSizeLg?: string;
+  buttonSizeXl?: string;
 }

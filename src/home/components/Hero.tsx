@@ -53,6 +53,7 @@ export const Hero: React.FC<HeroProps> = ({
       >
         {title && <HeroTitle>{t(title)}</HeroTitle>}
         {subTitle && <HeroSubTitle inverse={true}>{t(subTitle)}</HeroSubTitle>}
+
         {button && (
           <Button onClick={handleClick(button)} inverse>
             {t(button.label)}

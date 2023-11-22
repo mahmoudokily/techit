@@ -22,3 +22,26 @@ const Auth = () => {
   );
 };
 export default Auth;
+
+const styles = {
+  input: {
+    padding: "10px",
+    width: "100%",
+    marginBottom: 10,
+    borderRadius: "4px",
+  },
+  form: {
+    width: "100%",
+    padding: "10px",
+  },
+  button: {
+    padding: "10px",
+    width: "100%",
+    maxWidth: "200px",
+    color: "#000000",
+  },
+  p: {
+    color: "red",
+    fontSize: "1.5em",
+  },
+};
