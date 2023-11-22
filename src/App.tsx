@@ -9,7 +9,18 @@ import Svg from "./_shared/styledComponents/Svg";
 import Footer from "./footer/screen/Footer";
 import Header from "./header/screen/Header";
 import { FixedButton } from "./_shared/styledComponents";
-import { Flex } from "./_shared/UI";
+import {
+  Box,
+  Button,
+  Dropdown,
+  DropdownContent,
+  DropdownHeader,
+  Flex,
+  Select,
+  Typography,
+} from "./_shared/UI";
+import { Absolute } from "./_shared/UI/Absolute";
+import Language from "./_shared/assets/svg/Language";
 
 function App() {
   // const theme = useAppSelector((state) => state.theme.currentTheme);

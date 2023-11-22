@@ -8,21 +8,23 @@ export type Link = {
 const links: Link[] = [
   {
     to: "/",
-    text: "Home",
+    text: "home",
+    id: "hero",
+  },
+  {
+    to: "/",
+    text: "consulting",
     id: "about",
   },
   {
-    to: "/consulting",
-    text: "consulting",
-  },
-  {
-    to: "/contact",
+    to: "/",
     text: "contact",
     id: "contact",
   },
   {
     to: "/work-with-us",
     text: "work with us",
+    id: "jobs",
   },
 ];
 

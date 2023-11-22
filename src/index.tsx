@@ -12,21 +12,26 @@ import { AssetProvider } from "./_shared/hooks/assets";
 import GlobalStyles from "./_shared/styledComponents/GlobalStyles";
 import theme from "./_shared/UI/theme";
 import assets from "./_shared/assets";
+import { PersistGate } from "redux-persist/integration/react";
+import { persistStore } from "redux-persist";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+let persistor = persistStore(store);
 
 root.render(
   <ThemeProvider theme={theme}>
     <AssetProvider assets={assets as any}>
       <GlobalStyles />
       <Provider store={store}>
-        <I18nextProvider i18n={i18n}>
-          <React.Suspense fallback="Loading...">
-            <AppRoutes />
-          </React.Suspense>
-        </I18nextProvider>
+        <PersistGate loading={null} persistor={persistor}>
+          <I18nextProvider i18n={i18n}>
+            <React.Suspense fallback="Loading...">
+              <AppRoutes />
+            </React.Suspense>
+          </I18nextProvider>
+        </PersistGate>
       </Provider>
     </AssetProvider>
   </ThemeProvider>

@@ -15,6 +15,7 @@ const WorkWithUs = lazy(
 const JobDetails = lazy(
   () => import("../../pages/availableJobs/screens/JobDetails")
 );
+const Apply = lazy(() => import("../../pages/availableJobs/screens/Apply"));
 export const AppRoutes = () => {
   return (
     <BrowserRouter>
@@ -41,8 +42,15 @@ export const AppRoutes = () => {
                   <JobDetails />
                 </SuspensedView>
               }
-            />
-
+            ></Route>
+            <Route
+              path="work-with-us/:id/apply"
+              element={
+                <SuspensedView>
+                  <Apply />
+                </SuspensedView>
+              }
+            ></Route>
             <Route path="error/*" element={<ErrorsRoutes />} />
             <Route
               path="/team"

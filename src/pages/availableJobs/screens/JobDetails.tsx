@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { PageLayout } from "../../../_shared/layouts/PageLayout";
 import {
   Box,
@@ -11,10 +11,10 @@ import {
   Typography,
 } from "../../../_shared/UI";
 import { jobs } from "./WorkWithUs";
-import { useState } from "react";
 import { format } from "date-fns";
 
 const JobDetails = () => {
+  const navigate = useNavigate();
   const { id } = useParams();
   const currentJob = jobs.find((job: any) => job.id === id);
 
@@ -33,7 +33,7 @@ const JobDetails = () => {
           <Typography variant="title40">{currentJob?.role}</Typography>
           <Card mt={2} p={3} height={"100%"} maxWidth={"600px"}>
             <Flex
-              maxWidth={600}
+              maxWidth={800}
               justifyContent={"space-between"}
               flexDirection={"row"}
               pb={3}
@@ -58,7 +58,7 @@ const JobDetails = () => {
               <Typography variant={"title20"} pb={2}>
                 Summary:
               </Typography>
-              <Typography maxWidth={600}>{currentJob?.summary}</Typography>
+              <Typography maxWidth={700}>{currentJob?.summary}</Typography>
             </Flex>
             <Flex py={3}>
               <Typography variant={"title20"} pb={2}>
@@ -81,6 +81,7 @@ const JobDetails = () => {
                 height={50}
                 $fill={false}
                 withBorder
+                onClick={() => navigate(`/work-with-us/${id}/apply`)}
               >
                 Apply Now
               </Button>

@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import {
   Container,
   FeatureColumn,
@@ -28,7 +29,7 @@ export const Offers: React.FC<OffersProps> = ({ label, data }) => {
   return (
     <Section smPadding="50px 10px" position="relative" inverse id="about">
       <Container justifyContent="center" display="flex" flexDirection="column">
-        <SectionTitle>{label}</SectionTitle>
+        <SectionTitle>{t(label)}</SectionTitle>
         <FeatureWrapper>
           {data.map((el, index) => (
             <FeatureColumn
@@ -40,8 +41,8 @@ export const Offers: React.FC<OffersProps> = ({ label, data }) => {
               <FeatureImageWrapper className={el.imgClass}>
                 <el.icon size="3rem" color="primary" />
               </FeatureImageWrapper>
-              <FeatureName>{el.name}</FeatureName>
-              <FeatureText>{el.description}</FeatureText>
+              <FeatureName>{t(el.name)}</FeatureName>
+              <FeatureText>{t(el.description)}</FeatureText>
             </FeatureColumn>
           ))}
         </FeatureWrapper>

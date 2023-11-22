@@ -10,6 +10,7 @@ import {
 } from "../../_shared/styledComponents";
 import { Typography } from "../../_shared/UI";
 import { useNavigate } from "react-router-dom";
+import { t } from "i18next";
 
 const sliderSettings = {
   arrows: false,
@@ -54,7 +55,7 @@ const Carousel: React.FC<CarouselProps> = ({ data }) => {
   return (
     <Section margin="auto" inverse>
       <Container display="flex" flexDirection="column">
-        <SectionTitle>Find more about us</SectionTitle>
+        <SectionTitle>{t("find more about us")}</SectionTitle>
         <ReviewSlider {...sliderSettings} ref={setSliderRef as any}>
           {data.map((el, index) => (
             <ImageWrapper key={index}>
@@ -64,7 +65,7 @@ const Carousel: React.FC<CarouselProps> = ({ data }) => {
                 margin="0.4rem 0 0"
                 fontWeight="bold"
               >
-                {el.title}
+                {t(el.title)}
               </Typography>
               <Typography
                 pb={4}
@@ -72,9 +73,11 @@ const Carousel: React.FC<CarouselProps> = ({ data }) => {
                 margin="0.7rem"
                 color="#4f4f4f"
               >
-                {el.description}
+                {t(el.description)}
               </Typography>
-              <CardButton onClick={navigateTo(el.link)}>Learn More</CardButton>
+              <CardButton onClick={navigateTo(el.link)}>
+                {t("discover more")}
+              </CardButton>
             </ImageWrapper>
           ))}
         </ReviewSlider>

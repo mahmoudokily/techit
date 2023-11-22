@@ -159,7 +159,7 @@ const columns: Column[] = [
 ];
 const WorkWithUs = () => {
   return (
-    <PageLayout>
+    <PageLayout id="jobs">
       <Flex fullSize justifyContent={"center"} alignItems={"center"} p={3}>
         <Typography variant="title40">Available Jobs</Typography>
         <Flex
@@ -172,7 +172,7 @@ const WorkWithUs = () => {
           fullSize
         >
           <Card width={"100%"} height={"100%"} minHeight={400}>
-            <Table fixed columns={columns as any} data={jobs} />
+            <Table fixed columns={columns as any} data={[]} />
           </Card>
         </Flex>
       </Flex>

@@ -10,6 +10,7 @@ import {
 
 import { useNavigate } from "react-router-dom";
 import { scrollTo } from "../../_shared/utils/func/scrollTo";
+import { t } from "i18next";
 type HeroProps = {
   inverse: boolean;
   title: string;
@@ -50,11 +51,11 @@ export const Hero: React.FC<HeroProps> = ({
         display="flex"
         flexDirection="column"
       >
-        {title && <HeroTitle>{title}</HeroTitle>}
-        {subTitle && <HeroSubTitle inverse={true}>{subTitle}</HeroSubTitle>}
+        {title && <HeroTitle>{t(title)}</HeroTitle>}
+        {subTitle && <HeroSubTitle inverse={true}>{t(subTitle)}</HeroSubTitle>}
         {button && (
           <Button onClick={handleClick(button)} inverse>
-            {button.label}
+            {t(button.label)}
           </Button>
         )}
       </Container>

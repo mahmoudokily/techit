@@ -7,15 +7,17 @@ type PageLayoutProps = {
   autoHideHeader?: boolean;
   withHeader?: boolean;
   withFooter?: boolean;
+  id?: string;
 };
 export const PageLayout: React.FC<PropsWithChildren<PageLayoutProps>> = ({
   autoHideHeader = false,
   withFooter = true,
   withHeader = true,
   children,
+  id,
 }) => {
   return (
-    <Flex fullSize>
+    <Flex fullSize id={id || ""}>
       {withHeader && <Header autoHide={autoHideHeader} />}
       <Flex minHeight={"100vh"} flex={1} marginTop={80}>
         {children}

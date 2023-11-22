@@ -4,40 +4,40 @@ import { PageLayout } from "../../../_shared/layouts/PageLayout";
 const team = [
   {
     name: "Mahmoud Okily",
-    role: "CEO",
+    role: "Partner",
     otherRoles: ["Senior Software Developer", "team leader"],
     image: require("../../../_shared/assets/mido.jpg"),
   },
   {
-    name: "Mahmoud Okily",
-    role: "CEO",
+    name: "Boclair Temgoua",
+    role: "Partner",
     otherRoles: ["Senior Software Developer", "team leader"],
-    image: require("../../../_shared/assets/mido.jpg"),
+    image: require("../../../_shared/assets/who.jpg"),
   },
-  {
-    name: "Mahmoud Okily",
-    role: "CEO",
-    otherRoles: ["Senior Software Developer", "team leader"],
-    image: require("../../../_shared/assets/mido.jpg"),
-  },
-  {
-    name: "Mahmoud Okily",
-    role: "CEO",
-    otherRoles: ["Senior Software Developer", "team leader"],
-    image: require("../../../_shared/assets/mido.jpg"),
-  },
-  {
-    name: "Mahmoud Okily",
-    role: "CEO",
-    otherRoles: ["Senior Software Developer", "team leader"],
-    image: require("../../../_shared/assets/mido.jpg"),
-  },
-  {
-    name: "Mahmoud Okily",
-    role: "CEO",
-    otherRoles: ["Senior Software Developer", "team leader"],
-    image: require("../../../_shared/assets/mido.jpg"),
-  },
+  // {
+  //   name: "Mahmoud Okily",
+  //   role: "CEO",
+  //   otherRoles: ["Senior Software Developer", "team leader"],
+  //   image: require("../../../_shared/assets/mido.jpg"),
+  // },
+  // {
+  //   name: "Mahmoud Okily",
+  //   role: "CEO",
+  //   otherRoles: ["Senior Software Developer", "team leader"],
+  //   image: require("../../../_shared/assets/mido.jpg"),
+  // },
+  // {
+  //   name: "Mahmoud Okily",
+  //   role: "CEO",
+  //   otherRoles: ["Senior Software Developer", "team leader"],
+  //   image: require("../../../_shared/assets/mido.jpg"),
+  // },
+  // {
+  //   name: "Mahmoud Okily",
+  //   role: "CEO",
+  //   otherRoles: ["Senior Software Developer", "team leader"],
+  //   image: require("../../../_shared/assets/mido.jpg"),
+  // },
 ];
 const Team = () => {
   return (
@@ -73,7 +73,13 @@ const Team = () => {
           })}
         </Flex>
         <Flex p={3}>
-          <Button fontSize={"1.2rem"} width={300} height={50} $fill={false}>
+          <Button
+            disabled
+            fontSize={"1.2rem"}
+            width={300}
+            height={50}
+            $fill={false}
+          >
             Work With Us
           </Button>
         </Flex>

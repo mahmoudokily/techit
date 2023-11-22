@@ -1,20 +1,30 @@
+import { t } from "i18next";
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import packageJson from "../../../package.json";
 import {
+  Box,
+  Dropdown,
+  DropdownContent,
+  DropdownHeader,
+  Typography,
+} from "../../_shared/UI";
+import i18n from "../../_shared/i18n/i18n";
+import {
   MobileIcon,
   Nav,
-  NavbarContainer,
   NavIcon,
   NavItem,
   NavLinks,
   NavLogo,
   NavMenu,
+  NavbarContainer,
   Version,
 } from "../../_shared/styledComponents";
 import Svg from "../../_shared/styledComponents/Svg";
 import links from "../../_shared/utils/data/links";
-import { Typography } from "../../_shared/UI";
+import { Flex } from "./../../_shared/UI/Flex";
+import Language from "./../../_shared/assets/svg/Language";
 
 type HeaderProps = {
   autoHide?: boolean;
@@ -22,6 +32,7 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({ autoHide = true }) => {
   const [show, setShow] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -37,11 +48,12 @@ const Header: React.FC<HeaderProps> = ({ autoHide = true }) => {
     });
   };
 
-  const closeMobileMenu = (to: string, id?: string, action?: string) => {
-    if (id && location.pathname === "/") {
-      return scrollTo(id);
-    }
-    navigate(to);
+  const closeMobileMenu = async (to: string, id?: string, action?: string) => {
+    await navigate(to);
+    id && scrollTo(id);
+    // if (id && location.pathname === "/") {
+    //   return scrollTo(id);
+    // }
   };
 
   useEffect(() => {
@@ -61,6 +73,11 @@ const Header: React.FC<HeaderProps> = ({ autoHide = true }) => {
       });
     };
   }, [autoHide]);
+
+  const onChangeLanguage = (value: "en" | "it") => () => {
+    window.location.reload();
+    i18n.changeLanguage(value);
+  };
 
   return (
     <Nav id="navbar" show={showBackground}>
@@ -86,10 +103,49 @@ const Header: React.FC<HeaderProps> = ({ autoHide = true }) => {
           {links.map((el, index) => (
             <NavItem key={index}>
               <NavLinks onClick={() => closeMobileMenu(el.to, el.id)}>
-                {el.text}
+                {t(el.text)}
               </NavLinks>
             </NavItem>
           ))}
+          <Dropdown zIndex={3000000000000} width={40}>
+            <DropdownHeader width={40}>
+              <Language iconSize="5" fill={"white"} />
+            </DropdownHeader>
+            <DropdownContent width={40}>
+              <Flex
+                bg="white"
+                style={{ gap: "5px 5px" }}
+                // border="1px solid #737373"
+              >
+                {[
+                  { label: "Italiano", value: "it" },
+                  { label: "English", value: "en" },
+                ].map((language) => {
+                  return (
+                    <Box
+                      onClick={onChangeLanguage(language.value as "en" | "it")}
+                      p={1}
+                      style={{ cursor: "pointer" }}
+                      bg={
+                        language.value === localStorage.getItem("i18nextLng")
+                          ? "primary"
+                          : ""
+                      }
+                      color={
+                        language.value === localStorage.getItem("i18nextLng")
+                          ? "white"
+                          : ""
+                      }
+                      alignItems={"center"}
+                      justifyContent={"center"}
+                    >
+                      <Typography>{language.value}</Typography>
+                    </Box>
+                  );
+                })}
+              </Flex>
+            </DropdownContent>
+          </Dropdown>
         </NavMenu>
       </NavbarContainer>
     </Nav>

@@ -1,9 +1,9 @@
 export const heroData = {
-  title: "We think for you. be perfect",
-  subTitle: "Get your work done with just one click",
+  title: "we think with you. be perfect",
+  subTitle: "get your work done with just one click",
   inverse: true,
   button: {
-    label: "Discover More",
+    label: "discover more",
     linkTo: "about",
     link: false,
   },
