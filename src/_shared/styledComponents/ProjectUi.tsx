@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import { space, SpaceProps } from "styled-system";
 import { AllProps } from "./types";
+import Svg from "./Svg";
 type Props = {
   reverse?: boolean;
   inverse?: boolean;
@@ -65,11 +66,10 @@ export const NavLogo = styled(Link)`
   z-index: 50;
 `;
 
-export const NavIcon = styled.img`
+export const NavIcon = styled(Svg).attrs({ name: "Logo" })`
   margin-right: 0.4rem;
   margin-top: 0.5rem;
-
-  width: 5rem;
+  width: 4rem !important;
 `;
 
 export const MobileIcon = styled.div`

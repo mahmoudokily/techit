@@ -84,7 +84,7 @@ const Header: React.FC<HeaderProps> = ({ autoHide = true }) => {
       <Version> V {packageJson.version}</Version>
       <NavbarContainer>
         <NavLogo to="/">
-          <NavIcon src="./assets/logo.svg" alt="logo" />
+          <NavIcon />
           <Typography color="white" flexShrink={0} pr={2} variant={"title40"}>
             Momuzio
           </Typography>

@@ -60,6 +60,7 @@ import Storage from "./Storage";
 import Timer from "./Timer";
 import Work from "./Work";
 import Language from "./Language";
+import Logo from "./logo";
 
 export const svg = {
   Amazon,
@@ -124,4 +125,5 @@ export const svg = {
   Timer,
   Work,
   Language,
+  Logo,
 };
