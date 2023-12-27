@@ -73,6 +73,7 @@ export interface TextareaContainerProps
   onSuffixClick?: () => void;
   label?: string;
   error?: string | null;
+  errorProps?: TypographyProps;
   description?: string | null;
   withShadow?: boolean;
   flex?: boolean;

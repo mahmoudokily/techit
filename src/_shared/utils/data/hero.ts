@@ -1,5 +1,5 @@
 export const heroData = {
-  title: "we think with you. be perfect",
+  title: "we think for you. be perfect",
   subTitle: "get your work done with just one click",
   inverse: true,
   button: {

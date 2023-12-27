@@ -1,5 +1,5 @@
 import { useAnimation } from "framer-motion";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { TextInput, Section, Textarea } from "../../_shared/styledComponents";
 import { Button, Container } from "../../_shared/styledComponents/BaseUi";
@@ -10,9 +10,23 @@ import {
   Subtitle,
   TopLine,
 } from "../../_shared/styledComponents/ProjectUi";
+import { useForm } from "react-hook-form";
+import { Alert, Box, Input, InputLabel } from "../../_shared/UI";
+import { t } from "i18next";
 
 const CallUs = () => {
   const { ref, inView } = useInView({ threshold: 0.2 });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<{ email: string; message: string }>({
+    defaultValues: {
+      email: "",
+      message: "",
+    },
+  });
+  const [successSentMessage, setSuccessSentMessage] = useState<boolean>(false);
 
   const animation = useAnimation();
   useEffect(() => {
@@ -23,35 +37,73 @@ const CallUs = () => {
       });
     }
   }, [inView, animation]);
+  const onSubmitForm = (formData: { email: string; message: string }) => {
+    console.log(formData);
+    setSuccessSentMessage(true);
+  };
+  useEffect(() => {
+    if (successSentMessage) {
+      setTimeout(() => {
+        setSuccessSentMessage(false);
+      }, 3000);
+    }
+  }, [successSentMessage]);
   return (
     <Section ref={ref} id="contact">
       <Container>
         <FooterGrid>
           <FooterColumn alignItems="start">
-            <TopLine>Contact us</TopLine>
-            <Heading>Let's be in touch</Heading>
+            <TopLine>{t("contact us")}</TopLine>
+            <Heading>{t("let's be in touch")}</Heading>
             <Subtitle>
-              Write your message and we will reply to you as soon as possible
+              {t(
+                "write your message and we will reply to you as soon as possible"
+              )}
             </Subtitle>
           </FooterColumn>
           <FooterColumn>
-            <form style={{ width: "100%" }}>
-              <TextInput
-                labelColor="#fff"
-                label="Email"
-                variant="default"
-                type="text"
-                placeholder="Mariorosso@gmail.com"
-                mb={2}
-              />
+            {successSentMessage && (
+              <Box mb={2}>
+                <Alert variant="primary">
+                  {t("thank you! , we are received your message")}
+                </Alert>
+              </Box>
+            )}
+            <form
+              style={{ width: "100%" }}
+              onSubmit={handleSubmit(onSubmitForm)}
+            >
+              <Box mb={3}>
+                <InputLabel children={t("email")} required />
+                <Input
+                  variant="light"
+                  type="text"
+                  $fill={true}
+                  autoFocus
+                  placeholder="Mariorosso@gmail.com"
+                  {...register("email", {
+                    required: {
+                      value: true,
+                      message: t("required field"),
+                    },
+                  })}
+                  error={errors.email?.message || ""}
+                />
+              </Box>
 
               <Textarea
                 labelColor="#fff"
-                label="Message"
-                name=""
+                label={t("message")}
                 id=""
                 rows={5}
-                placeholder="Write your message here  "
+                placeholder={t("your message")}
+                {...register("message", {
+                  required: {
+                    value: true,
+                    message: t("required field"),
+                  },
+                })}
+                error={errors.message?.message || ""}
               />
 
               <Button mt={4} inverse>

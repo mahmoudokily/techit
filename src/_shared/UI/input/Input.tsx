@@ -64,6 +64,7 @@ export const InputElement = styled.input<Props>`
     &:active {
         outline: 0;
     }
+    
   
     ${
       $fill
@@ -91,6 +92,7 @@ export const InputElement = styled.input<Props>`
         outline: 2px solid red;
         border-color: red;
     }
+    
     `
     }
 
@@ -105,6 +107,8 @@ export const InputElement = styled.input<Props>`
             (item) => `
             &${item} {
                 opacity: 1;
+                    font-size: 18px;
+
                 color: ${
                   $fill
                     ? theme?.type[variant]?.form?.inputPlaceholderFill

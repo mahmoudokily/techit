@@ -6,6 +6,10 @@ import { Link } from "react-router-dom";
 import { space, SpaceProps } from "styled-system";
 import { AllProps } from "./types";
 import Svg from "./Svg";
+import HeroBackground from "../../_shared/assets/bgBlue2.jpg";
+
+// Foto di <a href="https://unsplash.com/it/@joshuaryanphoto?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Joshua Reddekopp</a> su <a href="https://unsplash.com/it/foto/macbook-pro-su-tavolo-in-legno-marrone-SyYmXSDnJ54?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+
 type Props = {
   reverse?: boolean;
   inverse?: boolean;
@@ -96,12 +100,15 @@ export const NavMenu = styled.ul<{ show: boolean }>`
 
   @media screen and (max-width: 960px) {
     flex-direction: column;
+    overflow: hidden;
     width: 100%;
     height: 100vh;
+    max-height: 100vh;
     position: fixed;
-    padding-top: 30%;
+    padding-top: 20%;
     top: 0;
     left: 0;
+    bottom: 0;
     opacity: ${({ show }) => (show ? 1 : 0)};
     visibility: ${({ show }) => (show ? "visible" : "hidden")};
     transform: translateY(${({ show }) => (show ? "0" : "-10px")});
@@ -117,9 +124,9 @@ export const NavMenu = styled.ul<{ show: boolean }>`
 export const NavItem = styled.li`
   height: 80px;
   cursor: pointer;
-
   @media screen and (max-width: 960px) {
     width: 100%;
+    font-size: 1.5rem;
     &:hover {
       border: none;
     }
@@ -241,7 +248,6 @@ export const Heading = styled(motion.h2)<Props>`
   font-size: 3rem;
   line-height: 1.1;
   font-weight: 600;
-
   @media screen and (max-width: 768px) {
     text-align: center;
   }
@@ -370,9 +376,12 @@ export const FeatureText = styled.p`
 export const HeroSection = styled(Section)`
   height: 100vh;
   display: flex;
-  background: transparent;
-  background-position: center;
+  // justify-content: center;
+  background-position: top bottom;
   background-size: cover;
+  background-color: white;
+  background-image: url(${HeroBackground});
+
   padding-top: clamp(70px, 25vh, 220px);
   box-shadow: inset 0 0 0 1000px rgba (0, 0, 0, 0.2);
 `;
@@ -384,12 +393,12 @@ export const HeroSubTitle = styled(Typography)`
   letter-spacing: 2px;
 `;
 export const HeroTitle = styled.p`
-  font-size: clamp(2rem, 6vw, 4rem);
+  font-size: clamp(1.4rem, 4vw, 3rem);
   margin-bottom: 2rem;
   font-family: "Alfa Slab One", cursive;
   width: 100%;
   letter-spacing: 4px;
-  text-align: center;
+  text-align: left;
 `;
 export const HeroVideo = styled.video`
   object-fit: cover;
@@ -489,7 +498,7 @@ export const SectionTitle = styled(Typography)`
 
 export const FooterGrid = styled(Box)`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   justify-content: center;
   align-items: center;
 `;

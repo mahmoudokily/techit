@@ -44,7 +44,9 @@ img {
 }
 
 
-
+// p, h1 ,h2 ,h3,h4,h5,h6,a,span,div{
+//   color:${({ theme }) => theme?.colors.primaryDark}!important;
+// }
 
 ::-webkit-scrollbar-thumb {
   background-color: rgba(61, 114, 156, 0.62)!important;    
