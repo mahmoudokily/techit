@@ -95,7 +95,7 @@ const Header: React.FC<HeaderProps> = ({ autoHide = true }) => {
           {show ? (
             <Svg name="Close" color="white" />
           ) : (
-            <Svg name="Dashboard" color="white" />
+            <Svg name="Menu" color="white" />
           )}
         </MobileIcon>
         <NavMenu show={show}>

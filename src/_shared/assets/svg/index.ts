@@ -35,6 +35,7 @@ import Inventory from "./Inventory";
 import Lab from "./Lab";
 import Language from "./Language";
 import Location from "./Location";
+import Menu from "./Menu";
 import Note from "./Note";
 import Number1 from "./Number1";
 import Number2 from "./Number2";
@@ -126,4 +127,5 @@ export const svg = {
   Work,
   Language,
   Logo,
+  Menu,
 };

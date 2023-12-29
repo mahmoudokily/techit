@@ -79,9 +79,6 @@ const Services: React.FC<Props> = ({ label, data }) => {
                     {t(el.description)}
                   </Subtitle>
                   <Button
-                    // initial={initial}
-                    // transition={{ delay: 1, duration: 0.6 }}
-                    // animate={animation}
                     $size="large"
                     p={3}
                     // $fill={false}
