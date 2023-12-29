@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Flex, Typography } from "../../_shared/UI";
+import { Button, Flex, Typography } from "../../_shared/UI";
 import {
   Container,
   ContentButton,
@@ -78,14 +78,17 @@ const Services: React.FC<Props> = ({ label, data }) => {
                   >
                     {t(el.description)}
                   </Subtitle>
-                  <ContentButton
-                    initial={initial}
-                    transition={{ delay: 1, duration: 0.6 }}
-                    animate={animation}
-                    inverse={index % 2 === 0}
+                  <Button
+                    // initial={initial}
+                    // transition={{ delay: 1, duration: 0.6 }}
+                    // animate={animation}
+                    $size="large"
+                    p={3}
+                    // $fill={false}
+                    variant={index % 2 === 0 ? "primary" : "light"}
                   >
                     {t("discover more")}
-                  </ContentButton>
+                  </Button>
                 </TextWrapper>
               </ContentColumn>
               <ContentColumn

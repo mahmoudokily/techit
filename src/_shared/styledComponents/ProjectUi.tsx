@@ -232,6 +232,8 @@ export const TopLine = styled(motion.div)<Props>`
   font-weight: 550;
   letter-spacing: 1.4px;
   margin-bottom: 1.3rem;
+  color: ${({ theme, inverse }) =>
+    inverse ? theme.colors.primary : theme.colors.white};
 `;
 export const Img = styled(motion.img)`
   padding-right: 0;
@@ -248,6 +250,8 @@ export const Heading = styled(motion.h2)<Props>`
   font-size: 3rem;
   line-height: 1.1;
   font-weight: 600;
+  color: ${({ theme, inverse }) =>
+    inverse ? theme.colors.primary : theme.colors.white};
   @media screen and (max-width: 768px) {
     text-align: center;
   }
@@ -256,6 +260,8 @@ export const Subtitle = styled(motion.p)<Props>`
   max-width: 440px;
   margin-bottom: 35px;
   line-height: 24px;
+  color: ${({ theme, inverse }) =>
+    inverse ? theme.colors.primary : theme.colors.white}!important;
 `;
 
 export const ContentButton = styled(motion.button)<Props>`
@@ -268,15 +274,12 @@ export const ContentButton = styled(motion.button)<Props>`
   text-transform: uppercase;
   cursor: pointer;
   background: none;
-
   border-radius: 4px;
   white-space: nowrap;
   padding: ${({ big }) => (big ? "12px 64px" : "10px 20px")};
   font-size: ${({ fontBig }) => (fontBig ? "20px" : "16px")};
   outline: none;
   border:2px solid ;
-   
-  
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -350,13 +353,14 @@ export const FeatureColumn = styled(motion.div)`
 export const FeatureImageWrapper = styled.div`
   margin-bottom: 1rem;
   border-radius: 50%;
-  border: 2px solid black;
+  border: 2px solid ${({ theme: { colors } }) => colors.primary}!important;
   padding: 30px;
 `;
 export const FeatureName = styled.h3`
   font-weight: 600;
   font-size: 1.3rem;
   letter-spacing: 2px;
+  color: ${({ theme: { colors } }) => colors.primary};
 
   @media screen and (max-width: 768px) {
     font-weight: 400;
@@ -366,6 +370,8 @@ export const FeatureName = styled.h3`
 `;
 export const FeatureText = styled.p`
   margin: 1rem 0 auto;
+  color: ${({ theme: { colors } }) => colors.primary}!important;
+
   text-align: center;
   font-size: 0.9rem;
   line-height: 1.73;
@@ -488,6 +494,7 @@ export const ButtonContainer = styled(Row)`
   }
 `;
 export const SectionTitle = styled(Typography)`
+  color: ${({ theme: { colors } }) => colors.primary}!important;
   text-align: center;
   font-size: clamp(1.3rem, 13vw, 3.1rem);
   line-height: 1.06;

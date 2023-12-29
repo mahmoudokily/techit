@@ -1,4 +1,4 @@
-import { BsFillShieldLockFill } from "react-icons/bs";
+import { BsFillShieldLockFill, BsShieldExclamation } from "react-icons/bs";
 import { IoIosOptions } from "react-icons/io";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { BiSupport, BiDollar } from "react-icons/bi";
@@ -24,7 +24,7 @@ export const features = {
       name: "maintenance",
       description:
         "our code is written in highest standards, which makes it highly sustainable",
-      icon: GrHostMaintenance,
+      icon: BsShieldExclamation,
       imgClass: "three",
     },
     {

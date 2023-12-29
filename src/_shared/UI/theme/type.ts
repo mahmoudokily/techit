@@ -152,7 +152,8 @@ export const createType = (
   if (options === true || typeOptions.button) {
     type.button = type.button || {};
     type.button.background = type.button.background || DV.BUTTON_BG_COLOR;
-    type.button.placeholder = type.button.placeholder || type.main;
+
+    type.button.placeholder = type.button.placeholder || type.dark;
     type.button.placeholderFill =
       type.button.placeholderFill || ColorHelper.getFontColor(type.main);
   }
@@ -204,9 +205,19 @@ export const createType = (
         .toString();
   }
   if (options === true || typeOptions.waveEffect) {
-    type.waveEffect = type.waveEffect || {}
-    const waveEffectColor = ColorHelper.getColor((type.waveEffect.color || type.main))
-    type.waveEffect.color = `radial-gradient(${waveEffectColor.alpha(.2).toString()} 0, ${waveEffectColor.alpha(.3).toString()} 40%, ${waveEffectColor.alpha(.4).toString()} 50%, ${waveEffectColor.alpha(.5).toString()} 60%, ${waveEffectColor.alpha(0).toString()} 70%)`
+    type.waveEffect = type.waveEffect || {};
+    const waveEffectColor = ColorHelper.getColor(
+      type.waveEffect.color || type.main
+    );
+    type.waveEffect.color = `radial-gradient(${waveEffectColor
+      .alpha(0.2)
+      .toString()} 0, ${waveEffectColor
+      .alpha(0.3)
+      .toString()} 40%, ${waveEffectColor
+      .alpha(0.4)
+      .toString()} 50%, ${waveEffectColor
+      .alpha(0.5)
+      .toString()} 60%, ${waveEffectColor.alpha(0).toString()} 70%)`;
   }
   return type;
 };
