@@ -48,6 +48,7 @@ const Header: React.FC<HeaderProps> = ({ autoHide = true }) => {
   };
 
   const closeMobileMenu = async (to: string, id?: string, action?: string) => {
+    setShow(false);
     await navigate(to);
     id && scrollTo(id);
     // if (id && location.pathname === "/") {
