@@ -19,13 +19,12 @@ type OffersProps = {
     imgClass: string;
   }[];
 };
+const animate = {
+  y: 0,
+  opacity: 1,
+};
+const initial = { opacity: 0, y: 30 };
 export const Offers: React.FC<OffersProps> = ({ label, data }) => {
-  const animate = {
-    y: 0,
-    opacity: 1,
-  };
-  const initial = { opacity: 0, y: 30 };
-
   return (
     <Section smPadding="50px 10px" position="relative" inverse id="about">
       <Container justifyContent="center" display="flex" flexDirection="column">

@@ -9,11 +9,15 @@ import { carousel } from "../../_shared/utils/data/carousel";
 import CallUs from "../components/CallUs";
 import Header from "../../header/screen/Header";
 import Footer from "../../footer/screen/Footer";
+import Services from "../components/Services";
+import { servicesData } from "../../_shared/utils/data/services";
 const Home = () => {
   return (
     <>
       <Header />
       <Hero {...heroData} />
+      <Services {...servicesData} />
+
       <Offers {...features} />
       {contents?.map((content, index: number) => (
         <Content key={index} {...content} />

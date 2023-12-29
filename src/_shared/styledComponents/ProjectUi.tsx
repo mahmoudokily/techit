@@ -350,7 +350,7 @@ export const FeatureColumn = styled(motion.div)`
 export const FeatureImageWrapper = styled.div`
   margin-bottom: 1rem;
   border-radius: 50%;
-  border: 2px solid;
+  border: 2px solid black;
   padding: 30px;
 `;
 export const FeatureName = styled.h3`
@@ -594,6 +594,7 @@ export const FooterLink = styled(Link)<AllProps>`
 
 export const Nav = styled.nav<{ show: boolean }>`
   margin-bottom: -80px;
+  backdrop-filter: blur(2px);
   height: 80px;
   display: flex;
   justify-content: center;

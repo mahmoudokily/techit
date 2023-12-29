@@ -1,26 +1,9 @@
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
-import theme from "./_shared/UI/theme";
-import assets from "./_shared/assets";
-import { AssetProvider } from "./_shared/hooks/assets";
+import { Flex } from "./_shared/UI";
 import { useAppDispatch } from "./_shared/redux/app/hooks";
-import Svg from "./_shared/styledComponents/Svg";
-import Footer from "./footer/screen/Footer";
-import Header from "./header/screen/Header";
 import { FixedButton } from "./_shared/styledComponents";
-import {
-  Box,
-  Button,
-  Dropdown,
-  DropdownContent,
-  DropdownHeader,
-  Flex,
-  Select,
-  Typography,
-} from "./_shared/UI";
-import { Absolute } from "./_shared/UI/Absolute";
-import Language from "./_shared/assets/svg/Language";
+import Svg from "./_shared/styledComponents/Svg";
 
 function App() {
   // const theme = useAppSelector((state) => state.theme.currentTheme);

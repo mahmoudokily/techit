@@ -33,7 +33,6 @@ const Header: React.FC<HeaderProps> = ({ autoHide = true }) => {
   const [show, setShow] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
 
-  const location = useLocation();
   const navigate = useNavigate();
 
   const handleClick = () => {
