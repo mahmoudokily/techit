@@ -1,9 +1,10 @@
 import { t } from "i18next";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import packageJson from "../../../package.json";
 import {
   Box,
+  Button,
   Dropdown,
   DropdownContent,
   DropdownHeader,
@@ -11,6 +12,8 @@ import {
 } from "../../_shared/UI";
 import i18n from "../../_shared/i18n/i18n";
 import {
+  Img,
+  ImgWrapper,
   MobileIcon,
   Nav,
   NavIcon,
@@ -29,6 +32,18 @@ import Language from "./../../_shared/assets/svg/Language";
 type HeaderProps = {
   autoHide?: boolean;
 };
+const languageOptions = [
+  {
+    label: "English",
+    value: "en",
+    flag: "./assets/svg/us-flag.svg",
+  },
+  {
+    label: "Italiano",
+    value: "it",
+    flag: "./assets/svg/it-flag.svg",
+  },
+];
 const Header: React.FC<HeaderProps> = ({ autoHide = true }) => {
   const [show, setShow] = useState(false);
   const [showBackground, setShowBackground] = useState(false);
@@ -78,6 +93,11 @@ const Header: React.FC<HeaderProps> = ({ autoHide = true }) => {
     window.location.reload();
     i18n.changeLanguage(value);
   };
+  const activeLang = localStorage?.getItem("i18nextLng");
+  const selectedLanguage = useMemo(
+    () => languageOptions.find((lang) => lang.value === activeLang),
+    [activeLang]
+  );
 
   return (
     <Nav id="navbar" show={showBackground}>
@@ -107,42 +127,45 @@ const Header: React.FC<HeaderProps> = ({ autoHide = true }) => {
               </NavLinks>
             </NavItem>
           ))}
-          <Dropdown zIndex={3000000000000} width={40}>
-            <DropdownHeader width={40}>
-              <Language iconSize="5" fill={"white"} />
+          <Dropdown zIndex={3000000000000}>
+            <DropdownHeader width={70}>
+              <Button
+                flexShrink={0}
+                $fill={false}
+                icon={<Img width={20} src={selectedLanguage?.flag} />}
+                iconPosition="right"
+              >
+                {selectedLanguage?.value}
+              </Button>
             </DropdownHeader>
-            <DropdownContent width={40}>
+            <DropdownContent backgroundColor={"white"} width={70}>
               <Flex
-                bg="white"
                 style={{ gap: "5px 5px" }}
                 // border="1px solid #737373"
               >
-                {[
-                  { label: "Italiano", value: "it" },
-                  { label: "English", value: "en" },
-                ].map((language) => {
-                  return (
-                    <Box
-                      onClick={onChangeLanguage(language.value as "en" | "it")}
-                      p={1}
-                      style={{ cursor: "pointer" }}
-                      bg={
-                        language.value === localStorage.getItem("i18nextLng")
-                          ? "primary"
-                          : ""
-                      }
-                      color={
-                        language.value === localStorage.getItem("i18nextLng")
-                          ? "white"
-                          : ""
-                      }
-                      alignItems={"center"}
-                      justifyContent={"center"}
-                    >
-                      <Typography>{language.value}</Typography>
-                    </Box>
-                  );
-                })}
+                {languageOptions
+                  .filter(
+                    (language) => language.value !== selectedLanguage?.value
+                  )
+                  .map((language) => {
+                    return (
+                      <Flex
+                        onClick={onChangeLanguage(
+                          language.value as "en" | "it"
+                        )}
+                        p={1}
+                        style={{ cursor: "pointer" }}
+                        alignItems={"center"}
+                        justifyContent={"space-between"}
+                        flexDirection={"row"}
+                      >
+                        <Typography color="primary">
+                          {language.value?.toUpperCase()}
+                        </Typography>
+                        <Img width={20} src={language?.flag} />
+                      </Flex>
+                    );
+                  })}
               </Flex>
             </DropdownContent>
           </Dropdown>

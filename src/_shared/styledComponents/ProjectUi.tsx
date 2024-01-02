@@ -55,6 +55,7 @@ export const NavbarContainer = styled(Container)`
   height: 80px;
   flex-shrink: 0;
   min-width: 400px;
+  width: 100%;
 
   ${Container}
 `;
