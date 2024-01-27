@@ -42,7 +42,7 @@ export class MomuzioGroupStack extends Stack {
     });
 
     const distribution = new Distribution(this, "CloudfrontDistribution", {
-      comment: `momuzio group portal staging`,
+      comment: `Momuzio group  staging`,
       defaultBehavior: {
         origin: new S3Origin(hostingBucket),
         viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
@@ -58,10 +58,10 @@ export class MomuzioGroupStack extends Stack {
     const deployment = new BucketDeployment(this, "DeployWithInvalidation", {
       sources: [
         Source.asset(join(__dirname, "..", "..", "build")),
-        Source.jsonData("config.json", {
-          local: true,
-          stage: "staging",
-        }),
+        // Source.jsonData("config.json", {
+        //   local: true,
+        //   stage: "staging",
+        // }),
       ],
       destinationBucket: hostingBucket,
       distribution,
