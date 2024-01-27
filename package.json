@@ -48,8 +48,11 @@
     "start": "react-scripts start",
     "start:dev": "docker-compose -f docker-compose-development.yml up",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "deploy": "npm run cdk-bootstrap  && npm run cdk-synth  && npm run cdk-deploy ",
+    "cdk-bootstrap": "cd infrastructure && cdk bootstrap --profile momuzioGroup",
+    "cdk-synth": "cd infrastructure && cdk synth --profile momuzioGroup",
+    "cdk-list": "cd infrastructure && cdk list --profile momuzioGroup",
+    "cdk-deploy": "cd infrastructure && cdk deploy --profile momuzioGroup"
   },
   "eslintConfig": {
     "extends": [

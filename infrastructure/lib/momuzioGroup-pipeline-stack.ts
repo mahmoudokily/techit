@@ -32,7 +32,7 @@ export class MomuzioGroupFrontendPipelineStack extends cdk.Stack {
         "npm ci",
       ],
       commands: ["npx cdk synth"],
-      primaryOutputDirectory: "cdk/cdk.out",
+      primaryOutputDirectory: "infrastructure/cdk.out",
     });
 
     this.pipeline = new CodePipeline(this, `momuzioGroupFrontEndPipeline`, {
@@ -46,7 +46,7 @@ export class MomuzioGroupFrontendPipelineStack extends cdk.Stack {
   private addStagingWave() {
     const stagingWave = this.pipeline.addWave("Staging");
     stagingWave.addStage(
-      new MomuzioGroupFrontendStage(this, `momuzio Group ${stagingWave.id}`, {
+      new MomuzioGroupFrontendStage(this, `momuzio-Group-${stagingWave.id}`, {
         env: {
           account: "992382414701",
           region: "us-east-1",
@@ -61,7 +61,7 @@ export class MomuzioGroupFrontendPipelineStack extends cdk.Stack {
     productionWave.addStage(
       new MomuzioGroupFrontendStage(
         this,
-        `momuzio Group ${productionWave.id}`,
+        `momuzio-Group-${productionWave.id}`,
         {
           env: {
             account: "992382414701",

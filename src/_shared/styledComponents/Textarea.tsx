@@ -1,8 +1,10 @@
+/** @format */
+
 import React from "react";
 import styled from "styled-components";
-import { Flex, Label } from "./BaseUi";
-import { TextareaContainerProps } from "./types";
 import { InputLabel, Typography } from "../UI";
+import { Flex } from "./BaseUi";
+import { TextareaContainerProps } from "./types";
 
 const StyledTextArea = styled.textarea`
   -webkit-appearance: none;
