@@ -27,10 +27,10 @@ export class MomuzioGroupFrontendPipelineStack extends cdk.Stack {
       }),
       installCommands: [
         "npm i -g npm@latest",
-        "npm ci",
+        "npm i",
         "npm run build",
         "cd infrastructure",
-        "npm ci",
+        "npm i",
       ],
       commands: ["npx cdk synth"],
       primaryOutputDirectory: "infrastructure/cdk.out",
