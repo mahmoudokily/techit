@@ -18,6 +18,7 @@ export class MomuzioGroupFrontendPipelineStack extends cdk.Stack {
 
     const codePipeline = new Pipeline(this, `Pipeline`, {
       pipelineName: `MomuzioBackofficePipeline`,
+      artifactBucket: props.account.pipelineBucket.retrieve(this),
       restartExecutionOnUpdate: true,
     });
 
@@ -26,6 +27,8 @@ export class MomuzioGroupFrontendPipelineStack extends cdk.Stack {
         connectionArn: `arn:aws:codestar-connections:us-east-1:992382414701:connection/1b86f436-92ec-4bce-ab09-9826591144f0`,
       }),
       installCommands: [
+        "npm i -g npm@latest",
+
         "npm ci",
         "npm run build",
         "cd infrastructure",
@@ -35,7 +38,7 @@ export class MomuzioGroupFrontendPipelineStack extends cdk.Stack {
       primaryOutputDirectory: "infrastructure/cdk.out",
     });
 
-    this.pipeline = new CodePipeline(this, `momuzioGroupFrontEndPipeline`, {
+    this.pipeline = new CodePipeline(this, `CodePipeline`, {
       codePipeline,
       synth,
     });
