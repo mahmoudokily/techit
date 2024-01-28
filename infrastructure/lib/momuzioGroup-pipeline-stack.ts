@@ -23,14 +23,13 @@ export class MomuzioGroupFrontendPipelineStack extends cdk.Stack {
 
     const synth = new ShellStep("Synth", {
       input: CodePipelineSource.connection("mahmoudokily/techit", "main", {
-        connectionArn: `arn:aws:codestar-connections:us-east-1:992382414701:connection/a34b5cba-16ad-43aa-b221-745583508540`,
+        connectionArn: `arn:aws:codestar-connections:us-east-1:992382414701:connection/1b86f436-92ec-4bce-ab09-9826591144f0`,
       }),
       installCommands: [
-        "npm i -g npm@latest",
-        "npm i",
+        "npm ci",
         "npm run build",
         "cd infrastructure",
-        "npm i",
+        "npm ci",
       ],
       commands: ["npx cdk synth"],
       primaryOutputDirectory: "infrastructure/cdk.out",
