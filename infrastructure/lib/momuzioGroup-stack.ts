@@ -11,6 +11,8 @@ import {
 } from "aws-cdk-lib";
 import { Distribution, ViewerProtocolPolicy } from "aws-cdk-lib/aws-cloudfront";
 import { S3Origin } from "aws-cdk-lib/aws-cloudfront-origins";
+import { ARecord, HostedZone, RecordTarget } from "aws-cdk-lib/aws-route53";
+import { CloudFrontTarget } from "aws-cdk-lib/aws-route53-targets";
 import * as s3 from "aws-cdk-lib/aws-s3";
 import { BlockPublicAccess } from "aws-cdk-lib/aws-s3";
 import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment";
@@ -40,6 +42,9 @@ export class MomuzioGroupStack extends Stack {
       blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
       removalPolicy: RemovalPolicy.DESTROY,
     });
+    // const zone = HostedZone.fromLookup(this, "HostedZone", {
+    //   domainName: "momuzio.com",
+    // });
 
     const distribution = new Distribution(this, "CloudfrontDistribution", {
       comment: `Momuzio group  staging`,
@@ -47,9 +52,11 @@ export class MomuzioGroupStack extends Stack {
         origin: new S3Origin(hostingBucket),
         viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
       },
+      // domainNames: ["momuzio.com"],
       defaultRootObject: "index.html",
       errorResponses: [403, 404, 405].map((httpStatus) => ({
         httpStatus,
+
         ttl: Duration.seconds(0),
         responseHttpStatus: 200,
         responsePagePath: "/index.html",
@@ -67,6 +74,12 @@ export class MomuzioGroupStack extends Stack {
       distribution,
       distributionPaths: ["/*"],
     });
+
+    // new ARecord(this, "ARecord", {
+    //   zone: zone,
+    //   recordName: "momuzio.com",
+    //   target: RecordTarget.fromAlias(new CloudFrontTarget(distribution)),
+    // });
 
     new CfnOutput(this, "CloudFrontURL", {
       value: distribution.domainName,
