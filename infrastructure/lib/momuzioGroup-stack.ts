@@ -11,8 +11,6 @@ import {
 } from "aws-cdk-lib";
 import { Distribution, ViewerProtocolPolicy } from "aws-cdk-lib/aws-cloudfront";
 import { S3Origin } from "aws-cdk-lib/aws-cloudfront-origins";
-import { ARecord, HostedZone, RecordTarget } from "aws-cdk-lib/aws-route53";
-import { CloudFrontTarget } from "aws-cdk-lib/aws-route53-targets";
 import * as s3 from "aws-cdk-lib/aws-s3";
 import { BlockPublicAccess } from "aws-cdk-lib/aws-s3";
 import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment";
@@ -35,10 +33,8 @@ export class MomuzioGroupStack extends Stack {
     super(scope, id, props);
 
     // create s3 bucket to store the website files
-    const hostingBucket = new s3.Bucket(this, "MomuzioFEBucket", {
-      autoDeleteObjects: true,
-      bucketName: "momuzio-frontend",
-      websiteIndexDocument: "index.html",
+    const hostingBucket = new s3.Bucket(this, "SiteBucket", {
+      bucketName: "momuzio-frontend-bucket",
       blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
       removalPolicy: RemovalPolicy.DESTROY,
     });

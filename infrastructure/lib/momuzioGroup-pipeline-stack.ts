@@ -40,7 +40,7 @@ export class MomuzioGroupFrontendPipelineStack extends cdk.Stack {
       synth,
     });
     this.addStagingWave();
-    this.addProdWaves();
+    // this.addProdWaves();
   }
 
   private addStagingWave() {
@@ -54,20 +54,20 @@ export class MomuzioGroupFrontendPipelineStack extends cdk.Stack {
       })
     );
   }
-  private addProdWaves() {
-    const productionWave = this.pipeline.addWave("Production");
-    productionWave.addPre(new ManualApprovalStep("Promote"));
-    productionWave.addStage(
-      new MomuzioGroupFrontendStage(
-        this,
-        `Momuzio_Group_${productionWave.id}`,
-        {
-          env: {
-            account: "992382414701",
-            region: "us-east-1",
-          },
-        }
-      )
-    );
-  }
+  // private addProdWaves() {
+  //   const productionWave = this.pipeline.addWave("Production");
+  //   productionWave.addPre(new ManualApprovalStep("Promote"));
+  //   productionWave.addStage(
+  //     new MomuzioGroupFrontendStage(
+  //       this,
+  //       `Momuzio_Group_${productionWave.id}`,
+  //       {
+  //         env: {
+  //           account: "992382414701",
+  //           region: "us-east-1",
+  //         },
+  //       }
+  //     )
+  //   );
+  // }
 }
