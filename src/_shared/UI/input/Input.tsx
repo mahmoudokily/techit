@@ -1,41 +1,41 @@
-import React from "react";
-import styled from "styled-components";
-import { Flex } from "../Flex";
-import { defaultProps, DefaultProps } from "../helpers";
-import { Shape, Size, Variant } from "../helpers/types";
-import { CustomTheme } from "../theme";
-import { Typography, TypographyProps } from "../Typography";
-import { InputIcon } from "./inputStyledElements";
+import React from "react"
+import styled from "styled-components"
+import { Flex } from "../Flex"
+import { defaultProps, DefaultProps } from "../helpers"
+import { Shape, Size, Variant } from "../helpers/types"
+import { CustomTheme } from "../theme"
+import { Typography, TypographyProps } from "../Typography"
+import { InputIcon } from "./inputStyledElements"
 
 const sizeStyles = (v = "large", t: CustomTheme) => `
         padding: ${t?.form?.inputPadding?.[v]?.y} ${t?.form?.inputPadding?.[v]?.x};
         font-size: ${t?.form?.inputFontSize?.[v]};
-    `;
+    `
 
 const placeholder = [
   "::-webkit-input-placeholder",
   "::-moz-placeholder",
   ":-moz-placeholder",
   ":-ms-input-placeholder",
-  "::placeholder",
-];
+  "::placeholder"
+]
 interface Props extends Partial<React.InputHTMLAttributes<HTMLInputElement>> {
-  variant?: Variant;
-  $fill?: boolean;
-  withBorder?: boolean;
-  shape?: Shape;
-  inputElement?: boolean;
-  prefixAbsolute?: boolean;
-  suffixAbsolute?: boolean;
-  $size?: Size;
-  prefix?: any;
-  suffix?: any;
-  error?: string | any;
-  hint?: string;
-  prefixProps?: any;
-  suffixProps?: any;
-  containerProps?: DefaultProps;
-  errorProps?: TypographyProps;
+  variant?: Variant
+  $fill?: boolean
+  withBorder?: boolean
+  shape?: Shape
+  inputElement?: boolean
+  prefixAbsolute?: boolean
+  suffixAbsolute?: boolean
+  $size?: Size
+  prefix?: any
+  suffix?: any
+  error?: string | any
+  hint?: string
+  prefixProps?: any
+  suffixProps?: any
+  containerProps?: DefaultProps
+  errorProps?: TypographyProps
 }
 
 export const InputElement = styled.input<Props>`
@@ -50,7 +50,7 @@ export const InputElement = styled.input<Props>`
     prefixAbsolute,
     suffix,
     suffixAbsolute,
-    inputElement = true,
+    inputElement = true
   }) => `
     
     width:100%;
@@ -169,7 +169,7 @@ export const InputElement = styled.input<Props>`
 `};
   ${({ $size, theme }) => sizeStyles($size, theme)};
   ${defaultProps};
-`;
+`
 
 export const Input = React.forwardRef<any, Props>(
   (
@@ -181,6 +181,7 @@ export const Input = React.forwardRef<any, Props>(
       prefixAbsolute = false,
       suffixProps,
       suffixAbsolute = false,
+      inputElement = true,
       errorProps,
       error,
       hint,
@@ -212,6 +213,7 @@ export const Input = React.forwardRef<any, Props>(
             )}
             <InputElement
               shape={shape}
+              inputElement={inputElement}
               prefixAbsolute={prefixAbsolute}
               suffixAbsolute={suffixAbsolute}
               suffix={suffix}
@@ -258,6 +260,6 @@ export const Input = React.forwardRef<any, Props>(
           </Typography>
         )}
       </Flex>
-    );
+    )
   }
-);
+)

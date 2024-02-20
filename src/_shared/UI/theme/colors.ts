@@ -1,26 +1,26 @@
 export interface Colors {
-  primary: string;
-  primaryDark: string;
-  accent: string;
-  secondary: string;
-  rosaLight: string;
-  darkWhite: string;
-  borderBlueLight: string;
-  borderBlueDark: string;
-  borderBlueRegular: string;
-  borderOrangeDark: string;
-  borderYellowDark: string;
-  black: string;
-  white: string;
-  orange: string;
-  success: string;
-  error: string;
-  warning: string;
-  chart: string;
+  primary: string
+  primaryDark: string
+  accent: string
+  secondary: string
+  rosaLight: string
+  darkWhite: string
+  borderBlueLight: string
+  borderBlueDark: string
+  borderBlueRegular: string
+  borderOrangeDark: string
+  borderYellowDark: string
+  black: string
+  white: string
+  orange: string
+  success: string
+  error: string
+  warning: string
+  chart: string
 }
 
 export const colors: Colors = {
-  primary: "#003eaa",
+  primary: "#cf4f83;",
   primaryDark: "#122967",
   accent: "#FFC700",
   secondary: "#E8EFF3",
@@ -37,7 +37,7 @@ export const colors: Colors = {
   success: "#78931A",
   error: "#B00020",
   warning: "#FCBD00",
-  chart: "#F7D87B",
-};
+  chart: "#F7D87B"
+}
 
-export type Color = keyof Colors;
+export type Color = keyof Colors

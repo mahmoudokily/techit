@@ -1,3 +1,5 @@
+/** @format */
+
 import { format } from "date-fns";
 import {
   Box,
@@ -12,7 +14,8 @@ import { PageLayout } from "../../../_shared/layouts/PageLayout";
 import Svg from "./../../../_shared/styledComponents/Svg";
 import { useState } from "react";
 import { RowKey } from "react-base-table";
-import { createGlobalStyle } from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
+import VerticalScrollContainer from "../../../_shared/UI/VerticalScrollContainer";
 
 export const jobs = [
   {
@@ -40,8 +43,38 @@ export const jobs = [
     children: [
       {
         parentId: "1",
-        summary:
-          "The client is seeking a skilled Engineering Manager with a hands-on approach and a strong focus on front-end development. The ideal candidate will have a passion for leading exceptional teams to deliver web-based solutions, including consumer-facing websites, eCommerce sites, UI web components, and robust UI infrastructure. As an expert in technology, you will collaborate closely with internal stakeholders and high-profile customers to develop technical strategies. In addition, you will oversee diverse engineering teams responsible for delivering complex projects with high value. To succeed in this role, you must be highly motivated, collaborative, and adaptable in a fast-paced, evolving environment. We seek a leader and team player who inspires innovation, drives positive change, holds high standards for themselves and others, enjoys working with talented teams, and has a sense of humor.",
+        data: [
+          {
+            id: 1,
+            summary:
+              "The client is seeking a skilled Engineering Manager with a hands-on approach and a strong focus on front-end development. The ideal candidate will have a passion for leading exceptional teams to deliver web-based solutions, including consumer-facing websites, eCommerce sites, UI web components, and robust UI infrastructure. As an expert in technology, you will collaborate closely with internal stakeholders and high-profile customers to develop technical strategies. In addition, you will oversee diverse engineering teams responsible for delivering complex projects with high value. To succeed in this role, you must be highly motivated, collaborative, and adaptable in a fast-paced, evolving environment. We seek a leader and team player who inspires innovation, drives positive change, holds high standards for themselves and others, enjoys working with talented teams, and has a sense of humor.",
+          },
+          {
+            id: 2,
+            summary:
+              "The client is seeking a skilled Engineering Manager with a hands-on approach and a strong focus on front-end development. The ideal candidate will have a passion for leading exceptional teams to deliver web-based solutions, including consumer-facing websites, eCommerce sites, UI web components, and robust UI infrastructure. As an expert in technology, you will collaborate closely with internal stakeholders and high-profile customers to develop technical strategies. In addition, you will oversee diverse engineering teams responsible for delivering complex projects with high value. To succeed in this role, you must be highly motivated, collaborative, and adaptable in a fast-paced, evolving environment. We seek a leader and team player who inspires innovation, drives positive change, holds high standards for themselves and others, enjoys working with talented teams, and has a sense of humor.",
+          },
+          {
+            id: 3,
+            summary:
+              "The client is seeking a skilled Engineering Manager with a hands-on approach and a strong focus on front-end development. The ideal candidate will have a passion for leading exceptional teams to deliver web-based solutions, including consumer-facing websites, eCommerce sites, UI web components, and robust UI infrastructure. As an expert in technology, you will collaborate closely with internal stakeholders and high-profile customers to develop technical strategies. In addition, you will oversee diverse engineering teams responsible for delivering complex projects with high value. To succeed in this role, you must be highly motivated, collaborative, and adaptable in a fast-paced, evolving environment. We seek a leader and team player who inspires innovation, drives positive change, holds high standards for themselves and others, enjoys working with talented teams, and has a sense of humor.",
+          },
+          {
+            id: 4,
+            summary:
+              "The client is seeking a skilled Engineering Manager with a hands-on approach and a strong focus on front-end development. The ideal candidate will have a passion for leading exceptional teams to deliver web-based solutions, including consumer-facing websites, eCommerce sites, UI web components, and robust UI infrastructure. As an expert in technology, you will collaborate closely with internal stakeholders and high-profile customers to develop technical strategies. In addition, you will oversee diverse engineering teams responsible for delivering complex projects with high value. To succeed in this role, you must be highly motivated, collaborative, and adaptable in a fast-paced, evolving environment. We seek a leader and team player who inspires innovation, drives positive change, holds high standards for themselves and others, enjoys working with talented teams, and has a sense of humor.",
+          },
+          {
+            id: 5,
+            summary:
+              "The client is seeking a skilled Engineering Manager with a hands-on approach and a strong focus on front-end development. The ideal candidate will have a passion for leading exceptional teams to deliver web-based solutions, including consumer-facing websites, eCommerce sites, UI web components, and robust UI infrastructure. As an expert in technology, you will collaborate closely with internal stakeholders and high-profile customers to develop technical strategies. In addition, you will oversee diverse engineering teams responsible for delivering complex projects with high value. To succeed in this role, you must be highly motivated, collaborative, and adaptable in a fast-paced, evolving environment. We seek a leader and team player who inspires innovation, drives positive change, holds high standards for themselves and others, enjoys working with talented teams, and has a sense of humor.",
+          },
+          {
+            id: 6,
+            summary:
+              "The client is seeking a skilled Engineering Manager with a hands-on approach and a strong focus on front-end development. The ideal candidate will have a passion for leading exceptional teams to deliver web-based solutions, including consumer-facing websites, eCommerce sites, UI web components, and robust UI infrastructure. As an expert in technology, you will collaborate closely with internal stakeholders and high-profile customers to develop technical strategies. In addition, you will oversee diverse engineering teams responsible for delivering complex projects with high value. To succeed in this role, you must be highly motivated, collaborative, and adaptable in a fast-paced, evolving environment. We seek a leader and team player who inspires innovation, drives positive change, holds high standards for themselves and others, enjoys working with talented teams, and has a sense of humor.",
+          },
+        ],
       },
     ],
   },
@@ -131,9 +164,12 @@ const GlobalStyle = createGlobalStyle`
   .BaseTable__row--depth-0 {
     height: 50px;
   }
+  .BaseTable__row--depth-1 {
 
+    flex-shrink:0!important;
+  }
   .BaseTable__row--depth-0 .BaseTable__row-cell-text {
-    overflow: hidden;
+    overflow: scroll;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
@@ -141,6 +177,22 @@ const GlobalStyle = createGlobalStyle`
 const WorkWithUs = () => {
   const [selectedRowKeys, setSelectedRowKeys] = useState<string[]>([]);
 
+  const nestedColumns: Column[] = [
+    {
+      width: 50,
+      key: "id",
+      dataKey: "id",
+      title: "id",
+    },
+    {
+      width: 300,
+      key: "summary",
+      dataKey: "summary",
+      title: "summary",
+      flexGrow: 3,
+      flexShrink: 2,
+    },
+  ];
   const columns: Column[] = [
     {
       width: 150,
@@ -167,6 +219,7 @@ const WorkWithUs = () => {
       key: "role",
       dataKey: "role",
       title: "role",
+      flexGrow: 3,
     },
     {
       width: 150,
@@ -233,54 +286,56 @@ const WorkWithUs = () => {
     console.log(selectedRowKeys);
   };
 
-  const rowRenderer = ({
-    isScrolling,
-    cells,
-    columns,
-    rowData,
-    rowIndex,
-    depth,
-  }: any) => {
-    return (
-      <div style={{ height: 300 }}>
-        {cells}
-        {rowData.children && (
-          <Flex bg="red">{rowData?.children?.[0]?.summary}</Flex>
-        )}
-      </div>
-    );
+  const Row = styled.div`
+    padding: 15px;
+    background-color: #eee;
+    min-height: 400px;
+    height: 400px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  `;
+  const rowRenderer = ({ rowData, cells, ...rest }: any) => {
+    if (rowData.data)
+      return (
+        <Row {...rest}>
+          <Table
+            columns={nestedColumns as any}
+            data={rowData.data}
+            estimatedRowHeight={100}
+          />
+        </Row>
+      );
+    return cells;
   };
-  return (
-    <PageLayout id="jobs">
-      <Flex fullSize justifyContent={"center"} alignItems={"center"} p={3}>
-        <Typography variant="title40">Available Jobs</Typography>
-        <Flex
-          p={3}
-          flexDirection={"row"}
-          style={{ gap: "20px 20px ", flexWrap: "wrap" }}
-          maxWidth={"100%"}
-          justifyContent={"center"}
-          alignItems={"center"}
-          fullSize
-        >
-          <Card width={"100%"} height={"100%"} minHeight={400}>
-            <GlobalStyle />
 
-            <Table
-              expandedRowKeys={selectedRowKeys}
-              expandColumnKey={"expand"}
-              estimatedRowHeight={50}
-              onRowExpand={onRowExpand}
-              rowRenderer={rowRenderer}
-              onExpandedRowsChange={onExpandedRowsChange}
-              fixed
-              columns={columns as any}
-              data={jobs}
-            />
-          </Card>
-        </Flex>
+  return (
+    <Flex
+      position={"relative"}
+      height={800}
+      maxHeight={"100%"}
+      p={3}
+      flexDirection={"column"}
+    >
+      <Typography variant="title40">Available Jobs</Typography>
+      <Flex flex={1} flexBasis={"auto"}>
+        <VerticalScrollContainer p={3} flexGrow={1}>
+          <GlobalStyle />
+          <Table
+            expandedRowKeys={selectedRowKeys}
+            expandColumnKey={"expand"}
+            estimatedRowHeight={50}
+            rowHeight={100}
+            onRowExpand={onRowExpand}
+            rowRenderer={rowRenderer}
+            onExpandedRowsChange={onExpandedRowsChange}
+            fixed={false}
+            columns={columns as any}
+            data={jobs}
+          />
+        </VerticalScrollContainer>
       </Flex>
-    </PageLayout>
+    </Flex>
   );
 };
 export default WorkWithUs;

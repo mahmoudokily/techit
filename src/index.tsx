@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
@@ -14,25 +16,27 @@ import theme from "./_shared/UI/theme";
 import assets from "./_shared/assets";
 import { PersistGate } from "redux-persist/integration/react";
 import { persistStore } from "redux-persist";
+import UserService from "./_shared/utils/services/AuthService";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 let persistor = persistStore(store);
-
-root.render(
-  <ThemeProvider theme={theme}>
-    <AssetProvider assets={assets as any}>
-      <GlobalStyles />
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <I18nextProvider i18n={i18n}>
-            <React.Suspense fallback="Loading...">
-              <AppRoutes />
-            </React.Suspense>
-          </I18nextProvider>
-        </PersistGate>
-      </Provider>
-    </AssetProvider>
-  </ThemeProvider>
+UserService.initKeycloak(() =>
+  root.render(
+    <ThemeProvider theme={theme}>
+      <AssetProvider assets={assets as any}>
+        <GlobalStyles />
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <I18nextProvider i18n={i18n}>
+              <React.Suspense fallback="Loading...">
+                <AppRoutes />
+              </React.Suspense>
+            </I18nextProvider>
+          </PersistGate>
+        </Provider>
+      </AssetProvider>
+    </ThemeProvider>
+  )
 );

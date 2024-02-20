@@ -1,29 +1,29 @@
-import { HTMLAttributes, PropsWithChildren, ReactNode } from "react";
-import styled from "styled-components";
-import { DefaultProps, defaultProps } from "./helpers";
-import { Variant } from "./helpers/types";
-import IconElement from "./IconElement";
-import { SimpleLoader } from "./Loader";
-import { CustomTheme } from "./theme";
-import { Typography } from "./Typography";
-import WaveEffect from "./WaveEffect";
+import { HTMLAttributes, PropsWithChildren, ReactNode } from "react"
+import styled from "styled-components"
+import { DefaultProps, defaultProps } from "./helpers"
+import { Variant } from "./helpers/types"
+import IconElement from "./IconElement"
+import { SimpleLoader } from "./Loader"
+import { CustomTheme } from "./theme"
+import { Typography } from "./Typography"
+import WaveEffect from "./WaveEffect"
 
-type Shape = "default" | "square" | "rounded" | "circle";
-type Size = "small" | "default" | "large";
+type Shape = "default" | "square" | "rounded" | "circle"
+type Size = "small" | "default" | "large"
 
 export interface Props extends HTMLAttributes<HTMLAnchorElement>, DefaultProps {
-  variant?: Variant;
-  iconPosition?: "left" | "right";
-  icon?: ReactNode;
-  $fill?: boolean;
-  link?: boolean;
-  withBorder?: boolean;
-  shape?: Shape;
-  block?: boolean;
-  fixedSize?: boolean;
-  disabled?: boolean;
-  loading$?: boolean;
-  $size?: Size;
+  variant?: Variant
+  iconPosition?: "left" | "right"
+  icon?: ReactNode
+  $fill?: boolean
+  link?: boolean
+  withBorder?: boolean
+  shape?: Shape
+  block?: boolean
+  fixedSize?: boolean
+  disabled?: boolean
+  loading$?: boolean
+  $size?: Size
 }
 
 const sizeStyles = (t: CustomTheme, v = "small", fixedSize = false) => `
@@ -56,7 +56,7 @@ const sizeStyles = (t: CustomTheme, v = "small", fixedSize = false) => `
             }
         `
         }
-`;
+`
 
 export const ButtonElement = styled.a<Props>`
   ${({
@@ -69,7 +69,7 @@ export const ButtonElement = styled.a<Props>`
     block = false,
     link,
     disabled,
-    loading$,
+    loading$
   }) => `
     cursor:pointer;
     position: relative;
@@ -125,7 +125,7 @@ export const ButtonElement = styled.a<Props>`
                 background: ${theme.type[variant].dark};
     
                 > ${IconElement} {
-                    background: ${theme.type[variant].main};
+                    background: transparent
                 }
             }
         `
@@ -201,7 +201,7 @@ export const ButtonElement = styled.a<Props>`
   ${({ theme, $size, fixedSize }) => sizeStyles(theme, $size, fixedSize)}
 
   ${defaultProps}
-`;
+`
 
 export const Button: React.FC<PropsWithChildren<Props>> = ({
   children,
@@ -215,7 +215,7 @@ export const Button: React.FC<PropsWithChildren<Props>> = ({
 }) => {
   const IconEl = icon ? (
     <IconElement data-src-icon-position={iconPosition}>{icon}</IconElement>
-  ) : null;
+  ) : null
 
   return (
     <WaveEffect>
@@ -231,5 +231,5 @@ export const Button: React.FC<PropsWithChildren<Props>> = ({
         {iconPosition === "right" && IconEl}
       </ButtonElement>
     </WaveEffect>
-  );
-};
+  )
+}

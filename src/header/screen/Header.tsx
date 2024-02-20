@@ -1,3 +1,5 @@
+/** @format */
+
 import { t } from "i18next";
 import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -28,6 +30,8 @@ import Svg from "../../_shared/styledComponents/Svg";
 import links from "../../_shared/utils/data/links";
 import { Flex } from "./../../_shared/UI/Flex";
 import Language from "./../../_shared/assets/svg/Language";
+import UserService, { _kc } from "../../_shared/utils/services/AuthService";
+import RenderOnRole from "../../_shared/UI/RenderOnRole";
 
 type HeaderProps = {
   autoHide?: boolean;
@@ -64,12 +68,14 @@ const Header: React.FC<HeaderProps> = ({ autoHide = true }) => {
 
   const closeMobileMenu = async (to: string, id?: string, action?: string) => {
     setShow(false);
-    await navigate(to);
+    await navigate(to, { preventScrollReset: true });
     id && scrollTo(id);
     // if (id && location.pathname === "/") {
     //   return scrollTo(id);
     // }
   };
+  console.log(_kc.hasRealmRole("cafSaas"));
+  console.log(_kc.tokenParsed);
 
   useEffect(() => {
     if (autoHide) {
@@ -94,6 +100,8 @@ const Header: React.FC<HeaderProps> = ({ autoHide = true }) => {
     i18n.changeLanguage(value);
   };
   const activeLang = localStorage?.getItem("i18nextLng");
+  const isAuth = UserService?.isLoggedIn();
+
   const selectedLanguage = useMemo(
     () => languageOptions.find((lang) => lang.value === activeLang),
     [activeLang]
@@ -121,11 +129,13 @@ const Header: React.FC<HeaderProps> = ({ autoHide = true }) => {
         </MobileIcon>
         <NavMenu show={show}>
           {links.map((el, index) => (
-            <NavItem key={index}>
-              <NavLinks onClick={() => closeMobileMenu(el.to, el.id)}>
-                {t(el.text)}
-              </NavLinks>
-            </NavItem>
+            <RenderOnRole roles={el.roles}>
+              <NavItem key={index}>
+                <NavLinks onClick={() => closeMobileMenu(el.to, el.id)}>
+                  {t(el.text)}
+                </NavLinks>
+              </NavItem>
+            </RenderOnRole>
           ))}
           <Dropdown zIndex={3000000000000}>
             <DropdownHeader width={70}>
@@ -169,6 +179,19 @@ const Header: React.FC<HeaderProps> = ({ autoHide = true }) => {
               </Flex>
             </DropdownContent>
           </Dropdown>
+          {isAuth ? (
+            <NavItem>
+              <NavLinks onClick={() => UserService.doLogout()}>
+                {t("Logout")}
+              </NavLinks>
+            </NavItem>
+          ) : (
+            <NavItem>
+              <NavLinks onClick={() => UserService.doLogin()}>
+                {t("Login")}
+              </NavLinks>
+            </NavItem>
+          )}
         </NavMenu>
       </NavbarContainer>
     </Nav>

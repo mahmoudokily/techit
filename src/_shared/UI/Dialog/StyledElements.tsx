@@ -1,11 +1,11 @@
-import styled, { css } from "styled-components";
-import { ButtonProps, CardProps } from "./types";
-import { SpaceProps, space } from "styled-system";
-import VerticalScrollContainer from "../VerticalScrollContainer";
-import { ComponentProps, PropsWithChildren } from "react";
-import { Box } from "../Box";
-import { Typography } from "../Typography";
-import { Card as CardItem } from "../Card";
+import styled, { css } from "styled-components"
+import { ButtonProps, CardProps } from "./types"
+import { SpaceProps, space } from "styled-system"
+import VerticalScrollContainer from "../VerticalScrollContainer"
+import { ComponentProps, PropsWithChildren } from "react"
+import { Box } from "../Box"
+import { Typography } from "../Typography"
+import { Card as CardItem } from "../Card"
 export const Overlay = styled.div`
   position: fixed;
   justify-content: center;
@@ -15,11 +15,11 @@ export const Overlay = styled.div`
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 4;
+  z-index: 1000000;
   height: 100vh;
   min-height: 100vh;
   background: rgba(12, 12, 13, 0.6);
-`;
+`
 
 export const DialogFooter = styled.div`
   flex-shrink: 0;
@@ -48,7 +48,7 @@ export const DialogFooter = styled.div`
   > button:nth-child(2) {
     background-color: ${({ theme }) => theme.colors.primaryDark};
   }
-`;
+`
 
 export const DialogHeaderElement = styled(CardItem)<SpaceProps>`
   flex-shrink: 0;
@@ -59,14 +59,14 @@ export const DialogHeaderElement = styled(CardItem)<SpaceProps>`
   padding: 15px;
 
   ${space}
-`;
-type DialogHeaderProps = ComponentProps<typeof Box>;
+`
+type DialogHeaderProps = ComponentProps<typeof Box>
 export const DialogHeader: React.FC<DialogHeaderProps> = ({
   children,
   ...rest
 }) => {
-  return <DialogHeaderElement {...rest}>{children}</DialogHeaderElement>;
-};
+  return <DialogHeaderElement {...rest}>{children}</DialogHeaderElement>
+}
 export const BodyScrollarContainer = styled.div`
   position: absolute;
   top: 0;
@@ -83,7 +83,7 @@ export const BodyScrollarContainer = styled.div`
   align-items: center;
   overflow: auto;
   flex: 1;
-`;
+`
 export const DialogBodyElement = styled.div`
   width: 100%;
   height: 100%;
@@ -93,19 +93,19 @@ export const DialogBodyElement = styled.div`
   overflow: auto;
   padding: 20px;
   position: relative;
-`;
+`
 
-type DialogBodyProps = {};
+type DialogBodyProps = {}
 
 export const DialogBody: React.FC<PropsWithChildren<DialogBodyProps>> = ({
-  children,
+  children
 }) => {
   return (
     <DialogBodyElement>
       <VerticalScrollContainer>{children}</VerticalScrollContainer>
     </DialogBodyElement>
-  );
-};
+  )
+}
 
 export const Button = styled.button<ButtonProps>`
 border: none;
@@ -133,7 +133,7 @@ transition: background 100ms ease -in -out;
       }
     `};
 margin: ${({ margin }) => (margin ? margin : "")};
-`;
+`
 
 export const Card = styled(Box)<CardProps>`
   background-color: white;
@@ -166,4 +166,4 @@ export const Card = styled(Box)<CardProps>`
       margin-left: 10px;
     }
   }
-`;
+`

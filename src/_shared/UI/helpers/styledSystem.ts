@@ -26,6 +26,12 @@ import {
   SpaceProps,
   typography,
   TypographyProps,
+  flexBasis,
+  flexWrap,
+  flex,
+  FlexProps,
+  FlexBasisProps,
+  FlexWrapProps
 } from "styled-system";
 
 // all the default `styled-system` props
@@ -43,7 +49,10 @@ export const defaultProps = compose(
   flexbox,
   position,
   typography,
-  background
+  background,
+  flexBasis,
+  flexWrap,
+  flex
 );
 export type DefaultProps = SpaceProps &
   // ColorProps<CustomTheme, Color> &
@@ -58,4 +67,7 @@ export type DefaultProps = SpaceProps &
   PositionProps &
   ShadowProps &
   SizeProps &
-  BackgroundColorProps;
+  BackgroundColorProps &
+  FlexProps &
+  FlexBasisProps &
+  FlexWrapProps;

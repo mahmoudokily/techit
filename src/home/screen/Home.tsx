@@ -1,3 +1,6 @@
+/** @format */
+
+import { PageLayout } from "../../_shared/layouts/PageLayout";
 import { carousel } from "../../_shared/utils/data/carousel";
 import contents from "../../_shared/utils/data/contents";
 import { features } from "../../_shared/utils/data/features";
@@ -14,17 +17,14 @@ import Services from "../components/Services";
 const Home = () => {
   return (
     <>
-      <Header />
       <Hero {...heroData} />
       <Services {...servicesData} />
-
       <Offers {...features} />
       {contents?.map((content, index: number) => (
         <Content key={index} {...content} />
       ))}
       <Carousel {...carousel} />
       <CallUs />
-      <Footer />
     </>
   );
 };

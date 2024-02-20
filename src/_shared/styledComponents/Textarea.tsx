@@ -1,10 +1,10 @@
 /** @format */
 
-import React from "react";
-import styled from "styled-components";
-import { InputLabel, Typography } from "../UI";
-import { Flex } from "./BaseUi";
-import { TextareaContainerProps } from "./types";
+import React from "react"
+import styled from "styled-components"
+import { InputLabel, Typography } from "../UI"
+import { Flex } from "./BaseUi"
+import { TextareaContainerProps } from "./types"
 
 const StyledTextArea = styled.textarea`
   -webkit-appearance: none;
@@ -37,7 +37,7 @@ const StyledTextArea = styled.textarea`
     opacity: 0.6;
     cursor: not-allowed;
   }
-`;
+`
 
 export const Textarea = React.forwardRef<any, TextareaContainerProps>(
   (
@@ -58,12 +58,15 @@ export const Textarea = React.forwardRef<any, TextareaContainerProps>(
         style={{
           flex: 1,
           flexDirection: "column",
-          width: "100%",
+          width: "100%"
         }}
       >
-        <InputLabel color={labelColor} required>
-          {label}
-        </InputLabel>
+        {label && (
+          <InputLabel color={labelColor} required={props.required}>
+            {label}
+          </InputLabel>
+        )}
+
         <StyledTextArea {...props} ref={ref} />
         {error && (
           <Typography
@@ -83,6 +86,6 @@ export const Textarea = React.forwardRef<any, TextareaContainerProps>(
           </Typography>
         )}
       </Flex>
-    );
+    )
   }
-);
+)
