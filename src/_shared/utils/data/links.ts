@@ -1,23 +1,37 @@
+/** @format */
+
 export type Link = {
-  to?: string;
+  to: string;
   text: string;
   id?: string;
   action?: string;
+  roles: string[];
 };
 
 const links: Link[] = [
   {
     to: "/",
-    text: "About",
+    text: "home",
+    id: "hero",
+    roles: [],
+  },
+  {
+    to: "/",
+    text: "consulting",
     id: "about",
+    roles: [],
   },
   {
-    to: "/pricing",
-    text: "Pricing",
+    to: "/",
+    text: "contact",
+    id: "contact",
+    roles: [],
   },
   {
-    to: "/auth",
-    text: "Sign in ",
+    to: "/work-with-us",
+    text: "work with us",
+    id: "jobs",
+    roles: ["workWithUs"],
   },
 ];
 

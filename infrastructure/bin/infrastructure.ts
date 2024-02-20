@@ -1,9 +1,15 @@
 #!/usr/bin/env node
-import "source-map-support/register";
+/** @format */
+
 import * as cdk from "aws-cdk-lib";
-import { InfrastructureStack } from "../lib/infrastructure-stack";
+import "source-map-support/register";
+import { MomuzioGroupFrontendPipelineStack } from "../lib/momuzioGroup-pipeline-stack";
 
 const app = new cdk.App();
-new InfrastructureStack(app, "InfrastructureStack", {
-  env: { account: "929633622722", region: "us-east-1" },
-});
+new MomuzioGroupFrontendPipelineStack(
+  app,
+  "MomuzioGroupFrontendPipelineStack",
+  {
+    env: { account: "992382414701", region: "us-east-1" },
+  }
+);

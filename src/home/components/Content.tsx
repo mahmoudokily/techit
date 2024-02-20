@@ -14,6 +14,7 @@ import {
 
 import { useInView } from "react-intersection-observer";
 import { useAnimation } from "framer-motion";
+import { t } from "i18next";
 
 type ContentProps = {
   topText?: string;
@@ -59,7 +60,7 @@ export const Content: React.FC<ContentProps> = ({
   }, [inView, animation]);
 
   return (
-    <Section inverse={inverse} ref={ref}>
+    <Section id="features" inverse={inverse} ref={ref}>
       <Container>
         <ContentRow reverse={reverse}>
           <ContentColumn>
@@ -69,7 +70,7 @@ export const Content: React.FC<ContentProps> = ({
                 transition={{ delay: 0.3, duration: 0.6 }}
                 animate={animation}
               >
-                {topText}
+                {t(topText as string)}
               </TopLine>
               <Heading
                 initial={initial}
@@ -77,7 +78,7 @@ export const Content: React.FC<ContentProps> = ({
                 animate={animation}
                 inverse={inverse}
               >
-                {headline}
+                {t(headline)}
               </Heading>
               <Subtitle
                 initial={initial}
@@ -85,16 +86,16 @@ export const Content: React.FC<ContentProps> = ({
                 animate={animation}
                 inverse={inverse}
               >
-                {description}
+                {t(description)}
               </Subtitle>
-              <ContentButton
+              {/* <ContentButton
                 initial={initial}
                 transition={{ delay: 1, duration: 0.6 }}
                 animate={animation}
                 inverse={inverse}
               >
-                {button.label}
-              </ContentButton>
+                {t(button.label)}
+              </ContentButton> */}
             </TextWrapper>
           </ContentColumn>
           <ContentColumn

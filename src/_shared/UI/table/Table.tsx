@@ -15,7 +15,7 @@ import {
   LoadingMoreLayer,
   LoadingMoreText,
 } from "./TableStyledElement";
-import "./style.scss";
+// import "./style.scss";
 import { CellProps, ColumnShape, ExtraProps, RendererFormat } from "./types";
 import { Flex } from "../Flex";
 
@@ -63,7 +63,6 @@ const stringHeaderRenderer = (rendererExtraProps: ExtraProps) =>
         capitalizeFirstLetter={column.title === "kWh" ? false : true}
         variant={rendererExtraProps.stringVariant}
         fontWeight="bold"
-        color="red"
       >
         {t(column.title as string)}
       </Typography>

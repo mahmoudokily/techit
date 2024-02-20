@@ -1,17 +1,17 @@
-import React, { PropsWithChildren, Suspense } from "react";
-import { Flex } from "../styledComponents";
-import { SimpleLoader } from "../UI";
+import React, { PropsWithChildren, Suspense } from "react"
+import { Center, Flex, SimpleLoader } from "../UI"
+import Loader from "../assets/svg/Loader"
 
 export const SuspensedView: React.FC<PropsWithChildren> = ({ children }) => {
   return (
     <Suspense
       fallback={
-        <Flex justifyContent={"center"} alignItems={"center"}>
-          <SimpleLoader />
-        </Flex>
+        <Center>
+          <Loader width={100} />
+        </Center>
       }
     >
       {children}
     </Suspense>
-  );
-};
+  )
+}

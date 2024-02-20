@@ -1,8 +1,10 @@
 const DV: {
-  [key: string]: any;
+  [key: string]: any
 } = {
   // color
-  BLUE: "#3D729C",
+  BLUE: "#0060df",
+  DARKBLUE: "#191d3a",
+  FOCAIA: "#cf4f83",
   INDIGO: "#675aa9",
   PURPLE: "#6658dd",
   PINK: "#f672a7",
@@ -59,9 +61,9 @@ const DV: {
   FORM_INPUT_BG_COLOR: "#fff",
   FORM_INPUT_BORDER_COLOR: "#dbdbdb",
   FORM_DISABLED_BG_COLOR: "#f2f2f2",
-  FORM_INPUT_PLACEHOLDER_COLOR: "#b1bbc4",
+  FORM_INPUT_PLACEHOLDER_COLOR: "#737373",
   FORM_INPUT_PLACEHOLDER_FILL_FADE_LEVEL: 0.3,
-  FORM_INPUT_DISABLED_BACKGROUND: '#f2f2f2',
+  FORM_INPUT_DISABLED_BACKGROUND: "#f2f2f2",
 
   // pagination
   PAGINATION_BG_COLOR: "#fff",
@@ -88,7 +90,7 @@ const DV: {
 
   // wave effect
   WAVE_EFFECT_TRANSITION_TYPE: "ease-out",
-  WAVE_EFFECT_TRANSITION_DURATION: 750,
-};
+  WAVE_EFFECT_TRANSITION_DURATION: 750
+}
 
-export default DV;
+export default DV

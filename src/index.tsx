@@ -1,31 +1,40 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { Provider } from "react-redux";
-import App from "./App";
-import { store } from "./_shared/redux/app/store";
-import { ThemeProvider } from "styled-components";
-import { themes } from "./_shared/styledComponents/themes";
-import { AppRoutes } from "./_shared/router/AppRoutes";
-import { BrowserRouter } from "react-router-dom";
-import { AssetProvider } from "./_shared/hooks/assets";
-import GlobalStyles from "./_shared/styledComponents/GlobalStyles";
-import assets from "./_shared/assets";
-import theme from "./_shared/UI/theme";
+/** @format */
 
-const root = ReactDOM.createRoot(
-  document.getElementById("root") as HTMLElement
-);
+import React from "react"
+import ReactDOM from "react-dom/client"
+import { Provider } from "react-redux"
+import App from "./App"
+import { store } from "./_shared/redux/app/store"
+import { AppRoutes } from "./_shared/router/AppRoutes"
+import { BrowserRouter } from "react-router-dom"
+import { I18nextProvider } from "react-i18next"
+import i18n from "./_shared/i18n/i18n"
+import { ThemeProvider } from "styled-components"
+import { AssetProvider } from "./_shared/hooks/assets"
+import GlobalStyles from "./_shared/styledComponents/GlobalStyles"
+import theme from "./_shared/UI/theme"
+import assets from "./_shared/assets"
+import { PersistGate } from "redux-persist/integration/react"
+import { persistStore } from "redux-persist"
+import UserService from "./_shared/utils/services/AuthService"
 
-root.render(
-  <BrowserRouter>
+const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
+let persistor = persistStore(store)
+UserService.initKeycloak(() =>
+  root.render(
     <ThemeProvider theme={theme}>
-      <Provider store={store}>
-        <AssetProvider assets={assets as any}>
-          <GlobalStyles />
-
-          <AppRoutes />
-        </AssetProvider>
-      </Provider>
+      <AssetProvider assets={assets as any}>
+        <GlobalStyles />
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <I18nextProvider i18n={i18n}>
+              <React.Suspense fallback="Loading...">
+                <AppRoutes />
+              </React.Suspense>
+            </I18nextProvider>
+          </PersistGate>
+        </Provider>
+      </AssetProvider>
     </ThemeProvider>
-  </BrowserRouter>
-);
+  )
+)

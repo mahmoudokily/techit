@@ -1,20 +1,36 @@
-import { Navigate, Route, Routes } from "react-router-dom";
-import App from "../../App";
-import { PrivateRoutes } from "./PrivateRoutes";
-import PublicRoutes from "./PublicRoutes";
+/** @format */
+
+import { lazy, useEffect } from "react";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  RouterProvider,
+  Routes,
+  createBrowserRouter,
+  createRoutesFromElements,
+} from "react-router-dom";
+import Dashboard from "./../assets/svg/Dashboard";
 import ErrorsRoutes from "./ErrorsRoutes";
+import PublicRoutes from "./PublicRoutes";
+import { SuspensedView } from "./SuspensedView";
+import UserService from "../utils/services/AuthService";
+import { PrivateRoutes } from "./PrivateRoutes";
+
+const Home = lazy(() => import("../../home/screen/Home"));
 
 export const AppRoutes = () => {
-  const isAuth = true;
-
-  return (
-    <Routes>
-      <Route element={<App />}>
+  const isAuth = UserService?.isLoggedIn();
+  console.log(isAuth);
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <>
         <Route path="error/*" element={<ErrorsRoutes />} />
+
         {!!isAuth ? (
           <>
             <Route path="/*" element={<PrivateRoutes />} />
-            <Route index element={<Navigate to="/" replace={true} />} />
+            <Route index element={<Navigate to="/home" replace={true} />} />
           </>
         ) : (
           <>
@@ -22,7 +38,8 @@ export const AppRoutes = () => {
             <Route index element={<Navigate to="/login" replace={true} />} />
           </>
         )}
-      </Route>
-    </Routes>
+      </>
+    )
   );
+  return <RouterProvider router={router} />;
 };

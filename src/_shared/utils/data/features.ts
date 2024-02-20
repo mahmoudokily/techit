@@ -1,48 +1,48 @@
-import { BsFillShieldLockFill } from "react-icons/bs";
+import { BsFillShieldLockFill, BsShieldExclamation } from "react-icons/bs";
 import { IoIosOptions } from "react-icons/io";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { BiSupport, BiDollar } from "react-icons/bi";
 import { GrHostMaintenance } from "react-icons/gr";
 
 export const features = {
-  label: "What We Offer",
+  label: "what we offer",
   data: [
     {
-      name: "Best Security",
+      name: "best security",
       description:
         "We offer the best data security to our clients, which makes us stand out",
       icon: BsFillShieldLockFill,
       imgClass: "one",
     },
     {
-      name: "Ease of Use",
-      description: "Our system is easy to use and integrate",
+      name: "ease of use",
+      description: "our system is easy to use and integrate",
       icon: IoIosOptions,
       imgClass: "two",
     },
     {
-      name: "Maintenance",
+      name: "maintenance",
       description:
-        "Our code is written in highest standards, which makes it highly sustainable",
-      icon: GrHostMaintenance,
+        "our code is written in highest standards, which makes it highly sustainable",
+      icon: BsShieldExclamation,
       imgClass: "three",
     },
     {
-      name: "24/7 Support",
-      description: "Our team is available at all times in case you need us",
+      name: "24/7 support",
+      description: "our team is available at all times in case you need us",
       icon: BiSupport,
       imgClass: "four",
     },
     {
-      name: "Price",
-      description: "We offer the highest value/cost ratio",
+      name: "price",
+      description: "we offer the highest value/cost ratio",
       icon: BiDollar,
       imgClass: "five",
     },
     {
-      name: "Scalable",
+      name: "scalable",
       description:
-        "Our servers are located all over the world, therefore improving scalability and speed ",
+        "our servers are located all over the world, therefore improving scalability and speed",
       icon: AiOutlineCloudUpload,
       imgClass: "six",
     },

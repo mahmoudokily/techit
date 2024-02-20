@@ -1,3 +1,5 @@
+/** @format */
+
 import { ChangeEvent } from "react";
 import styled from "styled-components";
 import { Flex } from "./Flex";
@@ -333,7 +335,7 @@ export const Pagination: React.FC<PaginationProps> = ({
       {hideLimitOptions ? null : (
         <Flex ml={3} width={100} alignItems="center" justifyContent="center">
           {/* <Select options={limitOptions} menuPosition="fixed" placeholder='5' isClearable={false} defaultValue={{ value: limit, label: limit }} /> */}
-          <StyledSelect {...props} placeholder="5" defaultValue={limit}>
+          <StyledSelect {...props} defaultValue={limit}>
             {limitOptions.map((option, index) => (
               <option value={option.value}>{option?.label}</option>
             ))}

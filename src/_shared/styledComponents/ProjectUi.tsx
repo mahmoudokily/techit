@@ -5,6 +5,11 @@ import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import { space, SpaceProps } from "styled-system";
 import { AllProps } from "./types";
+import Svg from "./Svg";
+import HeroBackground from "../../_shared/assets/bgBlue2.jpg";
+
+// Foto di <a href="https://unsplash.com/it/@joshuaryanphoto?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Joshua Reddekopp</a> su <a href="https://unsplash.com/it/foto/macbook-pro-su-tavolo-in-legno-marrone-SyYmXSDnJ54?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+
 type Props = {
   reverse?: boolean;
   inverse?: boolean;
@@ -42,29 +47,15 @@ export const FixedButton = styled.button`
   }
 `;
 //header
-export const Nav = styled.nav<{ show: boolean }>`
-  margin-bottom: -80px;
-  height: 80px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  align-items: center;
-  font-size: 1.2rem;
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  width: 100%;
-  background-color: ${({ show, theme }) =>
-    show ? theme.colors.primary : "transparent"};
-
-  transition: background-color 0.1s ease-in;
-`;
 
 export const NavbarContainer = styled(Container)`
   display: flex;
   align-items: center;
   justify-content: start;
   height: 80px;
+  flex-shrink: 0;
+  min-width: 400px;
+  width: 100%;
 
   ${Container}
 `;
@@ -80,11 +71,10 @@ export const NavLogo = styled(Link)`
   z-index: 50;
 `;
 
-export const NavIcon = styled.img`
+export const NavIcon = styled(Svg).attrs({ name: "Logo" })`
   margin-right: 0.4rem;
   margin-top: 0.5rem;
-
-  width: 5rem;
+  width: 4rem !important;
 `;
 
 export const MobileIcon = styled.div`
@@ -111,12 +101,15 @@ export const NavMenu = styled.ul<{ show: boolean }>`
 
   @media screen and (max-width: 960px) {
     flex-direction: column;
+    overflow: hidden;
     width: 100%;
     height: 100vh;
+    max-height: 100vh;
     position: fixed;
-    padding-top: 30%;
+    padding-top: 20%;
     top: 0;
     left: 0;
+    bottom: 0;
     opacity: ${({ show }) => (show ? 1 : 0)};
     visibility: ${({ show }) => (show ? "visible" : "hidden")};
     transform: translateY(${({ show }) => (show ? "0" : "-10px")});
@@ -132,9 +125,9 @@ export const NavMenu = styled.ul<{ show: boolean }>`
 export const NavItem = styled.li`
   height: 80px;
   cursor: pointer;
-
   @media screen and (max-width: 960px) {
     width: 100%;
+    font-size: 1.5rem;
     &:hover {
       border: none;
     }
@@ -147,6 +140,7 @@ export const NavLinks = styled.a`
   text-decoration: none;
   padding: 0.5rem 1rem;
   height: 100%;
+  color: white;
 
   &:hover {
     transition: all 0.3s ease;
@@ -239,6 +233,8 @@ export const TopLine = styled(motion.div)<Props>`
   font-weight: 550;
   letter-spacing: 1.4px;
   margin-bottom: 1.3rem;
+  color: ${({ theme, inverse }) =>
+    inverse ? theme.colors.primary : theme.colors.white};
 `;
 export const Img = styled(motion.img)`
   padding-right: 0;
@@ -255,7 +251,8 @@ export const Heading = styled(motion.h2)<Props>`
   font-size: 3rem;
   line-height: 1.1;
   font-weight: 600;
-
+  color: ${({ theme, inverse }) =>
+    inverse ? theme.colors.primary : theme.colors.white};
   @media screen and (max-width: 768px) {
     text-align: center;
   }
@@ -264,6 +261,8 @@ export const Subtitle = styled(motion.p)<Props>`
   max-width: 440px;
   margin-bottom: 35px;
   line-height: 24px;
+  color: ${({ theme, inverse }) =>
+    inverse ? theme.colors.primary : theme.colors.white}!important;
 `;
 
 export const ContentButton = styled(motion.button)<Props>`
@@ -276,15 +275,12 @@ export const ContentButton = styled(motion.button)<Props>`
   text-transform: uppercase;
   cursor: pointer;
   background: none;
-
   border-radius: 4px;
   white-space: nowrap;
   padding: ${({ big }) => (big ? "12px 64px" : "10px 20px")};
   font-size: ${({ fontBig }) => (fontBig ? "20px" : "16px")};
   outline: none;
   border:2px solid ;
-   
-  
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -358,13 +354,14 @@ export const FeatureColumn = styled(motion.div)`
 export const FeatureImageWrapper = styled.div`
   margin-bottom: 1rem;
   border-radius: 50%;
-  border: 2px solid;
+  border: 2px solid ${({ theme: { colors } }) => colors.primary}!important;
   padding: 30px;
 `;
 export const FeatureName = styled.h3`
   font-weight: 600;
   font-size: 1.3rem;
   letter-spacing: 2px;
+  color: ${({ theme: { colors } }) => colors.primary};
 
   @media screen and (max-width: 768px) {
     font-weight: 400;
@@ -374,6 +371,8 @@ export const FeatureName = styled.h3`
 `;
 export const FeatureText = styled.p`
   margin: 1rem 0 auto;
+  color: ${({ theme: { colors } }) => colors.primary}!important;
+
   text-align: center;
   font-size: 0.9rem;
   line-height: 1.73;
@@ -384,9 +383,12 @@ export const FeatureText = styled.p`
 export const HeroSection = styled(Section)`
   height: 100vh;
   display: flex;
-  background: transparent;
-  background-position: center;
+  // justify-content: center;
+  background-position: top bottom;
   background-size: cover;
+  background-color: white;
+  background-image: url(${HeroBackground});
+
   padding-top: clamp(70px, 25vh, 220px);
   box-shadow: inset 0 0 0 1000px rgba (0, 0, 0, 0.2);
 `;
@@ -398,12 +400,12 @@ export const HeroSubTitle = styled(Typography)`
   letter-spacing: 2px;
 `;
 export const HeroTitle = styled.p`
-  font-size: clamp(2rem, 6vw, 4rem);
+  font-size: clamp(1.4rem, 4vw, 3rem);
   margin-bottom: 2rem;
   font-family: "Alfa Slab One", cursive;
   width: 100%;
   letter-spacing: 4px;
-  text-align: center;
+  text-align: left;
 `;
 export const HeroVideo = styled.video`
   object-fit: cover;
@@ -493,6 +495,7 @@ export const ButtonContainer = styled(Row)`
   }
 `;
 export const SectionTitle = styled(Typography)`
+  color: ${({ theme: { colors } }) => colors.primary}!important;
   text-align: center;
   font-size: clamp(1.3rem, 13vw, 3.1rem);
   line-height: 1.06;
@@ -503,7 +506,7 @@ export const SectionTitle = styled(Typography)`
 
 export const FooterGrid = styled(Box)`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   justify-content: center;
   align-items: center;
 `;
@@ -536,7 +539,6 @@ export const FooterRights = styled(Typography)`
   width: 100%;
   font-size: 0.8rem;
   border-top: 0.4px solid #ffff;
-
   text-align: center;
   padding: 1rem 0;
   margin: 1rem 0 0;
@@ -597,3 +599,22 @@ export const FooterLink = styled(Link)<AllProps>`
   }
 `;
 //callus
+
+export const Nav = styled.nav<{ show: boolean }>`
+  margin-bottom: -80px;
+  backdrop-filter: blur(2px);
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  background-color: ${({ show, theme }) =>
+    show ? theme.colors.primary : "transparent"};
+
+  transition: background-color 0.1s ease-in;
+`;

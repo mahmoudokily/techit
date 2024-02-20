@@ -1,11 +1,14 @@
 import { Outlet } from "react-router-dom";
-import { Flex } from "../../../_shared/styledComponents";
+import { PageLayout } from "../../../_shared/layouts/PageLayout";
+import { Center } from "../../../_shared/UI";
 
 const Error = () => {
   return (
-    <Flex height={"100%"} width={"100%"}>
-      <Outlet />
-    </Flex>
+    <PageLayout>
+      <Center>
+        <Outlet />
+      </Center>
+    </PageLayout>
   );
 };
 

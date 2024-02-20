@@ -1,16 +1,37 @@
-import React from "react";
-import { Absolute } from "./Absolute";
-import { Flex } from "./Flex";
+import React from "react"
+import { Absolute } from "./Absolute"
+import { Flex } from "./Flex"
+import { useEffect } from "react"
+import { useInView } from "react-intersection-observer"
+import { motion, useAnimation } from "framer-motion"
+import styled from "styled-components"
 
-type VerticalScrollContainerProps = React.ComponentPropsWithRef<typeof Flex>;
+type VerticalScrollContainerProps = React.ComponentPropsWithRef<typeof Flex>
 
 const VerticalScrollContainer: React.FC<VerticalScrollContainerProps> = ({
   children,
-  ref,
   ...rest
 }) => {
+  const { ref, inView } = useInView({ threshold: 0.2 })
+  const initial = { opacity: 0, y: 30 }
+  const animation = useAnimation()
+
+  useEffect(() => {
+    if (inView) {
+      animation.start({
+        opacity: 1,
+        y: 0
+      })
+    }
+  }, [inView, animation])
+
   return (
-    <Flex height="100%" width="100%" flex={1} position="relative" >
+    <MotionFlex
+      initial={initial}
+      transition={{ delay: 0.1, duration: 0.6 }}
+      animate={animation}
+      ref={ref}
+    >
       <Absolute
         flex={1}
         height="100%"
@@ -25,7 +46,15 @@ const VerticalScrollContainer: React.FC<VerticalScrollContainerProps> = ({
       >
         {children}
       </Absolute>
-    </Flex>
-  );
-};
-export default VerticalScrollContainer;
+    </MotionFlex>
+  )
+}
+export default VerticalScrollContainer
+
+const MotionFlex = styled(motion.div)`
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex: 1;
+  position: relative;
+`

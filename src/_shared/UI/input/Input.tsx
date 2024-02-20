@@ -1,48 +1,48 @@
-import React from "react";
-import styled from "styled-components";
-import { Flex } from "../Flex";
-import { defaultProps, DefaultProps } from "../helpers";
-import { Shape, Size, Variant } from "../helpers/types";
-import { CustomTheme } from "../theme";
-import { Typography, TypographyProps } from "../Typography";
-import { InputIcon } from "./inputStyledElements";
+import React from "react"
+import styled from "styled-components"
+import { Flex } from "../Flex"
+import { defaultProps, DefaultProps } from "../helpers"
+import { Shape, Size, Variant } from "../helpers/types"
+import { CustomTheme } from "../theme"
+import { Typography, TypographyProps } from "../Typography"
+import { InputIcon } from "./inputStyledElements"
 
 const sizeStyles = (v = "large", t: CustomTheme) => `
         padding: ${t?.form?.inputPadding?.[v]?.y} ${t?.form?.inputPadding?.[v]?.x};
         font-size: ${t?.form?.inputFontSize?.[v]};
-    `;
+    `
 
 const placeholder = [
   "::-webkit-input-placeholder",
   "::-moz-placeholder",
   ":-moz-placeholder",
   ":-ms-input-placeholder",
-  "::placeholder",
-];
+  "::placeholder"
+]
 interface Props extends Partial<React.InputHTMLAttributes<HTMLInputElement>> {
-  variant?: Variant;
-  $fill?: boolean;
-  withBorder?: boolean;
-  shape?: Shape;
-  inputElement?: boolean;
-  prefixAbsolute?: boolean;
-  suffixAbsolute?: boolean;
-  $size?: Size;
-  prefix?: any;
-  suffix?: any;
-  error?: string | any;
-  hint?: string;
-  prefixProps?: any;
-  suffixProps?: any;
-  containerProps?: DefaultProps;
-  errorProps?: TypographyProps;
+  variant?: Variant
+  $fill?: boolean
+  withBorder?: boolean
+  shape?: Shape
+  inputElement?: boolean
+  prefixAbsolute?: boolean
+  suffixAbsolute?: boolean
+  $size?: Size
+  prefix?: any
+  suffix?: any
+  error?: string | any
+  hint?: string
+  prefixProps?: any
+  suffixProps?: any
+  containerProps?: DefaultProps
+  errorProps?: TypographyProps
 }
 
 export const InputElement = styled.input<Props>`
   ${({
     theme,
-    variant = "primary",
-    $fill = false,
+    variant = "light",
+    $fill = true,
     withBorder = true,
     shape = "default",
     disabled,
@@ -50,7 +50,7 @@ export const InputElement = styled.input<Props>`
     prefixAbsolute,
     suffix,
     suffixAbsolute,
-    inputElement = true,
+    inputElement = true
   }) => `
     
     width:100%;
@@ -64,22 +64,23 @@ export const InputElement = styled.input<Props>`
     &:active {
         outline: 0;
     }
+    
   
     ${
       $fill
         ? `
-        border-color: ${theme.type[variant].main};
-        background: ${theme.type[variant].main};
-        color: ${theme.type[variant].font};
-        fill: ${theme.type[variant].font};
+        border-color: ${theme.type[variant]?.main};
+        background: ${theme.type[variant]?.main};
+        color: ${theme.type[variant]?.font};
+        fill: ${theme.type[variant]?.font};
         &:focus,
         &[data-src-active="true"] {
-            border-color: ${theme.type[variant].darkest};
-            background: ${theme.type[variant].dark};
+            border-color: ${theme.type[variant]?.darkest};
+            background: ${theme.type[variant]?.dark};
         }
     `
         : `
-        border-color ${theme?.type[variant].form?.inputBorder};
+        border-color ${theme?.type[variant]?.form?.inputBorder};
         background: ${theme?.type[variant].form?.inputBackground};
         color: ${"#122967" || theme?.type[variant].form?.inputFont};
         fill: ${theme?.type[variant].form?.inputFont};
@@ -91,6 +92,7 @@ export const InputElement = styled.input<Props>`
         outline: 2px solid red;
         border-color: red;
     }
+    
     `
     }
 
@@ -105,6 +107,8 @@ export const InputElement = styled.input<Props>`
             (item) => `
             &${item} {
                 opacity: 1;
+                    font-size: 18px;
+
                 color: ${
                   $fill
                     ? theme?.type[variant]?.form?.inputPlaceholderFill
@@ -165,7 +169,7 @@ export const InputElement = styled.input<Props>`
 `};
   ${({ $size, theme }) => sizeStyles($size, theme)};
   ${defaultProps};
-`;
+`
 
 export const Input = React.forwardRef<any, Props>(
   (
@@ -177,6 +181,7 @@ export const Input = React.forwardRef<any, Props>(
       prefixAbsolute = false,
       suffixProps,
       suffixAbsolute = false,
+      inputElement = true,
       errorProps,
       error,
       hint,
@@ -208,6 +213,7 @@ export const Input = React.forwardRef<any, Props>(
             )}
             <InputElement
               shape={shape}
+              inputElement={inputElement}
               prefixAbsolute={prefixAbsolute}
               suffixAbsolute={suffixAbsolute}
               suffix={suffix}
@@ -254,6 +260,6 @@ export const Input = React.forwardRef<any, Props>(
           </Typography>
         )}
       </Flex>
-    );
+    )
   }
-);
+)

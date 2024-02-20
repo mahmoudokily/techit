@@ -1,36 +1,37 @@
-import { HTMLAttributes, PropsWithChildren, ReactNode } from "react";
-import styled from "styled-components";
-import { DefaultProps, defaultProps } from "./helpers";
-import { Variant } from "./helpers/types";
-import IconElement from "./IconElement";
-import { SimpleLoader } from "./Loader";
-import { CustomTheme } from "./theme";
-import { Typography } from "./Typography";
-import WaveEffect from "./WaveEffect";
+import { HTMLAttributes, PropsWithChildren, ReactNode } from "react"
+import styled from "styled-components"
+import { DefaultProps, defaultProps } from "./helpers"
+import { Variant } from "./helpers/types"
+import IconElement from "./IconElement"
+import { SimpleLoader } from "./Loader"
+import { CustomTheme } from "./theme"
+import { Typography } from "./Typography"
+import WaveEffect from "./WaveEffect"
 
-type Shape = "default" | "square" | "rounded" | "circle";
-type Size = "small" | "default" | "large";
+type Shape = "default" | "square" | "rounded" | "circle"
+type Size = "small" | "default" | "large"
 
 export interface Props extends HTMLAttributes<HTMLAnchorElement>, DefaultProps {
-  variant?: Variant;
-  iconPosition?: "left" | "right";
-  icon?: ReactNode;
-  $fill?: boolean;
-  link?: boolean;
-  withBorder?: boolean;
-  shape?: Shape;
-  block?: boolean;
-  fixedSize?: boolean;
-  disabled?: boolean;
-  loading$?: boolean;
-  $size?: Size;
+  variant?: Variant
+  iconPosition?: "left" | "right"
+  icon?: ReactNode
+  $fill?: boolean
+  link?: boolean
+  withBorder?: boolean
+  shape?: Shape
+  block?: boolean
+  fixedSize?: boolean
+  disabled?: boolean
+  loading$?: boolean
+  $size?: Size
 }
 
 const sizeStyles = (t: CustomTheme, v = "small", fixedSize = false) => `
    font-size: ${t.button.fontSize[v]};
    text-transform:uppercase;
-        ${fixedSize
-    ? `
+        ${
+          fixedSize
+            ? `
             width: ${t.button.fixedSize[v]};
             height: ${t.button.fixedSize[v]}; width: ${t.button.fixedSize[v]};
             max-height: ${t.button.fixedSize[v]};
@@ -38,7 +39,7 @@ const sizeStyles = (t: CustomTheme, v = "small", fixedSize = false) => `
 
 
         `
-    : `
+            : `
             padding: ${t.button.padding[v].y} ${t.button.padding[v].x};
             > ${IconElement} {
                 padding: 0 ${t.button.padding[v].xHalf};
@@ -54,22 +55,22 @@ const sizeStyles = (t: CustomTheme, v = "small", fixedSize = false) => `
                 }
             }
         `
-  }
-`;
+        }
+`
 
 export const ButtonElement = styled.a<Props>`
   ${({
-  variant = "primary",
-  $fill = true,
-  withBorder = true,
-  shape = "default",
-  fixedSize = false,
-  theme,
-  block = false,
-  link,
-  disabled,
-  loading$,
-}) => `
+    variant = "primary",
+    $fill = true,
+    withBorder = true,
+    shape = "default",
+    fixedSize = false,
+    theme,
+    block = false,
+    link,
+    disabled,
+    loading$
+  }) => `
     cursor:pointer;
     position: relative;
     overflow: hidden;
@@ -88,25 +89,29 @@ export const ButtonElement = styled.a<Props>`
     a& {
         text-decoration: none;
     }
-    ${block
-      ? `
+    ${
+      block
+        ? `
         justify-content: center;
         width: 100%;
     `
-      : ""
+        : ""
     }
-    ${fixedSize
-      ? `       
+    ${
+      fixedSize
+        ? `       
         justify-content: center;
     `
-      : ""
+        : ""
     }
-    ${!link
-      ? `
-        ${$fill
+    ${
+      !link
         ? `
+        ${
+          $fill
+            ? `
             background: ${theme.type[variant].main};
-            color: ${theme.type[variant].font};
+            color: ${theme.type[variant].font}!important;
             fill: ${theme.type[variant].font};
             > ${IconElement} {
                 background: ${theme.type[variant].main};
@@ -120,11 +125,11 @@ export const ButtonElement = styled.a<Props>`
                 background: ${theme.type[variant].dark};
     
                 > ${IconElement} {
-                    background: ${theme.type[variant].main};
+                    background: transparent
                 }
             }
         `
-        : `
+            : `
             background: ${theme?.type[variant].button?.background};
             color: ${theme?.type[variant].main};
             fill: ${theme.type[variant].main};
@@ -139,20 +144,21 @@ export const ButtonElement = styled.a<Props>`
                 fill: ${theme?.type[variant].button?.background};
             }
         `
-      }
+        }
     
-        ${withBorder
-        ? `
+        ${
+          withBorder
+            ? `
             &:focus,
             &:active,
             &[data-src-active="true"] {
                 box-shadow: 0 0 0 .15rem ${theme.type[variant].shadow};
             }
         `
-        : ""
-      }
+            : ""
+        }
     `
-      : `
+        : `
         border-color: transparent;
         background: transparent;
         cursor: pointer;
@@ -170,22 +176,24 @@ export const ButtonElement = styled.a<Props>`
     &:active {
         outline: 0;
     }
-    ${disabled
-      ? `
+    ${
+      disabled
+        ? `
         opacity: ${theme.button.disabledOpacity};
         pointer-events: none;
     `
-      : ""
+        : ""
     }
-    ${loading$
-      ? `
+    ${
+      loading$
+        ? `
         pointer-events: none;
         > *:not(.src-wave-ripple):not([data-src-loading="true"]) {
             visibility: hidden;
          
         }
     `
-      : ""
+        : ""
     }
 
       
@@ -193,7 +201,7 @@ export const ButtonElement = styled.a<Props>`
   ${({ theme, $size, fixedSize }) => sizeStyles(theme, $size, fixedSize)}
 
   ${defaultProps}
-`;
+`
 
 export const Button: React.FC<PropsWithChildren<Props>> = ({
   children,
@@ -207,17 +215,21 @@ export const Button: React.FC<PropsWithChildren<Props>> = ({
 }) => {
   const IconEl = icon ? (
     <IconElement data-src-icon-position={iconPosition}>{icon}</IconElement>
-  ) : null;
+  ) : null
 
   return (
     <WaveEffect>
-      <ButtonElement disabled={disabled || loading} variant={variant} $size={$size} {...props}>
+      <ButtonElement
+        disabled={disabled || loading}
+        variant={variant}
+        $size={$size}
+        {...props}
+      >
         {loading && <SimpleLoader size={$size} mr={props?.fixedSize ? 0 : 2} />}
         {iconPosition === "left" && IconEl}
         {!loading || typeof children !== "string" ? children : children}
         {iconPosition === "right" && IconEl}
       </ButtonElement>
     </WaveEffect>
-
-  );
-};
+  )
+}

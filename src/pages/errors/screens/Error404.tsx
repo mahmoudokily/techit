@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import { t } from "i18next";
-import { Button, Flex, Typography } from "../../../_shared/styledComponents";
+import { Button, Flex, Typography } from "../../../_shared/UI";
 const Error404 = () => {
   const navigate = useNavigate();
   return (
-    <Flex alignContent="center" justifyContent="center">
+    <Flex fullSize>
       <Typography textAlign="center" fontSize={56} fontWeight="bold">
         404
       </Typography>

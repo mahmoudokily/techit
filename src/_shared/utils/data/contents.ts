@@ -2,12 +2,12 @@ const content = [
   {
     reverse: true,
     inverse: true,
-    topText: "Design and programming",
-    headline: "We have more than 10 years of experience",
+    topText: "design and programming",
+    headline: "we have more than 10 years of experience",
     description:
-      "We design and program web platforms with the latest technologies",
+      "we design and program web platforms with the latest technologies",
     button: {
-      label: "Find More",
+      label: "find more",
       linkTo: "/more",
     },
     img: {
@@ -19,12 +19,12 @@ const content = [
   {
     reverse: false,
     inverse: false,
-    topText: "Analysis and Consultation",
-    headline: "We help you turn your idea into a project",
+    topText: "analysis and consultation",
+    headline: "we help you turn your idea into a project",
     description:
-      "We are present at all stages of the project, analysis, design, testing, and then maintenance",
+      "we are present at all stages of the project, analysis, design, testing, and then maintenance",
     button: {
-      label: "View Project",
+      label: "discover more",
       linkTo: "/more",
       primary: true,
     },
@@ -37,12 +37,12 @@ const content = [
   {
     reverse: true,
     inverse: true,
-    topText: "Passion before money",
-    headline: "Why you should choose us? ",
+    topText: "passion before money",
+    headline: "why you should choose us ?",
     description:
-      "Because we are a group of ambitious young people. We have a passion for transforming ideas into smart projects that help society and people in facilitating life.",
+      "because we are a group of ambitious young people. We have a passion for transforming ideas into smart projects that help society and people in facilitating life.",
     button: {
-      label: "View Project",
+      label: "discover more",
       linkTo: "/download",
       primary: false,
     },

@@ -10,6 +10,8 @@ import {
 
 import { useNavigate } from "react-router-dom";
 import { scrollTo } from "../../_shared/utils/func/scrollTo";
+import { t } from "i18next";
+import { Flex } from "../../_shared/UI";
 type HeroProps = {
   inverse: boolean;
   title: string;
@@ -43,21 +45,23 @@ export const Hero: React.FC<HeroProps> = ({
 
   return (
     <HeroSection id="hero">
-      <HeroVideo src={videoSrc} autoPlay muted />
-      <Container
-        justifyContent="center"
-        alignItems="center"
+      {/* <HeroVideo src={videoSrc} autoPlay muted /> */}
+      <Flex
+        p={4}
         display="flex"
+        justifyContent={"left"}
+        alignItems={"flex-start"}
         flexDirection="column"
+        width={600}
       >
-        {title && <HeroTitle>{title}</HeroTitle>}
-        {subTitle && <HeroSubTitle inverse={true}>{subTitle}</HeroSubTitle>}
+        {title && <HeroTitle>{t(title)}</HeroTitle>}
+        {subTitle && <HeroSubTitle inverse={true}>{t(subTitle)}</HeroSubTitle>}
         {button && (
           <Button onClick={handleClick(button)} inverse>
-            {button.label}
+            {t(button.label)}
           </Button>
         )}
-      </Container>
+      </Flex>
     </HeroSection>
   );
 };

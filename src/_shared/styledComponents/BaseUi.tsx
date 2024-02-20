@@ -42,14 +42,13 @@ export const Absolute = styled(Flex)<AllProps>`
 `;
 
 export const Button = styled.button<AllProps>`
- 
   font-weight: 700;
   font-size: 0.8rem;
   letter-spacing: 1.54px;
   text-transform: uppercase;
   cursor: pointer;
   background: none;
-    letter-spacing: 1.54px;
+  letter-spacing: 1.54px;
   text-transform: uppercase;
   cursor: pointer;
   padding:10px 40px;
@@ -63,13 +62,9 @@ hite : theme.colors.primary.main};
 
     
 }
-
   border-radius: 4px;
   white-space: nowrap;
-
   outline: none;
-
-  
   cursor: pointer;
   position: relative;
   overflow: hidden;
@@ -82,7 +77,9 @@ export const Container = styled(Box)<AllProps>`
   max-width: 1300px;
   margin-right: auto;
   margin-left: auto;
-  padding: 0 50px;
+  padding: 0 70px;
+  // background-color: white;
+  // border-radius: 20px;
 
   @media screen and (max-width: 960px) {
     padding: 0 30px;
@@ -90,21 +87,22 @@ export const Container = styled(Box)<AllProps>`
 `;
 
 export const Section = styled(Box)<SectionProps>`
+  max-width: 100%;
+  overflow: hidden;
   padding: ${({ padding }) => (padding ? padding : "140px 0px")};
   background: ${({ inverse, theme }) =>
-    inverse === true ? theme.colors.primary : theme.colors.white};
-  color: ${({ inverse, theme }) =>
-    inverse === true ? theme.colors.primary : theme.colors.white};
+    inverse === true ? "#ffffff" : theme.colors.primary};
+  color: ${({ inverse, theme }) => (inverse === true ? "#0c0c0d" : "white")};
   a,
   span,
   button,
   p {
     color: ${({ inverse, theme }) =>
-      inverse === true ? theme.colors.primary : theme.colors.white};
+      inverse === true ? "#0c0c0d" : theme.colors.white};
   }
   svg {
     fill: ${({ inverse, theme }) =>
-      inverse === true ? theme.colors.primary : theme.colors.white};
+      inverse === true ? "#0c0c0d" : theme.colors.white};
     color: ${({ inverse, theme }) =>
       inverse === true ? theme.colors.primary : theme.colors.white};
   }

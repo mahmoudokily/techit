@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components"
 import {
   background,
   border,
@@ -10,40 +10,41 @@ import {
   position,
   shadow,
   size,
-  space,
-} from "styled-system";
-import { DefaultProps } from "./helpers";
+  space
+} from "styled-system"
+import { DefaultProps } from "./helpers"
 
 interface BoxProps extends React.HTMLAttributes<HTMLDivElement>, DefaultProps {
-  withEffect?: boolean;
-  clickable?: boolean;
+  withEffect?: boolean
+  clickable?: boolean
 }
 
 export const Box = styled.div<BoxProps>`
   box-sizing: border-box;
-${({ clickable, theme }) => clickable ? `
+  ${({ clickable, theme }) =>
+    clickable
+      ? `
 &:hover& ,&:focus {
   background-color: #d8edfe!important;
   cursor: pointer;
 };
 
+`
+      : ``};
 
-
-`: ``};
-  
   ${compose(
-  space,
-  color,
-  size,
-  layout,
-  background,
-  flexbox,
-  grid,
-  border,
-  shadow,
-  position
-)}
-`;
+    space,
+    color,
+    size,
+    layout,
+    background,
+    flexbox,
+    grid,
+    border,
+    shadow,
+    position
+  )}
+`
 
 // const AbsoluteShape = styled.div`
 //   position: absolute;
@@ -58,4 +59,4 @@ ${({ clickable, theme }) => clickable ? `
 //   overflow: hidden;
 // `;
 
-Box.defaultProps = {};
+Box.defaultProps = {}

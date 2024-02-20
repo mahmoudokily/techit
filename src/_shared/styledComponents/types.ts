@@ -1,8 +1,8 @@
 import {
   HTMLAttributes,
   InputHTMLAttributes,
-  TextareaHTMLAttributes,
-} from "react";
+  TextareaHTMLAttributes
+} from "react"
 import {
   BackgroundProps,
   BordersProps,
@@ -12,8 +12,8 @@ import {
   PositionProps,
   ShadowProps,
   SpaceProps,
-  TypographyProps,
-} from "styled-system";
+  TypographyProps
+} from "styled-system"
 
 export type AllProps = SpaceProps &
   LayoutProps &
@@ -25,43 +25,43 @@ export type AllProps = SpaceProps &
   TypographyProps &
   GridGapProps &
   Variant & {
-    inverse?: boolean;
-  };
+    inverse?: boolean
+  }
 
 export type SectionProps = {
-  inverse?: boolean;
-  smPadding?: string;
-  padding?: string;
-} & AllProps;
+  inverse?: boolean
+  smPadding?: string
+  padding?: string
+} & AllProps
 
 export interface LabelProps
   extends HTMLAttributes<HTMLLabelElement>,
     TypographyProps,
     SpaceProps {
-  color?: string;
+  color?: string
 }
 
 export type Variant = {
-  variant?: "primary" | "secondary" | "default";
-  borderRadius?: "round" | "none" | "default";
-};
+  variant?: "primary" | "secondary" | "default"
+  borderRadius?: "round" | "none" | "default"
+}
 
 export interface InputContainerProps
   extends InputHTMLAttributes<HTMLInputElement>,
     SpaceProps,
     BackgroundProps,
     Variant {
-  onPrefixClick?: () => void;
-  onSuffixClick?: () => void;
-  prefix?: string;
-  suffix?: string;
-  label?: string;
-  error?: string | null;
-  description?: string | null;
-  withShadow?: boolean;
-  flex?: boolean;
-  labelColor?: string;
-  iconColor?: string;
+  onPrefixClick?: () => void
+  onSuffixClick?: () => void
+  prefix?: string
+  suffix?: string
+  label?: string
+  error?: string | null
+  description?: string | null
+  withShadow?: boolean
+  flex?: boolean
+  labelColor?: string
+  iconColor?: string
 }
 
 export interface TextareaContainerProps
@@ -69,13 +69,14 @@ export interface TextareaContainerProps
     SpaceProps,
     BackgroundProps,
     Variant {
-  onPrefixClick?: () => void;
-  onSuffixClick?: () => void;
-  label?: string;
-  error?: string | null;
-  description?: string | null;
-  withShadow?: boolean;
-  flex?: boolean;
-  labelColor?: string;
-  iconColor?: string;
+  onPrefixClick?: () => void
+  onSuffixClick?: () => void
+  label?: string
+  error?: string | null
+  errorProps?: TypographyProps
+  description?: string | null
+  withShadow?: boolean
+  flex?: boolean
+  labelColor?: string
+  iconColor?: string
 }

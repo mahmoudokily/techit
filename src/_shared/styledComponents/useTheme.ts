@@ -23,7 +23,7 @@ export const useTheme = () => {
     console.log(localTheme);
     localTheme ? setTheme(localTheme) : setTheme(themes.data.light);
     setThemeLoaded(true);
-  }, []);
+  }, [themes.data.light]);
 
   return { theme, themeLoaded, setMode, getFonts };
 };
