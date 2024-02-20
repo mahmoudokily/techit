@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     width: "250px",
     textAlign: "left",
     paddingTop: 25,
-    paddingBottom: 25,
+    paddingBottom: 0,
     paddingHorizontal: 25,
     backgroundColor: "#122967",
     color: "white"
@@ -76,7 +76,7 @@ const styles = StyleSheet.create({
   resume_right: {
     flex: 1,
     paddingTop: 25,
-    paddingBottom: 25,
+    paddingBottom: 0,
     paddingHorizontal: 20
   },
   title: {
@@ -214,6 +214,7 @@ export type PDFProps = {
     from: string
     to: string
     worknow: boolean
+    employer: string
   }[]
   educations?: any[]
 }
@@ -241,7 +242,7 @@ export const PDF: React.FC<PDFProps> = ({
   console.log(jobs)
   return (
     <Document language="arabic">
-      <Page style={styles.body} minPresenceAhead={20}>
+      <Page style={styles.body} minPresenceAhead={20} orientation="portrait">
         <View style={styles.resume_left}>
           <View style={styles.resume_item}>
             {!!imgSrc && (
@@ -365,7 +366,9 @@ export const PDF: React.FC<PDFProps> = ({
                       {job.from} - {job?.worknow ? "Now" : job.to}
                     </Text>
                     <View style={styles.info}>
-                      <Text style={styles.semiBold}>{job.title}</Text>
+                      <Text style={styles.semiBold}>
+                        {job.title} [ {job.employer} ]
+                      </Text>
                       <Text style={styles.desc}>{job.description}</Text>
                     </View>
                   </View>
@@ -389,7 +392,7 @@ export const PDF: React.FC<PDFProps> = ({
               </View>
             </View>
           )}
-          {educations && (
+          {educations && educations.length > 0 && (
             <View style={[styles.resume_item, styles.resume_education]}>
               <View style={styles.title}>
                 <Text style={styles.bold}>Education</Text>
@@ -399,7 +402,9 @@ export const PDF: React.FC<PDFProps> = ({
                   return (
                     <View>
                       <View style={styles.date}>
-                        {edu?.graduationDate} - {edu?.graduationDate}
+                        <Text>
+                          {edu?.graduationDate} - {edu?.graduationDate}
+                        </Text>
                       </View>
                       <View style={styles.info}>
                         <Text style={styles.semiBold}>

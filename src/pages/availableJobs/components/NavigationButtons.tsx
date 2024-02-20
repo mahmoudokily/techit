@@ -14,7 +14,7 @@ const NavigationButtons = () => {
 
   const pathnames = location.pathname.split("/")
   const pathname = pathnames[pathnames.length - 1]
-  const { next, previous, nextPath, prevPath } = useSteps(
+  const { next, previous, nextPath, prevPath, currentStep } = useSteps(
     createCvSteps,
     pathname
   )
@@ -22,7 +22,7 @@ const NavigationButtons = () => {
   return (
     <Flex
       flexDirection={"row"}
-      style={{ gap: "20px" }}
+      style={{ gap: "10px" }}
       justifyContent={"center"}
       py={3}
       flexWrap={"wrap"}
@@ -31,33 +31,31 @@ const NavigationButtons = () => {
         variant="secondary"
         onClick={previous}
         disabled={!prevPath}
-        height={45}
-        maxWidth={250}
-        fontSize={20}
         icon={<FaAngleLeft />}
       >
         previous
       </Button>
-      <Button
-        variant="secondary"
-        fontSize={20}
-        icon={<BsEye />}
-        onClick={() => setStatus(true)}
-      >
-        Preview
-      </Button>
-      <Button
-        variant="secondary"
-        onClick={next}
-        disabled={!nextPath}
-        height={45}
-        maxWidth={250}
-        fontSize={20}
-        icon={<FaAngleRight />}
-        iconPosition="right"
-      >
-        Next
-      </Button>
+
+      {currentStep?.name !== "save" && (
+        <>
+          <Button
+            variant="secondary"
+            icon={<BsEye />}
+            onClick={() => setStatus(true)}
+          >
+            Preview
+          </Button>
+          <Button
+            variant="secondary"
+            onClick={next}
+            disabled={!nextPath}
+            icon={<FaAngleRight />}
+            iconPosition="right"
+          >
+            Next
+          </Button>
+        </>
+      )}
 
       {status && (
         <Dialog

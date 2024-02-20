@@ -15,6 +15,11 @@ interface Props extends React.ComponentPropsWithRef<typeof Flex> {
   children: ReactNode | ReactNode[] | string
   maxHeight?: number | string
   initialStatus: boolean
+  status?: boolean
+  toggle?: () => void
+  setStatus?: React.Dispatch<
+    React.SetStateAction<{ [status: string]: boolean }>
+  >
 }
 
 export const Accordion: React.FC<Props> = ({
@@ -22,12 +27,18 @@ export const Accordion: React.FC<Props> = ({
   children,
   maxHeight = "200px",
   initialStatus,
+  status,
+  toggle,
   ...rest
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(initialStatus)
 
   const handleToggle = () => {
-    setIsOpen(!isOpen)
+    if (toggle) {
+      toggle?.()
+    } else {
+      setIsOpen((prev) => !prev)
+    }
   }
 
   return (
@@ -51,11 +62,13 @@ export const Accordion: React.FC<Props> = ({
           label
         )}
 
-        <Box onClick={handleToggle}>
-          {isOpen ? <FaAngleUp size="25" /> : <FaAngleDown size="25" />}
-        </Box>
+        {!toggle && !status && (
+          <Box onClick={handleToggle}>
+            {isOpen ? <FaAngleUp size="25" /> : <FaAngleDown size="25" />}
+          </Box>
+        )}
       </Flex>
-      {isOpen ? (
+      {status || isOpen ? (
         <Box flexShrink={0} height={maxHeight} position="relative" p={3}>
           <VerticalScrollContainer height="100%">
             {children}

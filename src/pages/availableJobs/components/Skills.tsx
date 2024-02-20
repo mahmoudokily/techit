@@ -1,10 +1,18 @@
 import React, { useState } from "react"
 import Creatable, { useCreatable } from "react-select/creatable"
+import { components } from "react-select"
 import CreatableSelect from "react-select/creatable"
-import { Flex, Typography } from "../../../_shared/UI"
+import {
+  Button,
+  Flex,
+  Typography,
+  Input,
+  customStyle
+} from "../../../_shared/UI"
 import VerticalScrollContainer from "../../../_shared/UI/VerticalScrollContainer"
 import { Box } from "./../../../_shared/UI/Box"
 import { Controller, useFormContext } from "react-hook-form"
+import { AiOutlineDelete } from "react-icons/ai"
 
 interface Option {
   readonly label: string
@@ -118,6 +126,13 @@ const Skills = () => {
       setIsLoading(false)
     }, 1000)
   }
+  const Group = (props: any) => {
+    return (
+      <Button>
+        <components.Group {...props} />
+      </Button>
+    )
+  }
 
   return (
     <Flex fullSize style={{ gap: "30px 30px" }}>
@@ -129,24 +144,59 @@ const Skills = () => {
         </Typography>
       </Flex>
       <VerticalScrollContainer height="100%" width="100%">
-        <Box maxWidth={"100%"} px={4}>
-          <Controller
-            name="skills"
-            control={control}
-            render={({ field: { ...rest } }) => (
-              <CreatableSelect
-                closeMenuOnSelect={false}
-                isClearable
-                // isDisabled={isLoading}
-                isLoading={isLoading}
-                onCreateOption={handleCreate}
-                options={options}
-                isMulti
-                {...rest}
-              />
-            )}
-          />
-        </Box>
+        <Flex style={{ gap: "20px" }} px={4}>
+          <Flex
+            flexDirection={"row"}
+            style={{ gap: "10px" }}
+            flexWrap={"wrap"}
+            maxHeight={200}
+            overflowY={"scroll"}
+          >
+            {watch("skills")?.map((skill: Option) => {
+              return (
+                <Box>
+                  <Button
+                    flexShrink={0}
+                    iconPosition="right"
+                    icon={<AiOutlineDelete />}
+                    $size="default"
+                    onClick={() =>
+                      setValue(
+                        "skills",
+                        watch("skills")?.filter(
+                          (option: Option) => option.label !== skill.label
+                        )
+                      )
+                    }
+                  >
+                    {skill.label}
+                  </Button>
+                </Box>
+              )
+            })}
+          </Flex>
+          <Box maxWidth={"100%"}>
+            <Controller
+              name="skills"
+              control={control}
+              render={({ field: { ...rest } }) => (
+                <CreatableSelect
+                  controlShouldRenderValue={false}
+                  styles={customStyle}
+                  closeMenuOnSelect={false}
+                  isClearable
+                  // isDisabled={isLoading}
+                  isLoading={isLoading}
+                  onCreateOption={handleCreate}
+                  options={options}
+                  components={{ Group }}
+                  isMulti
+                  {...rest}
+                />
+              )}
+            />
+          </Box>
+        </Flex>
       </VerticalScrollContainer>
     </Flex>
   )

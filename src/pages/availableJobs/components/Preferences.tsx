@@ -7,6 +7,7 @@ import { Box } from "./../../../_shared/UI/Box"
 import { Controller, useFormContext } from "react-hook-form"
 import { FieldArray } from "./FieldArray"
 import { Accordion } from "./../../../_shared/UI/Accordion"
+import { Field } from "./Field"
 
 interface Option {
   readonly label: string
@@ -131,14 +132,8 @@ const Preferences = () => {
         </Typography>
       </Flex>
       <VerticalScrollContainer height="100%" width="100%">
-        <Flex
-          flexDirection={"row"}
-          px={4}
-          flexWrap={"wrap"}
-          style={{ gap: "10px 10px" }}
-          py={2}
-        >
-          <Flex flex={1} minWidth={250}>
+        <Flex px={4} flexWrap={"wrap"} style={{ gap: "10px 10px" }} py={2}>
+          <Flex flex={1}>
             <FieldArray
               fieldsArr={[
                 {
@@ -153,24 +148,21 @@ const Preferences = () => {
               required={false}
             />
           </Flex>
-          <Flex minWidth={250} flex={1}>
-            <Accordion label="preferences" initialStatus={false}>
-              <Controller
+          <Flex flex={1}>
+            <Accordion
+              maxHeight={300}
+              label="preferences"
+              initialStatus={false}
+            >
+              <Field
+                type="creatable"
                 name="preferences"
-                control={control}
-                render={({ field: { ...rest } }) => (
-                  <CreatableSelect
-                    closeMenuOnSelect={false}
-                    menuPosition="fixed"
-                    isClearable
-                    // isDisabled={isLoading}
-                    isLoading={isLoading}
-                    onCreateOption={handleCreate}
-                    options={options}
-                    isMulti
-                    {...rest}
-                  />
-                )}
+                required={true}
+                placeholder=""
+                label="preferences"
+                options={skills}
+                isMulti
+                selectedOption={watch("preferences")}
               />
             </Accordion>
           </Flex>

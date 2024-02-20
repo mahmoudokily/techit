@@ -1,5 +1,6 @@
 import { useFieldArray, useFormContext } from "react-hook-form"
 import { AiOutlineDelete } from "react-icons/ai"
+import { FaAngleDown, FaAngleUp } from "react-icons/fa"
 import { GrAdd } from "react-icons/gr"
 import {
   Accordion,
@@ -12,27 +13,9 @@ import {
 } from "../../../_shared/UI"
 import VerticalScrollContainer from "../../../_shared/UI/VerticalScrollContainer"
 import { Textarea } from "../../../_shared/styledComponents"
-import { FieldProps } from "./Field"
-
-const jopHistoryFields: FieldProps[] = [
-  {
-    label: "title",
-    name: "name",
-    placeholder: "jop title",
-    required: true,
-    type: "text"
-  },
-  {
-    label: "description",
-    name: "description",
-    placeholder: "description",
-    required: true,
-    type: "text"
-  }
-]
 
 const WorkHistory = () => {
-  const { control, register, watch, handleSubmit } = useFormContext()
+  const { control, register, watch, handleSubmit, setValue } = useFormContext()
   const { fields, append, prepend, remove, swap, move, insert } = useFieldArray(
     {
       control,
@@ -40,6 +23,10 @@ const WorkHistory = () => {
     }
   )
 
+  const toggleAccordion = (name: string) => () => {
+    const currentStatus = watch(name)
+    setValue(name, !currentStatus)
+  }
   return (
     <Flex fullSize style={{ gap: "30px 30px" }}>
       <Flex pl={4} pt={4}>
@@ -53,24 +40,70 @@ const WorkHistory = () => {
         <Flex px={4} style={{ gap: "10px 10px" }} py={2}>
           {fields.map((field, index: number, fieldsArr) => (
             <Accordion
+              toggle={toggleAccordion(`jobs.${index}.isOpen`)}
+              status={watch(`jobs.${index}.isOpen`)}
               key={field.id}
-              initialStatus={index === fieldsArr.length - 1 ? true : false}
+              initialStatus={false}
               label={
                 <Flex
                   flexDirection={"row"}
                   justifyContent={"space-between"}
                   flex={1}
                 >
-                  <Typography variant={"title20"}>
-                    {`Work ` + Number(index + 1)}
-                  </Typography>
+                  {watch(`jobs.${index}`).title ? (
+                    <Flex flexDirection={"column"}>
+                      {" "}
+                      <Typography variant={"title20"}>
+                        {watch(`jobs.${index}.title`)}
+                      </Typography>
+                      <Typography>
+                        {watch(`jobs.${index}.from`) &&
+                          watch(`jobs.${index}.to`) &&
+                          watch(`jobs.${index}.from`) +
+                            "-" +
+                            watch(`jobs.${index}.to`)}
+                      </Typography>
+                    </Flex>
+                  ) : (
+                    `Work ` + Number(index + 1)
+                  )}
+
                   <Flex
                     onClick={(e: any) => {
                       e.stopPropagation()
-                      remove(index)
                     }}
+                    flexDirection={"row"}
+                    style={{ gap: "10px" }}
                   >
-                    <AiOutlineDelete fontSize={20} />
+                    <Button
+                      $fill={false}
+                      withBorder={false}
+                      variant="gray"
+                      fixedSize
+                      onClick={() => remove(index)}
+                    >
+                      <AiOutlineDelete fontSize={20} />
+                    </Button>
+                    <Button
+                      $fill={false}
+                      withBorder={false}
+                      variant="gray"
+                      onClick={(e) => move(index, Number(index - 1))}
+                      disabled={index === 0}
+                      fixedSize
+                    >
+                      <FaAngleUp fontSize={20} />
+                    </Button>
+                    <Button
+                      $fill={false}
+                      withBorder={false}
+                      variant="gray"
+                      onClick={(e: any) => move(index, Number(index + 1))}
+                      disabled={index === fieldsArr.length - 1}
+                      fixedSize
+                    >
+                      <FaAngleDown fontSize={20} />
+                    </Button>
                   </Flex>
                 </Flex>
               }
@@ -123,7 +156,7 @@ const WorkHistory = () => {
                       placeholder={`relevant jop #${index + 1} `}
                       variant="secondary"
                       $fill={false}
-                      type="month"
+                      type="date"
                     />
                   </Flex>
                   <Flex flex={1} flexDirection={"column"}>
@@ -134,7 +167,7 @@ const WorkHistory = () => {
                       placeholder={`relevant jop #${index + 1} `}
                       variant="secondary"
                       $fill={false}
-                      type="month"
+                      type="date"
                       style={{ marginBottom: "5px" }}
                       disabled={watch(`jobs.${index}.worknow`) ? true : false}
                     />
@@ -166,9 +199,13 @@ const WorkHistory = () => {
             fontSize="1em"
             block
             variant="gray"
-            onClick={() => append("")}
+            onClick={() =>
+              append({
+                isOpen: true
+              })
+            }
           >
-            Add An Other Work Experience
+            Add An Work Experience
           </Button>
         </Flex>
       </VerticalScrollContainer>

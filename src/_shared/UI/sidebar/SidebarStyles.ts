@@ -109,7 +109,7 @@ export const SidebarContainer = styled.div<{ displaySidebar: boolean }>`
   height: 100vh;
   padding: 0.75rem;
   z-index: 10000;
-  background: #081229;
+  background: #191d3a;
   transition: width 350ms ease;
   border-right: 1px solid #d4d8dd;
   overflow-x: hidden;

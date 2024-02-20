@@ -2,7 +2,7 @@
 
 import React, { useState } from "react"
 import { Controller, useFormContext } from "react-hook-form"
-import { AiFillDelete, AiOutlineUser } from "react-icons/ai"
+import { AiFillDelete, AiOutlineDelete, AiOutlineUser } from "react-icons/ai"
 import CreatableSelect from "react-select/creatable"
 import styled from "styled-components"
 import {
@@ -21,6 +21,8 @@ export interface FieldProps {
   name: string
   required: boolean
   placeholder: string
+  isMulti?: boolean
+  selectedOption?: Option[]
   type:
     | "text"
     | "file"
@@ -46,15 +48,21 @@ export const Field: React.FC<FieldProps> = ({
   required,
   placeholder,
   options,
+  isMulti,
   type,
+  selectedOption = [],
   name
 }) => {
   const handleCreate = (name: string) => (inputValue: string) => {
     setIsLoading(true)
     setTimeout(() => {
       const newOption = createOption(inputValue)
-      // setOptions((prev) => [...prev, newOption])
-      setValue(name, newOption)
+      if (isMulti) {
+        setValue(name, [...selectedOption, newOption])
+      } else {
+        setValue(name, newOption)
+      }
+
       setIsLoading(false)
     }, 1000)
   }
@@ -63,7 +71,42 @@ export const Field: React.FC<FieldProps> = ({
   switch (type) {
     case "creatable":
       return (
-        <Flex flex={1}>
+        <Flex style={{ gap: "20px" }} px={4} flex={1}>
+          {selectedOption && isMulti && (
+            <Flex
+              flexDirection={"row"}
+              style={{ gap: "10px" }}
+              flexWrap={"wrap"}
+              maxHeight={200}
+              overflowY={"scroll"}
+              height={200}
+              justifyContent={"flex-start"}
+            >
+              {selectedOption?.map((op: Option) => {
+                return (
+                  <Box>
+                    <Button
+                      flexShrink={0}
+                      iconPosition="right"
+                      icon={<AiOutlineDelete />}
+                      $size="default"
+                      onClick={() =>
+                        setValue(
+                          name,
+                          watch(name)?.filter(
+                            (option: Option) => option.label !== op.label
+                          )
+                        )
+                      }
+                    >
+                      {op.label}
+                    </Button>
+                  </Box>
+                )
+              })}
+            </Flex>
+          )}
+
           <Controller
             name={name}
             control={control}
@@ -71,12 +114,17 @@ export const Field: React.FC<FieldProps> = ({
               <CreatableSelect
                 isClearable
                 // isDisabled={isLoading}
+                controlShouldRenderValue={isMulti}
+                openMenuOnFocus
+                closeMenuOnSelect={isMulti}
+                placeholder={placeholder}
                 menuPosition="fixed"
                 isLoading={isLoading}
                 onCreateOption={handleCreate(name)}
                 options={
                   options?.map((level: string) => createOption(level)) || []
                 }
+                isMulti={isMulti}
                 {...rest}
               />
             )}
@@ -92,6 +140,7 @@ export const Field: React.FC<FieldProps> = ({
             control={control}
             render={({ field }) => (
               <Select
+                openMenuOnFocus
                 placeholder={placeholder}
                 options={
                   options?.map((option) => ({

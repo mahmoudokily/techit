@@ -3,7 +3,7 @@ const DV: {
 } = {
   // color
   BLUE: "#0060df",
-  DARKBLUE: "#081229",
+  DARKBLUE: "#191d3a",
   FOCAIA: "#cf4f83",
   INDIGO: "#675aa9",
   PURPLE: "#6658dd",

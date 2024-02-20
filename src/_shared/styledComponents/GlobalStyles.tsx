@@ -1,16 +1,16 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
 
 #root {
   min-height: 100vh;
+  scrollbar-color: #cf4f83 transparent ;
 }
 html {
   margin: 0;
   padding: 0;
-  font-family: 'Rubik', sans-serif !important;
-    
-}
+  font-family: "sans-serif";
+  }
 
 *,
 *::after,
@@ -21,45 +21,12 @@ html {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-div {
-  
-  //  transition: all .250s;
 
-}
 
 img {
   display: block;
   max-width: 100%;
 }
 
-// ::-webkit-scrollbar {
-//  display:none;
-// }
-
-//unComment These to show scrollbar
-::-webkit-scrollbar {
-  width: 10px;  
-  height:10px;
-               
-}
-
-
-// p, h1 ,h2 ,h3,h4,h5,h6,a,span,div{
-//   color:${({ theme }) => theme?.colors.primaryDark}!important;
-// }
-
-::-webkit-scrollbar-thumb {
-  background-color: rgba(61, 114, 156, 0.62)!important;    
-    // background-color: #737373!important;    
-      border:1px solid #f5f5f5; 
-  border-radius: 10px;       
-
-}
-
-div:hover::-webkit-scrollbar-corner {
-    width: 40px;
-    /*background-color: red !important;*/
-}
- 
-`;
-export default GlobalStyle;
+`
+export default GlobalStyle

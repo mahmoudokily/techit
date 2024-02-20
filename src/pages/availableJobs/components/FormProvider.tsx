@@ -20,18 +20,38 @@ export const FormProvider: React.FC<PropsWithChildren> = ({ children }) => {
       website: "http://www.google.com",
       jobs: [
         {
-          from: "18/05/2015",
-          to: "18/05/2017",
+          employer: "Google",
+          from: "18/05/1995",
+          to: "02/04/1998",
           id: 1,
-          title: "WEB DESIGNING (TEXAS UNIVERSITY)",
+          title: "IT Cloud Developer",
           description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,voluptatibus!"
         },
         {
+          employer: "Amazon",
           from: "18/05/2015",
           to: "18/05/2017",
           id: 2,
-          title: "WEB DESIGNING (TEXAS UNIVERSITY)",
+          title: "SoftWare Developer",
+          description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,voluptatibus!"
+        },
+        {
+          employer: "Facebook",
+          from: "03/07/1995",
+          to: "8/05/1999",
+          id: 3,
+          title: "WEB DESIGNING ",
+          description:
+            "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,voluptatibus!"
+        },
+        {
+          employer: "google",
+          from: "18/05/2015",
+          to: "18/05/2017",
+          id: 4,
+          title: "UX Designer",
           description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum,voluptatibus!"
         }
@@ -39,10 +59,13 @@ export const FormProvider: React.FC<PropsWithChildren> = ({ children }) => {
       educations: [
         {
           id: 1,
-          nameOfInstitution: "nameOfInstitution",
+          institution: "unimi di milano",
+          start: "20/01/2015",
+          end: "21/04/2015",
           location: "italy",
           degree: "bacalore",
-          course: "computer Science"
+          course: "computer Science",
+          description: "Lorem ipsum dolor sit amet consectet"
         }
       ],
       skills: [
